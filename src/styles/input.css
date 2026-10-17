@@ -1,0 +1,556 @@
+@import "tailwindcss";
+
+@source "../../index.html";
+@source "../../about.html";
+@source "../../texas-cultural-trust.html";
+
+/* Design tokens from the Figma file (Isa's Portfolio). */
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-quote: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-off-white: #fef6ee;
+  --color-cream: #f8eada;
+  --color-ink: #241410;
+  --color-blue: #5c91d0;
+  --color-green: #579d42;
+  --color-stroke: #cac0b9;
+  --color-grey: #695753;
+  --color-dark-gray: #66554d;
+  --color-deep-gray: #372926;
+  --color-gray: #918176;
+
+  --shadow-card: 2px 4px 20px 0 rgb(72 41 34 / 0.14);
+  --shadow-card-lg: 4px 6px 20px 0 rgb(71 41 33 / 0.15);
+}
+
+/* Responsive type scale, mirroring the Figma "Responsive/*" text styles. */
+:root {
+  --fs-hero: 48px;
+  --lh-hero: 52px;
+  --fs-h1: 40px;
+  --lh-h1: 48px;
+  --fs-h2: 32px;
+  --lh-h2: 40px;
+  --fs-h3: 26px;
+  --lh-h3: 34px;
+  --fs-h4: 22px;
+  --lh-h4: 30px;
+  --fs-body-lg: 20px;
+  --lh-body-lg: 32px;
+  --fs-body: 18px;
+  --lh-body: 28px;
+  --fs-caption: 14px;
+  --lh-caption: 20px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --fs-hero: 80px;
+    --lh-hero: 80px;
+    --fs-h1: 64px;
+    --lh-h1: 72px;
+    --fs-h2: 48px;
+    --lh-h2: 58px;
+    --fs-h3: 36px;
+    --lh-h3: 44px;
+    --fs-h4: 28px;
+    --lh-h4: 36px;
+    --fs-body-lg: 28px;
+    --lh-body-lg: 42px;
+    --fs-body: 24px;
+    --lh-body: 36px;
+    --fs-caption: 16px;
+    --lh-caption: 24px;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-off-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@utility text-hero {
+  font-size: var(--fs-hero);
+  line-height: var(--lh-hero);
+}
+@utility text-h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+}
+@utility text-h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+}
+@utility text-h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+}
+@utility text-h4 {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+}
+@utility text-body-lg {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body-lg);
+}
+@utility text-body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+@utility text-caption {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+}
+
+@layer components {
+  /* Navigation bar (Figma component "nav bar"). */
+  .site-nav {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1728px;
+    margin-inline: auto;
+    padding: 32px 20px 24px;
+  }
+
+  .site-nav__logo img {
+    display: block;
+    width: 132px;
+    height: auto;
+  }
+
+  .site-nav__links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .site-nav__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 20px;
+    color: var(--color-ink);
+    transition: color 150ms ease;
+  }
+
+  .site-nav__links a:hover,
+  .site-nav__links a[aria-current="page"] {
+    color: var(--color-blue);
+  }
+
+  .site-nav__links img {
+    width: 0.86em;
+    height: 0.86em;
+  }
+
+  @media (min-width: 1024px) {
+    .site-nav {
+      padding: 80px 80px 36px;
+    }
+
+    .site-nav__logo img {
+      width: 255px;
+    }
+
+    .site-nav__links {
+      gap: 50px;
+      font-size: var(--fs-h4);
+      line-height: var(--lh-h4);
+    }
+  }
+
+  /* Pill buttons (Figma component "Buttons (desktop)"). */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border: 2px solid var(--color-blue);
+    border-radius: 28px;
+    padding: 12px 18px;
+    font-size: var(--fs-h4);
+    line-height: var(--lh-h4);
+    font-weight: 600;
+    white-space: nowrap;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
+  }
+
+  .btn--solid {
+    background: var(--color-blue);
+    color: var(--color-off-white);
+  }
+
+  .btn--solid:hover {
+    background: #4a7fbf;
+    border-color: #4a7fbf;
+  }
+
+  .btn--outline {
+    background: var(--color-off-white);
+    color: var(--color-blue);
+  }
+
+  .btn--outline:hover {
+    background: var(--color-blue);
+    color: var(--color-off-white);
+  }
+
+  @media (min-width: 1024px) {
+    .btn {
+      padding: 16px 20px;
+    }
+  }
+
+  /* Clover + heading (Figma component "Header/Clover3"). */
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: var(--fs-h2);
+    line-height: var(--lh-h2);
+    font-weight: 600;
+  }
+
+  .section-heading::before {
+    content: "";
+    flex: none;
+    width: 0.83em;
+    height: 0.83em;
+    /* Resolved relative to the compiled dist/styles.css. */
+    background: url("../assets/icons/clover.svg") center / contain no-repeat;
+  }
+
+  /* Polaroid-style photo card (Figma component "photo"). */
+  .photo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 2px solid var(--color-cream);
+    border-radius: 16px;
+    background: var(--color-off-white);
+    padding: 27px 30px 60px;
+    filter: drop-shadow(2px 4px 10px rgb(72 41 34 / 0.14));
+  }
+
+  .photo-card img {
+    display: block;
+    width: 100%;
+    max-width: 314px;
+    aspect-ratio: 314 / 311;
+    object-fit: cover;
+  }
+
+  .photo-card figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 312px;
+  }
+
+  .photo-card h3 {
+    font-size: var(--fs-h4);
+    line-height: var(--lh-h4);
+    font-weight: 600;
+  }
+
+  .photo-card p {
+    color: var(--color-grey);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+  }
+
+  /* Bordered off-white card used across the case study. */
+  .card {
+    border: 2px solid var(--color-stroke);
+    border-radius: 16px;
+    background: var(--color-off-white);
+  }
+
+  /* Image caption: label + small description. */
+  .caption {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .caption > :first-child {
+    color: var(--color-dark-gray);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+  }
+
+  .caption > :last-child {
+    color: var(--color-gray);
+    font-size: var(--fs-caption);
+    line-height: var(--lh-caption);
+  }
+
+  .eyebrow {
+    font-size: var(--fs-caption);
+    line-height: var(--lh-caption);
+    text-transform: uppercase;
+  }
+
+  .chip {
+    display: inline-flex;
+    border-radius: 999px;
+    padding: 8px 16px;
+  }
+
+  .prose-lg {
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-body-lg);
+  }
+
+  .prose-lg strong {
+    font-weight: 700;
+  }
+
+  /* Horizontal image strip with the design's cream scrollbar (Figma "Scrollbar":
+     Track + Thumb). The native bar is hidden; main.js drives the custom one. */
+  .scroller__viewport {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .scroller__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroller__viewport:focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 4px;
+  }
+
+  .scroller__track {
+    position: relative;
+    height: 10px;
+    margin-top: 12px;
+    border-radius: 999px;
+    background: var(--color-cream);
+    cursor: pointer;
+    touch-action: none;
+  }
+
+  .scroller__thumb {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 240px;
+    border-radius: 999px;
+    background: var(--color-stroke);
+    cursor: grab;
+    transition: background-color 150ms ease;
+  }
+
+  .scroller__track:hover .scroller__thumb,
+  .scroller--dragging .scroller__thumb {
+    background: var(--color-gray);
+  }
+
+  .scroller--dragging,
+  .scroller--dragging .scroller__thumb {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  /* Nothing to scroll: hide the bar. */
+  .scroller--static .scroller__track {
+    visibility: hidden;
+  }
+
+  /* Cropped image: the frame clips an absolutely positioned image. */
+  .crop {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .crop > img {
+    position: absolute;
+    max-width: none;
+  }
+
+  /* Round arrow button; the SVG includes its drop shadow, so it overflows the box. */
+  .arrow-btn {
+    position: relative;
+    display: inline-block;
+    flex: none;
+  }
+
+  .arrow-btn__inner {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+
+  .arrow-btn__inner img {
+    position: absolute;
+    top: -21.05%;
+    left: -23.68%;
+    width: 152.63%;
+    height: 152.63%;
+    max-width: none;
+  }
+
+  .skip-btn {
+    width: 347px;
+    border-radius: 40px;
+    padding: 16px 40px;
+    filter: drop-shadow(0 0.6px 0.3px rgb(0 0 0 / 0.23)) drop-shadow(0 2.29px 1.14px rgb(0 0 0 / 0.2))
+      drop-shadow(0 10px 5px rgb(0 0 0 / 0.08));
+  }
+
+  /* Image with a fixed design ratio that shrinks with its column. */
+  .media {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .case-section {
+    scroll-margin-top: 32px;
+  }
+
+  .tier-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .outcome-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-card-lg);
+  }
+
+  .outcome-card h3 {
+    flex: none;
+    font-size: var(--fs-h4);
+    line-height: var(--lh-h4);
+    font-weight: 600;
+  }
+
+  .outcome-card p {
+    flex: 1;
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-body-lg);
+  }
+
+  @media (min-width: 768px) {
+    .outcome-card {
+      flex-direction: row;
+      gap: 48px;
+      padding: 28px 32px;
+    }
+
+    .outcome-card h3 {
+      width: 240px;
+    }
+  }
+
+  .takeaway-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+    box-shadow: var(--shadow-card-lg);
+  }
+
+  .takeaway-card > span {
+    color: var(--color-blue);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
+    font-weight: 600;
+  }
+
+  .takeaway-card h3 {
+    font-size: var(--fs-h4);
+    line-height: var(--lh-h4);
+    font-weight: 600;
+  }
+
+  .takeaway-card p {
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+  }
+
+  /* "On this page" sidebar. */
+  .toc a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-block: 10px;
+    color: rgb(36 20 16 / 0.85);
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-body-lg);
+    transition: color 150ms ease;
+  }
+
+  .toc a::before {
+    content: "";
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-stroke);
+  }
+
+  .toc a:hover,
+  .toc a[aria-current="true"] {
+    color: var(--color-blue);
+  }
+
+  .toc a[aria-current="true"]::before {
+    background: var(--color-blue);
+  }
+}
+
+/* Home hero: 6-leaf flower spin (Figma motion: 180deg / 2s, ease-in-out, loop). */
+@keyframes spin-half {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180.1deg);
+  }
+}
+
+.spin-flower {
+  animation: spin-half 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .spin-flower {
+    animation: none;
+  }
+}

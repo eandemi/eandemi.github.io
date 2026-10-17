@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Case study: making art events easier to discover across Texas with the Texas Cultural Trust."
+    />
+    <meta name="theme-color" content="#fef6ee" />
+    <title>Texas Cultural Trust Case Study — Isa Melendez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@1,700&family=Outfit:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="./dist/styles.css" />
+  </head>
+  <body class="min-h-screen overflow-x-hidden">
+    <header>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="site-nav__logo" href="./index.html" aria-label="Isa Melendez, home">
+          <img src="./assets/icons/logo.svg" alt="" width="255" height="35" />
+        </a>
+        <ul class="site-nav__links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About Me</a></li>
+          <li>
+            <a href="./assets/docs/isabella-melendez-gonzalez-resume.pdf" target="_blank" rel="noopener">
+              Resume <img src="./assets/icons/arrow-square-out.svg" alt="" />
+              <span class="sr-only">(opens in a new tab)</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-[1728px]">
+      <!-- Hero -->
+      <section class="flex flex-col gap-7 px-5 pb-12 pt-8 lg:px-20 lg:pb-20 lg:pt-14" aria-labelledby="case-title">
+        <div class="flex items-center gap-4 lg:gap-7">
+          <a class="arrow-btn size-12 shrink-0 lg:size-[76px]" href="./index.html#projects" aria-label="Back to projects">
+            <span class="arrow-btn__inner rotate-90">
+              <img src="./assets/icons/arrow-hero.svg" alt="" />
+            </span>
+          </a>
+          <h1 id="case-title" class="text-h2 font-medium">Making art events easier to discover across Texas</h1>
+        </div>
+
+        <div class="flex flex-col gap-10 lg:gap-16">
+          <div class="crop aspect-[1489/738] rounded-[24px] lg:rounded-[40px]">
+            <img
+              style="height: 100.03%; left: -5.31%; top: -0.01%; width: 105.31%"
+              src="./assets/images/txct/hero.png"
+              alt="The redesigned Texas Cultural Trust Events page"
+            />
+          </div>
+
+          <dl class="grid grid-cols-2 gap-x-8 gap-y-6 sm:flex sm:flex-wrap sm:justify-center sm:gap-12">
+            <div class="flex flex-col gap-1 sm:w-[200px]">
+              <dt class="text-h4 font-semibold text-blue">ROLE</dt>
+              <dd class="text-body">End-to-end Product Designer</dd>
+            </div>
+            <div class="flex flex-col gap-1 sm:w-[200px]">
+              <dt class="text-h4 font-semibold text-blue">TEAM</dt>
+              <dd class="text-body">2 engineers, 1 PM, 1 designer</dd>
+            </div>
+            <div class="flex flex-col gap-1 sm:w-[200px]">
+              <dt class="text-h4 font-semibold text-blue">CLIENT</dt>
+              <dd class="text-body">Texas Cultural Trust</dd>
+            </div>
+            <div class="flex flex-col gap-1 sm:w-[274px]">
+              <dt class="text-h4 font-semibold text-blue">TIMELINE</dt>
+              <dd class="text-body">Fall 2025 – Spring 2026 (~24 weeks)</dd>
+            </div>
+            <div class="flex flex-col gap-1 sm:w-[200px]">
+              <dt class="text-h4 font-semibold text-blue">TOOLS</dt>
+              <dd class="text-body">Figma, Goodnotes</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Body: sidebar + case study content -->
+      <div class="flex gap-16 px-5 pb-[120px] pt-4 lg:px-[60px] lg:pt-16">
+        <aside class="hidden w-[380px] shrink-0 lg:block">
+          <div class="sticky top-8 flex flex-col items-center gap-12">
+            <nav class="toc w-full rounded-[24px] border-2 border-stroke bg-off-white px-6 py-8 shadow-card" aria-label="On this page">
+              <p class="text-body text-ink/45">ON THIS PAGE</p>
+              <ul class="mt-3.5 flex flex-col gap-0.5">
+                <li><a href="#problem">The Problem</a></li>
+                <li><a href="#where-i-started">Where I Started</a></li>
+                <li><a href="#design-process">My Design Process</a></li>
+                <li><a href="#final-solution">Final Solution</a></li>
+                <li><a href="#outcome">Outcome &amp; Limitations</a></li>
+                <li><a href="#takeaways">Key Takeaways</a></li>
+              </ul>
+            </nav>
+            <a class="btn btn--solid skip-btn" href="#final-solution">
+              Skip to Solution
+              <span class="arrow-btn size-[50px]" aria-hidden="true">
+                <span class="arrow-btn__inner rotate-90">
+                  <img src="./assets/icons/arrow-skip.svg" alt="" />
+                </span>
+              </span>
+            </a>
+          </div>
+        </aside>
+
+        <article class="flex min-w-0 max-w-[1162px] flex-1 flex-col gap-[100px]">
+          <!-- The Problem -->
+          <section id="problem" class="case-section flex flex-col gap-7" aria-labelledby="problem-title">
+            <h2 id="problem-title" class="section-heading">The Problem</h2>
+            <div class="prose-lg flex flex-col gap-4">
+              <p>
+                The Texas Cultural Trust is a <strong>nonprofit</strong> whose mission is to
+                <strong>give back to the arts community</strong> in Texas. They believed one way to do that was a
+                <strong>central event calendar</strong> for the general public, so anyone interested in the arts
+                could find what’s happening, and art providers could get in front of new audiences.
+              </p>
+              <p>
+                <strong>But a nonprofit can’t run a platform at a loss.</strong> If it doesn’t bring in money, it
+                can’t keep serving its community. That was one of the most eye-opening things I learned on this
+                project: the calendar had to serve the public and help pay for itself.
+              </p>
+            </div>
+            <p class="text-h4 font-semibold">So the Trust had two goals:</p>
+            <ol class="flex flex-col gap-6 font-semibold md:flex-row">
+              <li class="card flex items-center gap-4 p-6 md:w-[556px] md:shrink-0 md:justify-center">
+                <span class="text-h3 text-blue">1.</span>
+                <span class="text-h4 md:w-[402px]">Give Texans one place to find art events</span>
+              </li>
+              <li class="card flex flex-1 items-center gap-4 p-6">
+                <span class="text-h3 text-blue">2.</span>
+                <span class="text-h4">Give providers a simple way to list events and support the platform in return</span>
+              </li>
+            </ol>
+            <p class="text-h4 font-semibold">My question became:</p>
+            <blockquote class="flex gap-5">
+              <span class="w-1 shrink-0 rounded-[2px] bg-blue" aria-hidden="true"></span>
+              <p class="font-quote text-[20px] font-bold italic leading-[1.6] lg:text-[24px] lg:leading-[42px]">
+                “How might we help Texans easily discover art events in one place, while giving art providers a
+                simple way to advertise events and support the platform?”
+              </p>
+            </blockquote>
+            <p class="prose-lg">
+              The hardest part was coming up with a simple design given the massive volume of information. Events
+              from across a whole state in one calendar can overwhelm someone who just wants to know what’s
+              happening near them.
+            </p>
+          </section>
+
+          <!-- Where I Started -->
+          <section id="where-i-started" class="case-section flex flex-col gap-7" aria-labelledby="started-title">
+            <h2 id="started-title" class="section-heading">Where I Started</h2>
+            <div class="prose-lg flex flex-col gap-4">
+              <p>
+                I was the only designer on a team of four, so I owned everything from first sketches to developer
+                handoff. I didn’t run user interviews, so I worked from what the Trust told us and from products
+                people already know, mainly Google Calendar and the Houston Museum’s event calendar, and I ran my
+                design decisions by my team, the Trust, and peers.
+              </p>
+              <p>
+                I began with low-fidelity sketches using Goodnotes after the initial meeting to understand what the
+                project entails and presented them to the Trust in order to get on the same page.
+              </p>
+            </div>
+            <figure class="flex flex-col">
+              <div class="scroller" data-scroller>
+                <div class="scroller__viewport" tabindex="0" role="region" aria-label="Low-fidelity sketches, scroll horizontally">
+                  <div class="flex w-max items-center gap-6">
+                    <img class="h-[260px] w-auto lg:h-[446px]" src="./assets/images/txct/lowfi-3.jpg" alt="Sketch of the Events calendar with notes on highlighted events" />
+                    <img class="h-[265px] w-auto lg:h-[455px]" src="./assets/images/txct/lowfi-1.jpg" alt="Sketch of a weekly events calendar layout" />
+                    <img class="h-[259px] w-auto lg:h-[445px]" src="./assets/images/txct/lowfi-2.jpg" alt="Sketches of a Public Impact page and an Arts Providers and Maps page" />
+                  </div>
+                </div>
+                <div class="scroller__track" aria-hidden="true"><div class="scroller__thumb"></div></div>
+              </div>
+              <figcaption class="caption">
+                <span>Low-fidelity sketches</span>
+                <span>Goodnotes sketches of the Events calendar, a Public Impact page, and an Arts Providers and Maps page.</span>
+              </figcaption>
+            </figure>
+            <p class="prose-lg">As you may notice, there is more than just the Events Calendar fleshed out here.</p>
+            <div class="flex flex-col gap-5">
+              <h3 class="text-h3 font-semibold">Initial Scope</h3>
+              <div class="flex flex-col items-stretch gap-6 md:flex-row md:items-center">
+                <div class="card flex flex-1 flex-col items-center gap-3.5 p-6">
+                  <p class="text-body">Originally asked to complete:</p>
+                  <ul class="flex flex-wrap justify-center gap-2.5">
+                    <li class="chip bg-cream text-body">Impact</li>
+                    <li class="chip bg-cream text-body">Arts Providers and Maps</li>
+                    <li class="chip bg-cream text-body">Events</li>
+                  </ul>
+                </div>
+                <span class="self-center text-h3 font-semibold text-blue max-md:rotate-90" aria-hidden="true">→</span>
+                <div class="flex flex-col items-center justify-center gap-3.5 rounded-2xl bg-blue p-6 md:h-[154px] md:w-[454px]">
+                  <p class="text-body text-off-white">Committed to:</p>
+                  <span class="chip bg-off-white text-body text-blue">Events</span>
+                </div>
+              </div>
+              <div class="prose-lg flex flex-col gap-[var(--lh-body-lg)]">
+                <p>
+                  We’d been originally asked to create <strong>three pages</strong>: Impact, Arts Providers and Maps,
+                  and Events.
+                </p>
+                <p>
+                  As we scoped the work with the Trust, I didn’t think three pages were feasible given our timeline
+                  and considering how we would be down a team member the next semester. I raised the concern in a
+                  weekly meeting, and the Trust told us <strong>Events mattered most</strong>. After checking with my
+                  team and my design mentor, we agreed that trying for all three would give us a weaker result
+                  across the board. <strong>We committed to Events alone.</strong>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- My Design Process -->
+          <section id="design-process" class="case-section flex flex-col gap-[60px]" aria-labelledby="process-title">
+            <div class="flex flex-col gap-7">
+              <h2 id="process-title" class="section-heading">My Design Process</h2>
+
+              <div class="flex flex-col gap-6">
+                <h3 class="text-h3 font-semibold">Designing for a User Who Isn’t Me</h3>
+                <p class="prose-lg">
+                  Most of my past projects were designed for students, so it was quite easy to empathize with the
+                  user group. This project, however, didn’t have that. <strong>I don’t usually seek out art events</strong>,
+                  so I had to step back and ask: if I were this user, what are the non-negotiable things I’d need at
+                  first glance to decide whether I’d like to attend an event?
+                </p>
+                <div class="flex flex-col gap-4">
+                  <p class="prose-lg">
+                    To put myself in that position, I searched “art events near me” on Google, the way I would if I
+                    were actively looking.
+                  </p>
+                  <figure class="flex flex-col items-center gap-1 lg:px-6">
+                    <img class="media w-[790px]" style="aspect-ratio: 790 / 420" src="./assets/images/txct/google-search.png" alt="Google search results for art events near me" />
+                    <figcaption class="caption w-full max-w-[790px]">
+                      <span class="max-w-[380px]">Google search for “art events near me”</span>
+                      <span>Result cards lead with the title, then date and time, then location.</span>
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="prose-lg flex flex-col gap-[var(--lh-body-lg)]">
+                  <p>
+                    The result cards led with the event title, then the date and time together, with the location
+                    underneath, and showed much more once you clicked in.
+                  </p>
+                  <p><strong>That led me to create the following information hierarchy:</strong></p>
+                </div>
+                <ol class="grid grid-cols-2 gap-4 text-h4 font-semibold sm:grid-cols-3 lg:grid-cols-5">
+                  <li class="card p-5"><span class="text-blue">1.</span> Title</li>
+                  <li class="card p-5"><span class="text-blue">2.</span> Date</li>
+                  <li class="card p-5"><span class="text-blue">3.</span> Location</li>
+                  <li class="card p-5"><span class="text-blue">4.</span> Time</li>
+                  <li class="card p-5"><span class="text-blue">5.</span> Category</li>
+                </ol>
+                <div class="flex flex-col gap-8 md:flex-row md:items-center">
+                  <figure class="flex w-[240px] shrink-0 flex-col gap-3">
+                    <img class="media w-[240px]" style="aspect-ratio: 240 / 420" src="./assets/images/txct/event-categories.png" alt="Event categories component listing Visual Arts, Literary Arts, Performing Arts, Music and more" />
+                    <figcaption class="caption">
+                      <span>Event categories component</span>
+                      <span>The category set I settled on.</span>
+                    </figcaption>
+                  </figure>
+                  <div class="prose-lg flex flex-1 flex-col gap-6">
+                    <div>
+                      <p>
+                        Category was my own addition to the hierarchy. With so many events in one calendar, I wanted
+                        users to be able to <strong>filter</strong> down to the type of events they personally would
+                        have interest in, which could reduce information overload.
+                      </p>
+                      <p>That raised a new question: which categories to include?</p>
+                    </div>
+                    <p>
+                      <strong>The Trust described art very broadly</strong>, with everything from gallery openings to
+                      street performances in scope. I cross-referenced existing event calendars like Houston’s Museum
+                      of Fine Arts and used AI (Claude &amp; ChatGPT) to help sort overlapping categories into a clean,
+                      non-redundant set before I designed a single screen.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-7">
+                  <div class="prose-lg">
+                    <h4 class="text-h4 font-semibold">Iterating the Featured Event Card</h4>
+                    <p>
+                      When I went back through my featured cards against that hierarchy, they led with the title, a
+                      one-line summary, and category and tags, but location and time weren’t visible at a glance. I
+                      redesigned the card so the date, title, location, and time read first, with category and tags
+                      after.
+                    </p>
+                  </div>
+                  <div class="flex flex-col gap-8">
+                    <div class="flex flex-wrap items-center gap-8">
+                      <figure class="flex w-[398px] max-w-full flex-col">
+                        <img class="media w-[385px]" style="aspect-ratio: 385 / 240" src="./assets/images/txct/featured-card-v1.png" alt="Featured event card, version 1" />
+                        <figcaption class="caption max-w-[380px]">
+                          <span>V1</span>
+                          <span>Mid-fi card with event name, short description, location, time, date, and a “See more” link.</span>
+                        </figcaption>
+                      </figure>
+                      <figure class="flex max-w-full flex-col gap-3">
+                        <img class="media w-[418px] lg:mt-[44px]" style="aspect-ratio: 418 / 186" src="./assets/images/txct/featured-card-v2.png" alt="Featured event card, version 2" />
+                        <figcaption class="caption max-w-[380px]">
+                          <span>V2</span>
+                          <span>Mid-fi with title, date, location, time, and a link icon. The description is removed.</span>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div class="flex flex-wrap items-start gap-8">
+                      <figure class="flex w-[458px] max-w-full flex-col gap-3">
+                        <img class="media w-[458px]" style="aspect-ratio: 458 / 259" src="./assets/images/txct/featured-card-v3.png" alt="Featured event card, version 3" />
+                        <figcaption class="caption">
+                          <span>V3</span>
+                          <span>Hi-fi card with date header, title, location, time, category, and a link icon.</span>
+                        </figcaption>
+                      </figure>
+                      <figure class="flex w-[493px] max-w-full flex-col gap-3">
+                        <img class="media w-[493px]" style="aspect-ratio: 493 / 256" src="./assets/images/txct/featured-card-v4.png" alt="Featured event card, version 4" />
+                        <figcaption class="caption">
+                          <span>V4</span>
+                          <span>Hi-fi card with date header, title, summary, category, and tags. Location and time were taken out.</span>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <figure class="flex w-[515px] max-w-full flex-col gap-3">
+                      <img class="media w-full" style="aspect-ratio: 525 / 250" src="./assets/images/txct/featured-card-v5.png" alt="Final featured event card with a Free badge" />
+                      <figcaption class="caption">
+                        <span>V5 (Final)</span>
+                        <span>Date header, title, summary, location, and time. A “Free” badge on the image replaces the tags option.</span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Helping people find nearby events -->
+            <div class="flex flex-col gap-6">
+              <h3 class="text-h3 font-semibold">Helping people find nearby events</h3>
+              <p class="prose-lg">
+                A statewide calendar could overwhelm someone who just wanted to find something nearby. My first
+                approach was a short onboarding quiz that asked visitors about their interests before showing events.
+              </p>
+              <figure class="flex flex-col gap-2">
+                <p class="eyebrow">Before</p>
+                <div class="scroller" data-scroller>
+                  <div class="scroller__viewport" tabindex="0" role="region" aria-label="Onboarding quiz screens, scroll horizontally">
+                    <div class="flex w-max items-start gap-3">
+                      <img class="h-[260px] w-auto lg:h-[447px]" src="./assets/images/txct/quiz-1.png" alt="Onboarding quiz step 1: choose cities" />
+                      <img class="h-[232px] w-auto lg:h-[399px]" src="./assets/images/txct/quiz-2.png" alt="Onboarding quiz step 2: choose event types" />
+                      <img class="h-[270px] w-auto lg:h-[465px]" src="./assets/images/txct/quiz-3.png" alt="Onboarding quiz step 3: choose a date range" />
+                    </div>
+                  </div>
+                  <div class="scroller__track" aria-hidden="true"><div class="scroller__thumb"></div></div>
+                </div>
+                <figcaption class="caption">
+                  <span>Onboarding quiz</span>
+                  <span>Mid-fi where three phases (city, event type, and date range) stood between visitors and the calendar.</span>
+                </figcaption>
+              </figure>
+              <figure class="flex flex-col gap-2">
+                <p class="eyebrow">After</p>
+                <img class="media w-[338px]" style="aspect-ratio: 338 / 349" src="./assets/images/txct/calendar-start-v3.png" alt="Events calendar with a browser prompt asking for location access" />
+                <figcaption class="caption">
+                  <span>Calendar shown immediately</span>
+                  <span>Mid-fi that prompts the user to optionally input their location.</span>
+                </figcaption>
+              </figure>
+              <p class="prose-lg">
+                My team and peers preferred seeing events immediately. Based on that feedback, I removed the quiz and
+                designed a location prompt so the calendar could show events in the visitor’s city first. Filters let
+                them narrow the results further.
+              </p>
+              <p class="prose-lg">
+                This shifted the experience from answering questions before browsing to exploring events right away.
+              </p>
+            </div>
+
+            <!-- Adapting the calendar to different screens -->
+            <div class="flex flex-col gap-6">
+              <h3 class="text-h3 font-semibold">Adapting the calendar to different screens</h3>
+              <p class="prose-lg">I used Google Calendar as a familiar reference for the desktop weekly view of the calendar.</p>
+              <div class="flex flex-col gap-10 md:flex-row">
+                <figure class="flex w-[540px] max-w-full flex-col gap-3">
+                  <p class="eyebrow">Reference</p>
+                  <img class="media w-full" style="aspect-ratio: 540 / 298" src="./assets/images/txct/google-calendar.png" alt="Google Calendar weekly view" />
+                  <figcaption class="caption">
+                    <span>Google Calendar weekly view</span>
+                    <span>The familiar reference I used for the weekly layout: events as blocks across a time grid.</span>
+                  </figcaption>
+                </figure>
+                <figure class="flex w-[540px] max-w-full flex-col gap-3">
+                  <p class="eyebrow">My design</p>
+                  <div class="crop aspect-[540/418] w-full">
+                    <img style="height: 171.05%; left: -0.05%; top: -71.05%; width: 126.35%" src="./assets/images/txct/weekly-cal-a.png" alt="" />
+                    <img style="height: 170.81%; left: 0; top: -70.81%; width: 125.71%" src="./assets/images/txct/weekly-cal-b.png" alt="My weekly Events calendar with event cards under each day" />
+                  </div>
+                  <figcaption class="caption">
+                    <span>My weekly Events calendar</span>
+                    <span>My version lists events as cards under each day instead of on a time grid.</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <p class="prose-lg">
+                Partway through the project, the Trust shared that <strong>most visitors use their site on mobile.</strong>
+                Unfortunately... we hadn’t planned for that, and I’d been designing exclusively for desktop. That’s
+                when we realized the design had to be responsive.
+              </p>
+              <div class="flex flex-col gap-4">
+                <p class="prose-lg">
+                  I hadn’t built responsive design in Figma before, so I learned to use variables that scale type and
+                  spacing between mobile and desktop.
+                </p>
+                <figure class="flex flex-col gap-4">
+                  <div class="crop aspect-[596/382] w-[596px] max-w-full">
+                    <img style="height: 127.11%; left: 0; top: 0; width: 100%" src="./assets/images/txct/responsive-variables.png" alt="Figma variables panel with desktop and mobile type and spacing values" />
+                  </div>
+                  <figcaption class="caption">
+                    <span>Responsive type and spacing variables</span>
+                    <span>Variables that switch font size, line height, and paragraph spacing between desktop and mobile.</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="flex flex-col gap-4">
+                <p class="prose-lg">
+                  The harder lesson was that <strong>responsive design isn’t shrinking things to fit</strong>; it’s
+                  deciding what components matter most on a small screen. Making a weekly view of the weekly Event
+                  Calendar would be more complicated than simply shrinking it to fit onto the smaller screen, the text
+                  became unreadable. I was at a loss for how to go about designing it.
+                </p>
+                <div class="flex flex-col gap-10 md:flex-row md:items-start">
+                  <figure class="flex w-[356px] max-w-full flex-col gap-3">
+                    <p class="eyebrow">Before</p>
+                    <div class="crop aspect-[356/678] w-full">
+                      <img style="height: 114.16%; left: 0; top: -14.16%; width: 100%" src="./assets/images/txct/bad-example.png" alt="Desktop weekly calendar shrunk down to a phone screen" />
+                    </div>
+                    <figcaption class="caption">
+                      <span>Desktop weekly view shrunk to mobile</span>
+                      <span>Scaling the weekly calendar down to fit a phone made the text unreadable.</span>
+                    </figcaption>
+                  </figure>
+                  <figure class="flex w-[356px] max-w-full flex-col gap-3">
+                    <p class="eyebrow">Reference</p>
+                    <div class="relative aspect-[356/1336] w-full">
+                      <div class="crop absolute inset-x-0 top-0 h-[54.12%]">
+                        <img style="height: 106.72%; left: 0; top: -6.72%; width: 100%" src="./assets/images/txct/mfah-mobile-1.png" alt="Museum of Fine Arts, Houston mobile event calendar filters" />
+                      </div>
+                      <div class="crop absolute inset-x-0 top-[50.3%] h-[49.7%]">
+                        <img style="height: 116.21%; left: 0; top: -16.21%; width: 100%" src="./assets/images/txct/mfah-mobile-2.png" alt="Museum of Fine Arts, Houston mobile daily event list" />
+                      </div>
+                    </div>
+                    <figcaption class="caption">
+                      <span>Houston Fine Arts Museum mobile calendar</span>
+                      <span>Shows only a daily view, with filters up top and one expanded event card at a time.</span>
+                    </figcaption>
+                  </figure>
+                  <figure class="flex w-[356px] max-w-full flex-col gap-3">
+                    <p class="eyebrow">After</p>
+                    <div class="crop aspect-[356/1638] w-full">
+                      <img style="height: 125.03%; left: 0; top: -5.8%; width: 100%" src="./assets/images/txct/mobile-event-scroll.png" alt="Final mobile Events page with featured events and expanded event cards" />
+                    </div>
+                    <figcaption class="caption">
+                      <span>Final mobile design</span>
+                      <span>Search, Filter, and Add Event up top, with expanded event cards instead of the weekly cards.</span>
+                    </figcaption>
+                  </figure>
+                </div>
+                <p class="prose-lg">
+                  I followed the Houston’s Fine Arts Museum Event Calendar, which shows
+                  <strong>only a daily view on mobile.</strong> People can’t switch to weekly or monthly. They scroll
+                  through days and move between months with the arrows at the top. I put the space toward the controls
+                  that matter most on a phone: search, filter, and Add Event. Instead of having the weekly cards, I
+                  opted to use the expanded version of the card for mobile so users don’t have to go through the extra
+                  step of clicking. This I felt was okay because generally only one or two events fit on the screen at
+                  a time, if I were to do an expanded card for everything on the weekly version on desktop, that would
+                  be too overwhelming.
+                </p>
+              </div>
+            </div>
+
+            <!-- Balancing free access with paid visibility -->
+            <div class="flex flex-col gap-6">
+              <h3 class="text-h3 font-semibold">Balancing free access with paid visibility</h3>
+              <p class="prose-lg">
+                The calendar needed to support the Trust financially while serving the public. The Trust wanted
+                providers to have a free submission option as a public service. Paid listings therefore needed to
+                offer a <strong>clear visibility benefit</strong> beyond simply supporting the nonprofit.
+              </p>
+              <p class="prose-lg">
+                The Trust defined four tiers: Free Listing ($0), Calendar Image ($50), Featured at Top ($100), and
+                Premium Package ($150), which combined both upgrades.
+              </p>
+              <ul class="grid gap-5 py-5 sm:grid-cols-2 lg:flex">
+                <li class="card tier-card lg:h-[200px] lg:w-[282px] lg:shrink-0">
+                  <p class="text-h4 font-semibold">Free Listing</p>
+                  <p class="text-h3 font-semibold text-blue">$0</p>
+                  <p class="text-caption text-dark-gray">Basic event listing at the bottom of the calendar (no image).</p>
+                </li>
+                <li class="card tier-card lg:flex-1">
+                  <p class="text-h4 font-semibold">Calendar Image</p>
+                  <p class="text-h3 font-semibold text-blue">$50</p>
+                  <p class="text-caption text-dark-gray">Display your event with a custom image in the calendar view.</p>
+                </li>
+                <li class="card tier-card lg:flex-1">
+                  <p class="text-h4 font-semibold">Featured at Top</p>
+                  <p class="text-h3 font-semibold text-blue">$100</p>
+                  <p class="text-caption text-dark-gray">Appear in the featured events section at the very top.</p>
+                </li>
+                <li class="card tier-card lg:flex-1">
+                  <p class="text-h4 font-semibold">Premium Package</p>
+                  <p class="text-h3 font-semibold text-blue">$150</p>
+                  <p class="text-caption text-dark-gray">Maximum visibility: image in the calendar AND featured at the top.</p>
+                </li>
+              </ul>
+              <p class="prose-lg">
+                My challenge was to make paid events stand out while keeping free listings readable. I kept event text
+                the same size across listing types and used color highlighting and photos to give paid listings more
+                visual emphasis.
+              </p>
+              <div class="flex flex-col gap-7">
+                <h4 class="text-h4 font-semibold">Iterating the Calendar Event Card</h4>
+                <div class="flex flex-col gap-8">
+                  <div class="flex flex-wrap items-start gap-8">
+                    <figure class="flex w-[398px] max-w-full flex-col gap-3">
+                      <img class="media w-[280px]" style="aspect-ratio: 280 / 134" src="./assets/images/txct/cal-card-v1.png" alt="Calendar event card, version 1" />
+                      <figcaption class="caption max-w-[380px]">
+                        <span>V1</span>
+                        <span>Icon has no subtext explaining what it is; the only difference is that one is a different color</span>
+                      </figcaption>
+                    </figure>
+                    <figure class="flex max-w-full flex-col gap-3">
+                      <img class="media w-[370px]" style="aspect-ratio: 370 / 278" src="./assets/images/txct/cal-card-v2.png" alt="Calendar event card, version 2" />
+                      <figcaption class="caption max-w-[380px]">
+                        <span>V2</span>
+                        <span>Mid-fi with title, date, location, time, and a link icon. The summary is removed.</span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class="flex flex-wrap items-start gap-8">
+                    <figure class="flex max-w-full flex-col gap-3">
+                      <img class="media w-[468px]" style="aspect-ratio: 468 / 359" src="./assets/images/txct/cal-card-v3.png" alt="Calendar event cards, version 3" />
+                      <figcaption class="caption max-w-[468px]">
+                        <span>V3</span>
+                        <span>Hi-fi, found that the banner at the top of the “free” calendar was too eye-catching</span>
+                      </figcaption>
+                    </figure>
+                    <figure class="flex w-[493px] max-w-full flex-col gap-3">
+                      <img class="media w-[468px]" style="aspect-ratio: 468 / 357" src="./assets/images/txct/cal-card-v4.png" alt="Calendar event cards, version 4" />
+                      <figcaption class="caption">
+                        <span>V4</span>
+                        <span>The weights are the same across both versions</span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <p class="prose-lg">
+                I initially placed featured events in a column beside the calendar, but this squeezed an already dense
+                layout. During a weekly review, a stakeholder suggested moving them above it. I developed that
+                suggestion into a featured row, giving the calendar more room and promoted events a prominent position.
+              </p>
+              <div class="flex flex-col gap-6 md:flex-row md:items-center">
+                <figure class="flex min-w-0 flex-1 flex-col gap-3">
+                  <p class="eyebrow">Before</p>
+                  <img class="media w-full" style="aspect-ratio: 540 / 559" src="./assets/images/txct/featured-column-before.png" alt="Events page with featured events in a column beside the calendar" />
+                  <figcaption class="caption">
+                    <span>Featured events in a column</span>
+                    <span>Featured events sat beside the calendar, squeezing an already dense layout.</span>
+                  </figcaption>
+                </figure>
+                <span class="self-center text-h3 font-semibold text-blue max-md:rotate-90" aria-hidden="true">→</span>
+                <figure class="flex min-w-0 flex-1 flex-col gap-3">
+                  <p class="eyebrow">After</p>
+                  <img class="media w-full" style="aspect-ratio: 538 / 557" src="./assets/images/txct/featured-row-after.png" alt="Events page with featured events in a row above the calendar" />
+                  <figcaption class="caption">
+                    <span>Featured events in a row</span>
+                    <span>Moving them above the calendar gives the calendar more room and keeps promoted events prominent.</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <figure class="flex flex-col gap-3">
+                <p class="eyebrow">Final</p>
+                <img class="media w-full" style="aspect-ratio: 1164 / 1535" src="./assets/images/txct/final-desktop-events.gif" alt="Final desktop Events page scrolling from the featured row to the weekly calendar" />
+                <figcaption class="caption">
+                  <span>Final desktop Events page</span>
+                  <span>A featured row sits above the weekly calendar, with search, Filter, and Add Event controls.</span>
+                </figcaption>
+              </figure>
+              <p class="prose-lg">
+                The Add Event form is where the calendar pays for itself. Providers submit their event here and choose
+                a listing tier, from the free listing to the $150 Premium Package. The paid options are framed as
+                donations to the Trust, so it earns from the calendar while any provider can still submit an event for
+                free.
+              </p>
+              <figure class="flex w-[705px] max-w-full flex-col gap-3">
+                <img class="media w-full" style="aspect-ratio: 705 / 1624" src="./assets/images/txct/add-event-form.png" alt="Add Event form with basic info, event type, social media, promotional options, event details, and point of contact" />
+                <figcaption class="caption">
+                  <span>Add Event form (final)</span>
+                  <span>Providers choose a listing tier, add event details and a point of contact, then submit for the Trust’s approval.</span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <p class="prose-lg">
+              The Trust wanted to approve every event before it went live, so I designed the form around that. It
+              collects a point of contact the team can reach about approval, and a note above the Submit for Approval
+              button tells providers that every event is reviewed and that they’ll get a confirmation email once it
+              has been. Organizing the event form into the different categories: basic event info, event type, social
+              media, promotional options, event details, and point of contact was the most
+            </p>
+
+            <!-- Utilizing AI -->
+            <div class="flex flex-col gap-6">
+              <h3 class="text-h3 font-semibold">Utilizing AI</h3>
+              <p class="prose-lg">
+                Once I had a design system, I tried Figma Make to visualize a monthly view. I liked its layout and
+                spacing, but it showed one event per day, which real calendars never do. So I designed for a day with 7
+                events. Any day with more than four shows “+n more,” which opens a pop-up like Google Calendar’s.
+              </p>
+              <div class="flex flex-col gap-5">
+                <figure class="flex w-[725px] max-w-full flex-col gap-3">
+                  <p class="eyebrow">Figma Make output</p>
+                  <div class="crop aspect-[864/1012] w-full">
+                    <img style="height: 182.81%; left: 0; top: -82.81%; width: 100%" src="./assets/images/txct/figma-make-cal.png" alt="Figma Make monthly calendar with one event per day" />
+                  </div>
+                  <figcaption class="caption">
+                    <span>Figma Make output</span>
+                    <span>Figma Make’s monthly view shows one event per day.</span>
+                  </figcaption>
+                </figure>
+                <figure class="flex flex-col gap-3">
+                  <p class="eyebrow">My design</p>
+                  <video class="media w-full" style="aspect-ratio: 1450 / 832" data-autoplay muted loop playsinline preload="none" poster="./assets/videos/monthly-calendar-poster.jpg" aria-label="My monthly calendar on a laptop, with up to four events per day and a +n more link">
+                <source src="./assets/videos/monthly-calendar.mp4" type="video/mp4" />
+              </video>
+                  <figcaption class="caption">
+                    <span>My monthly calendar</span>
+                    <span>Designed for busy days: after four events, a “+n more” link opens a pop-up like Google Calendar’s.</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <aside class="flex flex-col gap-2 rounded-2xl border-2 border-cream bg-cream px-6 py-5">
+                <p class="eyebrow text-deep-gray">Main takeaway</p>
+                <p class="text-body text-grey">Used AI for visual reference, then designed for real data density.</p>
+              </aside>
+            </div>
+          </section>
+
+          <!-- Final Solution -->
+          <section id="final-solution" class="case-section flex flex-col gap-7" aria-labelledby="final-title">
+            <h2 id="final-title" class="section-heading">Final Solution</h2>
+            <p class="chip self-start bg-cream text-caption text-deep-gray">Final design proposal, not the live site</p>
+            <figure class="flex flex-col gap-3">
+              <p class="eyebrow">Web prototype</p>
+              <video class="media w-full" style="aspect-ratio: 1590 / 880" data-autoplay muted loop playsinline preload="none" poster="./assets/videos/web-prototype-poster.jpg" aria-label="Web prototype walkthrough of the final Events page on a laptop">
+                <source src="./assets/videos/web-prototype.mp4" type="video/mp4" />
+              </video>
+            </figure>
+            <figure class="flex flex-col gap-3">
+              <p class="eyebrow">Mobile prototype</p>
+              <video class="media w-full" style="aspect-ratio: 1590 / 880" data-autoplay muted loop playsinline preload="none" poster="./assets/videos/mobile-prototype-poster.jpg" aria-label="Mobile prototype walkthrough of the final Events page">
+                <source src="./assets/videos/mobile-prototype.mp4" type="video/mp4" />
+              </video>
+            </figure>
+          </section>
+
+          <!-- Outcome & Limitations -->
+          <section id="outcome" class="case-section flex flex-col gap-7" aria-labelledby="outcome-title">
+            <h2 id="outcome-title" class="section-heading">Outcome &amp; Limitations</h2>
+            <div class="card outcome-card">
+              <h3>What happened</h3>
+              <p>
+                Stakeholders responded positively to the designs during review, and I handed them off to the
+                developers. However, the implemented Events page differed from the reviewed designs and did not
+                include all of the planned functionality. The screens shown in this case study represent my final
+                design proposal rather than the current website.
+              </p>
+            </div>
+            <div class="card outcome-card">
+              <h3>What I don’t know</h3>
+              <p>
+                I didn’t test the designs with users, so choices like the Google Calendar layout, the city default, and
+                the daily mobile view rest on references, stakeholder input, and peer feedback.
+              </p>
+            </div>
+            <div class="card outcome-card">
+              <h3>What I’d do next</h3>
+              <p>
+                I’d talk with people who regularly attend and seek out art events to test whether they can find a
+                relevant event to them through the calendar, and whether featured events really are what catches
+                their eye first. I’d also test the daily mobile view and design the fallback for visitors who decline
+                location access. On the provider side, I’d look at whether the paid options feel worth their cost.
+              </p>
+            </div>
+          </section>
+
+          <!-- Key Takeaways -->
+          <section id="takeaways" class="case-section flex flex-col gap-7" aria-labelledby="takeaways-title">
+            <h2 id="takeaways-title" class="section-heading">Key Takeaways</h2>
+            <ol class="grid gap-6 md:grid-cols-2 md:gap-x-6 md:gap-y-7">
+              <li class="card takeaway-card">
+                <span>1</span>
+                <h3>Quality over quantity</h3>
+                <p>
+                  Raising the three-page concern felt risky, but the Trust was receptive, and one page done well beat
+                  three done thinly.
+                </p>
+              </li>
+              <li class="card takeaway-card">
+                <span>2</span>
+                <h3>Start from mobile</h3>
+                <p>
+                  I built desktop first and shrank it down, which was the harder direction. Going from mobile to
+                  desktop was easier on the submission form, and I’d start there next time.
+                </p>
+              </li>
+              <li class="card takeaway-card">
+                <span>3</span>
+                <h3>Push for research</h3>
+                <p>
+                  I thought interviews were worth doing and let the idea go when it met pushback. Next time I’d
+                  advocate for sending out a short survey to screen people for interviews, asking questions in order to
+                  identify whether they regularly attend and/or seek art events.
+                </p>
+              </li>
+              <li class="card takeaway-card">
+                <span>4</span>
+                <h3>Stay involved after handoff</h3>
+                <p>
+                  Although implementation changes came up in our weekly team meetings, I didn’t see the built page
+                  until the day of the final presentation. I realized I needed to take a more active role after handoff
+                  by asking to review work in progress and meeting directly with the engineer between team meetings.
+                  Next time, I would schedule those check-ins to catch differences early, work through technical
+                  constraints together, and document agreed changes.
+                </p>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Footer CTA -->
+          <section class="flex flex-col items-start gap-5 rounded-[32px] border-2 border-stroke bg-off-white p-8 shadow-card lg:min-h-[260px] lg:justify-between lg:gap-0" aria-labelledby="cta-title">
+            <h2 id="cta-title" class="text-h3 font-semibold">Thanks for reading!</h2>
+            <p class="text-body">Curious about my other projects?</p>
+            <a class="btn btn--outline rounded-[24px]" href="./index.html#projects">Back to Projects</a>
+          </section>
+        </article>
+      </div>
+    </main>
+    <script src="./src/scripts/main.js" defer></script>
+  </body>
+</html>

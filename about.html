@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A little peek into Isa Melendez's life outside of design." />
+    <meta name="theme-color" content="#fef6ee" />
+    <title>About Me — Isa Melendez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="./dist/styles.css" />
+  </head>
+  <body class="min-h-screen overflow-x-hidden !bg-cream">
+    <div class="relative">
+      <!-- Off-white header band; the squiggle below forms its wavy bottom edge -->
+      <div class="bg-off-white">
+        <div class="relative mx-auto max-w-[1728px]">
+          <header class="relative z-10">
+            <nav class="site-nav" aria-label="Main navigation">
+              <a class="site-nav__logo" href="./index.html" aria-label="Isa Melendez, home">
+                <img src="./assets/icons/logo.svg" alt="" width="255" height="35" />
+              </a>
+              <ul class="site-nav__links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html" aria-current="page">About Me</a></li>
+                <li>
+                  <a href="./assets/docs/isabella-melendez-gonzalez-resume.pdf" target="_blank" rel="noopener">
+                    Resume <img src="./assets/icons/arrow-square-out.svg" alt="" />
+                    <span class="sr-only">(opens in a new tab)</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </header>
+
+          <div class="relative z-10 px-5 pt-10 lg:pl-[87px] lg:pt-[90px]">
+            <h1 class="text-h1 font-semibold">Hi, I’m Isa!</h1>
+            <p class="text-h3 font-semibold lg:ml-[5px]">Here’s a little peak into my life!</p>
+          </div>
+        </div>
+      </div>
+
+      <img
+        aria-hidden="true"
+        class="relative z-0 -mt-px block h-auto w-full lg:-mt-[109px]"
+        src="./assets/icons/about-squiggle.svg"
+        alt=""
+      />
+
+      <!-- Decorative flowers, positioned from the 1728px Figma frame -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 hidden lg:block">
+        <div class="relative mx-auto max-w-[1728px]">
+          <img class="absolute w-[9.38%]" style="left: 11.86%; top: 963px" src="./assets/icons/about-flower-a.svg" alt="" />
+          <img class="absolute w-[12.9%]" style="left: 87.09%; top: 572px" src="./assets/icons/about-flower-b.svg" alt="" />
+          <img class="absolute w-[12.85%]" style="left: 54.05%; top: 269px" src="./assets/icons/about-flower-c.svg" alt="" />
+        </div>
+      </div>
+
+      <main class="relative z-10 mx-auto max-w-[1728px] px-5 pb-24 lg:-mt-[57px] lg:px-[55px] lg:pb-[120px]">
+        <h2 class="sr-only">Photos</h2>
+        <div class="mx-auto grid max-w-[376px] gap-10 md:max-w-[790px] md:grid-cols-2 lg:flex lg:max-w-none lg:items-start lg:justify-center">
+          <!-- Column 1 -->
+          <div class="flex flex-col gap-10 lg:w-[376px] lg:gap-[100px]">
+            <figure class="photo-card">
+              <img src="./assets/images/about/paddle-boarding.png" alt="Isa paddle boarding on Lady Bird Lake with the Austin skyline behind her" />
+              <figcaption>
+                <h3>Paddle boarding!</h3>
+                <p>I could not stand up on the board for the life of me... but super fun experience!</p>
+              </figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="./assets/images/about/kiki.png" alt="Kiki, a fluffy Pomeranian, lying on a couch behind Isa" />
+              <figcaption>
+                <h3>My dog Kiki! :D</h3>
+                <p>She is a miniature German Spitz! And the biggest couch potato I love her so much</p>
+              </figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="./assets/images/about/matcha.png" alt="A glass of iced matcha decorated with strawberries" />
+              <figcaption>
+                <h3>Matcha!</h3>
+                <p>I got REALLY into making matcha over the Summer - white chocolate syrup is the best with matcha fyi</p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="flex flex-col gap-10 lg:w-[374px] lg:gap-[100px] lg:pt-[132px]">
+            <figure class="photo-card">
+              <img src="./assets/images/about/strawberry-painting.png" alt="Acrylic painting of a strawberry on a blue background" />
+              <figcaption>
+                <h3>Strawberry painting</h3>
+                <p>This was done with acrylic paint, I really want to get back into painting</p>
+              </figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="./assets/images/about/pumpkin-carving.png" alt="A glowing carved pumpkin with a smirking face" />
+              <figcaption>
+                <h3>Pumpkin carving</h3>
+                <p>Yes, it’s the Roblox man face</p>
+              </figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="./assets/images/about/hot-pot.png" alt="A table full of hot pot and Korean barbecue dishes" />
+              <figcaption>
+                <h3>Hot pot &amp; KBBQ!!</h3>
+                <p>I’m a big foodie and yes we did eat everything on the table</p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="flex flex-col gap-10 lg:w-[374px] lg:gap-[100px]">
+            <figure class="photo-card">
+              <img src="./assets/images/about/epic-universe.png" alt="Isa in front of Bowser’s castle lit up at night" />
+              <figcaption>
+                <h3>Epic Universe @ Orlando, FL</h3>
+                <p>Bowser’s castle looked SO cool at night! Nintendo World lived up to all my (and my brother’s) hopes and dreams</p>
+              </figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="./assets/images/about/nintendo-world.png" alt="Isa wearing a Toad mushroom hat at Nintendo World" />
+              <figcaption>
+                <h3>Nintendo World &amp; Universal Studios</h3>
+                <p>I do main Toad in Mario Kart, why yes</p>
+              </figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="./assets/images/about/crochet-cardinal.png" alt="A small red crocheted cardinal" />
+              <figcaption>
+                <h3>Crochet Cardinal</h3>
+                <p>This was a gift for my mom! I love crocheting &lt;3</p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Column 4 -->
+          <div class="flex flex-col gap-10 lg:w-[374px] lg:gap-[100px] lg:pt-[132px]">
+            <figure class="photo-card">
+              <img src="./assets/images/about/milk-bread.png" alt="A golden loaf of homemade milk bread on a plate" />
+              <figcaption>
+                <h3>Milk bread</h3>
+                <p>Genuinely the FLUFFIEST bread I’ve ever baked. The egg wash at the end makes such a visual difference too!</p>
+              </figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="./assets/images/about/persona-posters.png" alt="Two Persona fan posters pinned to a wall" />
+              <figcaption>
+                <h3>Persona posters</h3>
+                <p>I designed these posters for my favorite video-game series: Persona! Made in Illustrator :&gt;</p>
+              </figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="./assets/images/about/pizookies.png" alt="Plates of pizookies topped with ice cream and strawberries" />
+              <figcaption>
+                <h3>Pizookies!</h3>
+                <p>Mine was the strawberry one! (Are we noticing a pattern...)</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="./src/scripts/main.js" defer></script>
+  </body>
+</html>
