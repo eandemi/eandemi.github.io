@@ -17,18 +17,23 @@
     />
     <link rel="stylesheet" href="./dist/styles.css" />
   </head>
-  <body class="min-h-screen overflow-x-hidden">
-    <header>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a class="site-nav__logo" href="./index.html" aria-label="Isa Melendez, home">
-          <img src="./assets/icons/logo.svg" alt="" width="255" height="35" />
+  <body class="min-h-screen">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="site-nav wrap" aria-label="Main">
+        <a class="site-nav__logo" href="./index.html">
+          <img src="./assets/icons/logo.svg" alt="Isa Melendez, home" width="255" height="35" />
         </a>
-        <ul class="site-nav__links">
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+          Menu
+        </button>
+        <ul class="site-nav__links" id="site-menu">
           <li><a href="./index.html">Home</a></li>
           <li><a href="./about.html">About Me</a></li>
           <li>
             <a href="./assets/docs/isabella-melendez-gonzalez-resume.pdf" target="_blank" rel="noopener">
-              Resume <img src="./assets/icons/arrow-square-out.svg" alt="" />
+              Resume <img src="./assets/icons/arrow-square-out.svg" alt="" width="24" height="24" />
               <span class="sr-only">(opens in a new tab)</span>
             </a>
           </li>
@@ -36,81 +41,90 @@
       </nav>
     </header>
 
-    <main class="mx-auto max-w-[1728px]">
+    <main id="main">
       <!-- Hero -->
-      <section class="flex flex-col gap-7 px-5 pb-12 pt-8 lg:px-20 lg:pb-20 lg:pt-14" aria-labelledby="case-title">
-        <div class="flex items-center gap-4 lg:gap-7">
-          <a class="arrow-btn size-12 shrink-0 lg:size-[76px]" href="./index.html#projects" aria-label="Back to projects">
-            <span class="arrow-btn__inner rotate-90">
-              <img src="./assets/icons/arrow-hero.svg" alt="" />
-            </span>
+      <section class="wrap flex flex-col gap-7 pb-12 pt-6 xl:pb-20 xl:pt-14" aria-labelledby="case-title">
+        <div class="flex items-center gap-4 xl:gap-7">
+          <a class="icon-btn icon-btn--lg" href="./index.html#projects">
+            <img src="./assets/icons/arrow-back.svg" alt="Back to projects" width="76" height="76" />
           </a>
           <h1 id="case-title" class="text-h2 font-medium">Making art events easier to discover across Texas</h1>
         </div>
 
-        <div class="flex flex-col gap-10 lg:gap-16">
+        <div class="flex flex-col gap-10 xl:gap-16">
           <img
-            class="aspect-[2000/991] w-full rounded-[24px] object-cover lg:rounded-[40px]"
-            src="./assets/images/txct/hero.webp"
-            width="2000"
-            height="991"
-            alt="The redesigned Texas Cultural Trust Events page on a desktop monitor and two phones, next to the Texas Cultural Trust logo"
+            class="aspect-[1568/777] w-full rounded-[24px] object-cover xl:rounded-[40px]"
+            src="./assets/images/txct/hero-1600w.jpg"
+            srcset="./assets/images/txct/hero-800w.jpg 800w, ./assets/images/txct/hero-1600w.jpg 1600w"
+            sizes="(min-width: 1728px) 1568px, 100vw"
+            width="1600"
+            height="793"
+            fetchpriority="high"
+            alt="The redesigned Texas Cultural Trust Events page on a desktop monitor and two phones, showing featured events and the event calendar"
           />
 
-          <dl class="grid grid-cols-2 gap-x-8 gap-y-6 sm:flex sm:flex-wrap sm:justify-center sm:gap-12">
-            <div class="flex flex-col gap-1 sm:w-[200px]">
-              <dt class="text-h4 font-semibold text-fg-brand-lg">ROLE</dt>
-              <dd class="text-body">End-to-end Product Designer</dd>
+          <dl class="meta-list">
+            <div class="xl:w-[200px]">
+              <dt class="text-h4 font-semibold !text-fg-brand-lg">ROLE</dt>
+              <dd>End-to-end Product Designer</dd>
             </div>
-            <div class="flex flex-col gap-1 sm:w-[200px]">
-              <dt class="text-h4 font-semibold text-fg-brand-lg">TEAM</dt>
-              <dd class="text-body">2 engineers, 1 PM, 1 designer</dd>
+            <div class="xl:w-[200px]">
+              <dt class="text-h4 font-semibold !text-fg-brand-lg">TEAM</dt>
+              <dd>2 engineers, 1 PM, 1 designer</dd>
             </div>
-            <div class="flex flex-col gap-1 sm:w-[200px]">
-              <dt class="text-h4 font-semibold text-fg-brand-lg">CLIENT</dt>
-              <dd class="text-body">Texas Cultural Trust</dd>
+            <div class="xl:w-[200px]">
+              <dt class="text-h4 font-semibold !text-fg-brand-lg">CLIENT</dt>
+              <dd>Texas Cultural Trust</dd>
             </div>
-            <div class="flex flex-col gap-1 sm:w-[274px]">
-              <dt class="text-h4 font-semibold text-fg-brand-lg">TIMELINE</dt>
-              <dd class="text-body">Fall 2025 – Spring 2026 (~24 weeks)</dd>
+            <div class="xl:w-[274px]">
+              <dt class="text-h4 font-semibold !text-fg-brand-lg">TIMELINE</dt>
+              <dd>Fall 2025 – Spring 2026 (~24 weeks)</dd>
             </div>
-            <div class="flex flex-col gap-1 sm:w-[200px]">
-              <dt class="text-h4 font-semibold text-fg-brand-lg">TOOLS</dt>
-              <dd class="text-body">Figma, Goodnotes</dd>
+            <div class="xl:w-[200px]">
+              <dt class="text-h4 font-semibold !text-fg-brand-lg">TOOLS</dt>
+              <dd>Figma, Goodnotes</dd>
             </div>
           </dl>
         </div>
       </section>
 
       <!-- Body: sidebar + case study content -->
-      <div class="flex gap-16 px-5 pb-[120px] pt-4 lg:px-[60px] lg:pt-16">
-        <aside class="hidden w-[380px] shrink-0 lg:block">
-          <div class="sticky top-8 flex flex-col items-center gap-12">
-            <nav class="toc w-full rounded-[24px] border-2 border-line bg-page px-6 py-8 shadow-card" aria-label="On this page">
-              <p class="text-body text-fg-secondary">ON THIS PAGE</p>
-              <ul class="mt-3.5 flex flex-col gap-0.5">
+      <div class="wrap case-layout pb-[120px] pt-4 xl:!pl-[60px] xl:pt-16">
+        <aside class="case-sidebar" aria-label="Case study navigation">
+          <div class="case-sidebar__inner">
+            <nav class="toc" aria-labelledby="toc-title">
+              <h2 id="toc-title" class="text-label text-fg-secondary">On this page</h2>
+              <ol>
                 <li><a href="#problem">The Problem</a></li>
                 <li><a href="#where-i-started">Where I Started</a></li>
                 <li><a href="#design-process">My Design Process</a></li>
                 <li><a href="#final-solution">Final Solution</a></li>
                 <li><a href="#outcome">Outcome &amp; Limitations</a></li>
                 <li><a href="#takeaways">Key Takeaways</a></li>
-              </ul>
+              </ol>
             </nav>
-            <a class="btn btn--solid skip-btn" href="#final-solution">
+            <a class="skip-solution" href="#final-solution">
               Skip to Solution
-              <span class="arrow-btn size-[50px]" aria-hidden="true">
-                <span class="arrow-btn__inner rotate-90">
-                  <img src="./assets/icons/arrow-skip.svg" alt="" />
-                </span>
-              </span>
+              <img src="./assets/icons/arrow-skip.svg" alt="" width="50" height="50" />
             </a>
           </div>
         </aside>
 
-        <article class="flex min-w-0 max-w-[1162px] flex-1 flex-col gap-[100px]">
+        <article class="case-main">
+          <details class="case-toc-mobile">
+            <summary class="text-label">On this page</summary>
+            <ol>
+              <li><a href="#problem">The Problem</a></li>
+              <li><a href="#where-i-started">Where I Started</a></li>
+              <li><a href="#design-process">My Design Process</a></li>
+              <li><a href="#final-solution">Final Solution</a></li>
+              <li><a href="#outcome">Outcome &amp; Limitations</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+            </ol>
+          </details>
+
           <!-- The Problem -->
-          <section id="problem" class="case-section flex flex-col gap-7" aria-labelledby="problem-title">
+          <section id="problem" class="case-section" aria-labelledby="problem-title">
             <h2 id="problem-title" class="section-heading">The Problem</h2>
             <div class="prose-lg flex flex-col gap-4">
               <p>
@@ -126,20 +140,20 @@
               </p>
             </div>
             <p class="text-h4 font-semibold">So the Trust had two goals:</p>
-            <ol class="flex flex-col gap-6 font-semibold md:flex-row">
-              <li class="card flex items-center gap-4 p-6 md:w-[556px] md:shrink-0 md:justify-center">
-                <span class="text-h3 text-fg-brand-lg">1.</span>
-                <span class="text-h4 md:w-[402px]">Give Texans one place to find art events</span>
+            <ol class="card-grid card-grid--2 font-semibold" role="list">
+              <li class="card card--16 flex items-center gap-4 p-6">
+                <span class="text-h3 text-fg-brand-lg" aria-hidden="true">1.</span>
+                <span class="text-h4">Give Texans one place to find art events</span>
               </li>
-              <li class="card flex flex-1 items-center gap-4 p-6">
-                <span class="text-h3 text-fg-brand-lg">2.</span>
+              <li class="card card--16 flex items-center gap-4 p-6">
+                <span class="text-h3 text-fg-brand-lg" aria-hidden="true">2.</span>
                 <span class="text-h4">Give providers a simple way to list events and support the platform in return</span>
               </li>
             </ol>
             <p class="text-h4 font-semibold">My question became:</p>
             <blockquote class="flex gap-5">
               <span class="w-1 shrink-0 rounded-[2px] bg-brand" aria-hidden="true"></span>
-              <p class="font-quote text-[20px] font-bold italic leading-[1.6] lg:text-[24px] lg:leading-[42px]">
+              <p class="font-[Inter,sans-serif] text-[20px] font-bold italic leading-[1.6] xl:text-[24px] xl:leading-[42px]">
                 “How might we help Texans easily discover art events in one place, while giving art providers a
                 simple way to advertise events and support the platform?”
               </p>
@@ -152,7 +166,7 @@
           </section>
 
           <!-- Where I Started -->
-          <section id="where-i-started" class="case-section flex flex-col gap-7" aria-labelledby="started-title">
+          <section id="where-i-started" class="case-section" aria-labelledby="started-title">
             <h2 id="started-title" class="section-heading">Where I Started</h2>
             <div class="prose-lg flex flex-col gap-4">
               <p>
@@ -166,38 +180,36 @@
                 project entails and presented them to the Trust in order to get on the same page.
               </p>
             </div>
-            <figure class="flex flex-col">
+            <figure class="figure">
               <div class="scroller" data-scroller>
-                <div class="scroller__viewport" tabindex="0" role="region" aria-label="Low-fidelity sketches, scroll horizontally">
-                  <div class="flex w-max items-center gap-6">
-                    <img class="h-[260px] w-auto lg:h-[446px]" src="./assets/images/txct/lowfi-3.jpg" alt="Sketch of the Events calendar with notes on highlighted events" />
-                    <img class="h-[265px] w-auto lg:h-[455px]" src="./assets/images/txct/lowfi-1.jpg" alt="Sketch of a weekly events calendar layout" />
-                    <img class="h-[259px] w-auto lg:h-[445px]" src="./assets/images/txct/lowfi-2.jpg" alt="Sketches of a Public Impact page and an Arts Providers and Maps page" />
-                  </div>
+                <div class="scroller__viewport" tabindex="0" role="region" aria-label="Low-fidelity sketches, scroll sideways">
+                  <img class="h-[240px] w-auto rounded-xl md:h-[320px] xl:h-[446px]" src="./assets/images/txct/lowfi-3.jpg" srcset="./assets/images/txct/lowfi-3-800w.jpg 800w, ./assets/images/txct/lowfi-3.jpg 2400w" sizes="(min-width: 1280px) 866px, 470px" width="2400" height="1237" loading="lazy" data-zoom="./assets/images/txct/lowfi-3.jpg" alt="Sketch of the Events calendar with notes on highlighted events and a weekly layout" />
+                  <img class="h-[240px] w-auto rounded-xl md:h-[320px] xl:h-[455px]" src="./assets/images/txct/lowfi-1.jpg" srcset="./assets/images/txct/lowfi-1-800w.jpg 800w, ./assets/images/txct/lowfi-1.jpg 2400w" sizes="(min-width: 1280px) 819px, 440px" width="2400" height="1332" loading="lazy" data-zoom="./assets/images/txct/lowfi-1.jpg" alt="Sketch of a weekly events calendar layout" />
+                  <img class="h-[240px] w-auto rounded-xl md:h-[320px] xl:h-[445px]" src="./assets/images/txct/lowfi-2.jpg" srcset="./assets/images/txct/lowfi-2-800w.jpg 800w, ./assets/images/txct/lowfi-2.jpg 2400w" sizes="(min-width: 1280px) 1254px, 680px" width="2400" height="852" loading="lazy" data-zoom="./assets/images/txct/lowfi-2.jpg" alt="Sketches of a Public Impact page and an Arts Providers and Maps page" />
                 </div>
                 <div class="scroller__track" aria-hidden="true"><div class="scroller__thumb"></div></div>
               </div>
-              <figcaption class="caption">
-                <span>Low-fidelity sketches</span>
-                <span>Goodnotes sketches of the Events calendar, a Public Impact page, and an Arts Providers and Maps page.</span>
+              <figcaption>
+                <span class="figure__title">Low-fidelity sketches</span>
+                <span class="figure__desc">Goodnotes sketches of the Events calendar, a Public Impact page, and an Arts Providers and Maps page.</span>
               </figcaption>
             </figure>
             <p class="prose-lg">As you may notice, there is more than just the Events Calendar fleshed out here.</p>
-            <div class="flex flex-col gap-5">
+            <div class="case-subsection !gap-5">
               <h3 class="text-h3 font-semibold">Initial Scope</h3>
-              <div class="flex flex-col items-stretch gap-6 md:flex-row md:items-center">
-                <div class="card flex flex-1 flex-col items-center gap-3.5 p-6">
+              <div class="compare !items-stretch md:!items-center">
+                <div class="card card--16 flex w-full flex-col items-center gap-3.5 p-6">
                   <p class="text-body">Originally asked to complete:</p>
-                  <ul class="flex flex-wrap justify-center gap-2.5">
-                    <li class="chip bg-subtle text-body">Impact</li>
-                    <li class="chip bg-subtle text-body">Arts Providers and Maps</li>
-                    <li class="chip bg-subtle text-body">Events</li>
+                  <ul class="flex flex-wrap justify-center gap-2.5" role="list">
+                    <li class="pill bg-subtle text-body">Impact</li>
+                    <li class="pill bg-subtle text-body">Arts Providers and Maps</li>
+                    <li class="pill bg-subtle text-body">Events</li>
                   </ul>
                 </div>
-                <span class="self-center text-h3 font-semibold text-fg-brand-lg max-md:rotate-90" aria-hidden="true">→</span>
-                <div class="flex flex-col items-center justify-center gap-3.5 rounded-2xl bg-brand p-6 md:h-[154px] md:w-[454px]">
-                  <p class="text-body text-fg-inverse">Committed to:</p>
-                  <span class="chip bg-page text-body text-fg-brand-lg">Events</span>
+                <img class="compare__arrow" src="./assets/icons/arrow-right.svg" alt="" width="22" height="22" />
+                <div class="flex w-full flex-col items-center justify-center gap-3.5 rounded-2xl bg-tint-blue p-6 md:min-h-[154px] xl:w-[454px]">
+                  <p class="text-body">Committed to:</p>
+                  <span class="pill bg-page text-body text-fg-brand">Events</span>
                 </div>
               </div>
               <div class="prose-lg flex flex-col gap-[var(--lh-body-lg)]">
@@ -217,11 +229,11 @@
           </section>
 
           <!-- My Design Process -->
-          <section id="design-process" class="case-section flex flex-col gap-[60px]" aria-labelledby="process-title">
+          <section id="design-process" class="case-section !gap-[60px]" aria-labelledby="process-title">
             <div class="flex flex-col gap-7">
               <h2 id="process-title" class="section-heading">My Design Process</h2>
 
-              <div class="flex flex-col gap-6">
+              <div class="case-subsection !gap-6">
                 <h3 class="text-h3 font-semibold">Designing for a User Who Isn’t Me</h3>
                 <p class="prose-lg">
                   Most of my past projects were designed for students, so it was quite easy to empathize with the
@@ -234,11 +246,11 @@
                     To put myself in that position, I searched “art events near me” on Google, the way I would if I
                     were actively looking.
                   </p>
-                  <figure class="flex flex-col items-center gap-1 lg:px-6">
-                    <img class="media w-[790px]" style="aspect-ratio: 790 / 420" src="./assets/images/txct/google-search.png" alt="Google search results for art events near me" />
-                    <figcaption class="caption w-full max-w-[790px]">
-                      <span class="max-w-[380px]">Google search for “art events near me”</span>
-                      <span>Result cards lead with the title, then date and time, then location.</span>
+                  <figure class="figure mx-auto w-full max-w-[790px]">
+                    <img class="figure__media" src="./assets/images/txct/google-search.png" srcset="./assets/images/txct/google-search-800w.png 800w, ./assets/images/txct/google-search.png 1448w" sizes="(min-width: 1024px) 790px, 100vw" width="1448" height="770" loading="lazy" data-zoom="./assets/images/txct/google-search.png" alt="Google search results for “art events near me”, showing event cards with title, date and time, and venue" />
+                    <figcaption>
+                      <span class="figure__title">Google search for “art events near me”</span>
+                      <span class="figure__desc">Result cards lead with the title, then date and time, then location.</span>
                     </figcaption>
                   </figure>
                 </div>
@@ -249,19 +261,19 @@
                   </p>
                   <p><strong>That led me to create the following information hierarchy:</strong></p>
                 </div>
-                <ol class="grid grid-cols-2 gap-4 text-h4 font-semibold sm:grid-cols-3 lg:grid-cols-5">
-                  <li class="card p-5"><span class="text-fg-brand-lg">1.</span> Title</li>
-                  <li class="card p-5"><span class="text-fg-brand-lg">2.</span> Date</li>
-                  <li class="card p-5"><span class="text-fg-brand-lg">3.</span> Location</li>
-                  <li class="card p-5"><span class="text-fg-brand-lg">4.</span> Time</li>
-                  <li class="card p-5"><span class="text-fg-brand-lg">5.</span> Category</li>
+                <ol class="grid grid-cols-2 gap-4 text-h4 font-semibold sm:grid-cols-3 xl:grid-cols-5" role="list">
+                  <li class="card card--16 p-5"><span class="text-fg-brand-lg">1.</span> Title</li>
+                  <li class="card card--16 p-5"><span class="text-fg-brand-lg">2.</span> Date</li>
+                  <li class="card card--16 p-5"><span class="text-fg-brand-lg">3.</span> Location</li>
+                  <li class="card card--16 p-5"><span class="text-fg-brand-lg">4.</span> Time</li>
+                  <li class="card card--16 p-5"><span class="text-fg-brand-lg">5.</span> Category</li>
                 </ol>
                 <div class="flex flex-col gap-8 md:flex-row md:items-center">
-                  <figure class="flex w-[240px] shrink-0 flex-col gap-3">
-                    <img class="media w-[240px]" style="aspect-ratio: 240 / 420" src="./assets/images/txct/event-categories.png" alt="Event categories component listing Visual Arts, Literary Arts, Performing Arts, Music and more" />
-                    <figcaption class="caption">
-                      <span>Event categories component</span>
-                      <span>The category set I settled on.</span>
+                  <figure class="figure w-[240px] shrink-0">
+                    <img class="figure__media !rounded-none" src="./assets/images/txct/event-categories.png" width="347" height="608" loading="lazy" alt="Event categories list: Visual Arts, Literary Arts, Performing Arts, Music, Film and Media, Culture and Community, Workshops and Education, Culinary Arts, Public Art and Outdoor, Fundraising, Youth and Family, and Other" />
+                    <figcaption>
+                      <span class="figure__title">Event categories component</span>
+                      <span class="figure__desc">The category set I settled on.</span>
                     </figcaption>
                   </figure>
                   <div class="prose-lg flex flex-1 flex-col gap-6">
@@ -284,51 +296,47 @@
                 <div class="flex flex-col gap-7">
                   <div class="prose-lg">
                     <h4 class="text-h4 font-semibold">Iterating the Featured Event Card</h4>
-                    <p>
+                    <p class="!mt-0">
                       When I went back through my featured cards against that hierarchy, they led with the title, a
                       one-line summary, and category and tags, but location and time weren’t visible at a glance. I
                       redesigned the card so the date, title, location, and time read first, with category and tags
                       after.
                     </p>
                   </div>
-                  <div class="flex flex-col gap-8">
-                    <div class="flex flex-wrap items-center gap-8">
-                      <figure class="flex w-[398px] max-w-full flex-col">
-                        <img class="media w-[385px]" style="aspect-ratio: 385 / 240" src="./assets/images/txct/featured-card-v1.png" alt="Featured event card, version 1" />
-                        <figcaption class="caption max-w-[380px]">
-                          <span>V1</span>
-                          <span>Mid-fi card with event name, short description, location, time, date, and a “See more” link.</span>
-                        </figcaption>
-                      </figure>
-                      <figure class="flex max-w-full flex-col gap-3">
-                        <img class="media w-[418px] lg:mt-[44px]" style="aspect-ratio: 418 / 186" src="./assets/images/txct/featured-card-v2.png" alt="Featured event card, version 2" />
-                        <figcaption class="caption max-w-[380px]">
-                          <span>V2</span>
-                          <span>Mid-fi with title, date, location, time, and a link icon. The description is removed.</span>
-                        </figcaption>
-                      </figure>
-                    </div>
-                    <div class="flex flex-wrap items-start gap-8">
-                      <figure class="flex w-[458px] max-w-full flex-col gap-3">
-                        <img class="media w-[458px]" style="aspect-ratio: 458 / 259" src="./assets/images/txct/featured-card-v3.png" alt="Featured event card, version 3" />
-                        <figcaption class="caption">
-                          <span>V3</span>
-                          <span>Hi-fi card with date header, title, location, time, category, and a link icon.</span>
-                        </figcaption>
-                      </figure>
-                      <figure class="flex w-[493px] max-w-full flex-col gap-3">
-                        <img class="media w-[493px]" style="aspect-ratio: 493 / 256" src="./assets/images/txct/featured-card-v4.png" alt="Featured event card, version 4" />
-                        <figcaption class="caption">
-                          <span>V4</span>
-                          <span>Hi-fi card with date header, title, summary, category, and tags. Location and time were taken out.</span>
-                        </figcaption>
-                      </figure>
-                    </div>
-                    <figure class="flex w-[515px] max-w-full flex-col gap-3">
-                      <img class="media w-full" style="aspect-ratio: 525 / 250" src="./assets/images/txct/featured-card-v5.png" alt="Final featured event card with a Free badge" />
-                      <figcaption class="caption">
-                        <span>V5 (Final)</span>
-                        <span>Date header, title, summary, location, and time. A “Free” badge on the image replaces the tags option.</span>
+                  <div class="grid grid-cols-1 items-end gap-8 md:grid-cols-2 xl:flex xl:flex-wrap xl:items-start">
+                    <figure class="figure xl:w-[398px]">
+                      <p class="figure__label">V1</p>
+                      <img class="figure__media !w-auto max-w-full !rounded-none" src="./assets/images/txct/featured-card-v1.png" width="385" height="240" loading="lazy" alt="Featured event card version 1: grey mid-fi card with event name, short description, location, time, date badge, and See more link" />
+                      <figcaption>
+                        <span class="figure__desc">Mid-fi card with event name, short description, location, time, date, and a “See more” link.</span>
+                      </figcaption>
+                    </figure>
+                    <figure class="figure xl:w-[504px]">
+                      <p class="figure__label">V2</p>
+                      <img class="figure__media !rounded-none" src="./assets/images/txct/featured-card-v2.png" width="418" height="186" loading="lazy" alt="Featured event card version 2: mid-fi card for The Art of Mixology with date badge, venue, time, and a link icon" />
+                      <figcaption>
+                        <span class="figure__desc">Mid-fi with title, date, location, time, and a link icon. The description is removed.</span>
+                      </figcaption>
+                    </figure>
+                    <figure class="figure xl:w-[458px]">
+                      <p class="figure__label">V3</p>
+                      <img class="figure__media !rounded-none" src="./assets/images/txct/featured-card-v3.png" width="519" height="294" loading="lazy" alt="Featured event card version 3: hi-fi card with a navy date header, title, venue, time, category, and a photo of a carousel" />
+                      <figcaption>
+                        <span class="figure__desc">Hi-fi card with date header, title, location, time, category, and a link icon.</span>
+                      </figcaption>
+                    </figure>
+                    <figure class="figure xl:w-[493px]">
+                      <p class="figure__label">V4</p>
+                      <img class="figure__media !rounded-none" src="./assets/images/txct/featured-card-v4.png" width="529" height="275" loading="lazy" alt="Featured event card version 4: hi-fi card with date header, title, summary, category, and Free and 18+ tags" />
+                      <figcaption>
+                        <span class="figure__desc">Hi-fi card with date header, title, summary, category, and tags. Location and time were taken out.</span>
+                      </figcaption>
+                    </figure>
+                    <figure class="figure xl:w-[515px]">
+                      <p class="figure__label">V5 (Final)</p>
+                      <img class="figure__media !rounded-none" src="./assets/images/txct/featured-card-v5.png" width="525" height="250" loading="lazy" alt="Final featured event card: date header, title, summary, venue, and time, with a Free badge on the photo" />
+                      <figcaption>
+                        <span class="figure__desc">Date header, title, summary, location, and time. A “Free” badge on the image replaces the tags option.</span>
                       </figcaption>
                     </figure>
                   </div>
@@ -337,35 +345,33 @@
             </div>
 
             <!-- Helping people find nearby events -->
-            <div class="flex flex-col gap-6">
+            <div class="case-subsection !gap-6">
               <h3 class="text-h3 font-semibold">Helping people find nearby events</h3>
               <p class="prose-lg">
                 A statewide calendar could overwhelm someone who just wanted to find something nearby. My first
                 approach was a short onboarding quiz that asked visitors about their interests before showing events.
               </p>
-              <figure class="flex flex-col gap-2">
-                <p class="eyebrow">Before</p>
+              <figure class="figure">
+                <p class="figure__label !mb-2">Before</p>
                 <div class="scroller" data-scroller>
-                  <div class="scroller__viewport" tabindex="0" role="region" aria-label="Onboarding quiz screens, scroll horizontally">
-                    <div class="flex w-max items-start gap-3">
-                      <img class="h-[260px] w-auto lg:h-[336px]" src="./assets/images/txct/quiz-1.png" alt="Onboarding quiz step 1: choose cities" />
-                      <img class="h-[232px] w-auto lg:h-[300px]" src="./assets/images/txct/quiz-2.png" alt="Onboarding quiz step 2: choose event types" />
-                      <img class="h-[270px] w-auto lg:h-[350px]" src="./assets/images/txct/quiz-3.png" alt="Onboarding quiz step 3: choose a date range" />
-                    </div>
+                  <div class="scroller__viewport !items-start !gap-3" tabindex="0" role="region" aria-label="Onboarding quiz screens, scroll sideways">
+                    <img class="h-auto w-[300px] md:w-[379px]" src="./assets/images/txct/quiz-1.png" srcset="./assets/images/txct/quiz-1-800w.png 800w, ./assets/images/txct/quiz-1.png 1800w" sizes="379px" width="1800" height="1595" loading="lazy" data-zoom="./assets/images/txct/quiz-1.png" alt="Onboarding quiz step 1 of 3: checkboxes to choose Texas cities" />
+                    <img class="h-auto w-[300px] md:w-[379px]" src="./assets/images/txct/quiz-2.png" srcset="./assets/images/txct/quiz-2-800w.png 800w, ./assets/images/txct/quiz-2.png 1800w" sizes="379px" width="1800" height="1425" loading="lazy" data-zoom="./assets/images/txct/quiz-2.png" alt="Onboarding quiz step 2 of 3: choose event types such as Concert, Musical, Dance, Museum, and Festival" />
+                    <img class="h-auto w-[300px] md:w-[380px]" src="./assets/images/txct/quiz-3.png" srcset="./assets/images/txct/quiz-3-800w.png 800w, ./assets/images/txct/quiz-3.png 1800w" sizes="380px" width="1800" height="1657" loading="lazy" data-zoom="./assets/images/txct/quiz-3.png" alt="Onboarding quiz step 3 of 3: pick a date range on two calendars" />
                   </div>
                   <div class="scroller__track" aria-hidden="true"><div class="scroller__thumb"></div></div>
                 </div>
-                <figcaption class="caption">
-                  <span>Onboarding quiz</span>
-                  <span>Mid-fi where three phases (city, event type, and date range) stood between visitors and the calendar.</span>
+                <figcaption>
+                  <span class="figure__title">Onboarding quiz</span>
+                  <span class="figure__desc">Mid-fi where three phases (city, event type, and date range) stood between visitors and the calendar.</span>
                 </figcaption>
               </figure>
-              <figure class="flex flex-col gap-2">
-                <p class="eyebrow">After</p>
-                <img class="media w-[338px]" style="aspect-ratio: 338 / 349" src="./assets/images/txct/calendar-start-v3.png" alt="Events calendar with a browser prompt asking for location access" />
-                <figcaption class="caption">
-                  <span>Calendar shown immediately</span>
-                  <span>Mid-fi that prompts the user to optionally input their location.</span>
+              <figure class="figure w-full max-w-[338px]">
+                <p class="figure__label !mb-2">After</p>
+                <img class="figure__media !rounded-none" src="./assets/images/txct/calendar-start-v3-800w.png" srcset="./assets/images/txct/calendar-start-v3-800w.png 800w, ./assets/images/txct/calendar-start-v3.png 1740w" sizes="338px" width="800" height="827" loading="lazy" alt="Events calendar shown right away, with a browser prompt asking for permission to use the visitor’s location" />
+                <figcaption>
+                  <span class="figure__title">Calendar shown immediately</span>
+                  <span class="figure__desc">Mid-fi that prompts the user to optionally input their location.</span>
                 </figcaption>
               </figure>
               <p class="prose-lg">
@@ -379,27 +385,27 @@
             </div>
 
             <!-- Adapting the calendar to different screens -->
-            <div class="flex flex-col gap-6">
+            <div class="case-subsection !gap-6">
               <h3 class="text-h3 font-semibold">Adapting the calendar to different screens</h3>
               <p class="prose-lg">I used Google Calendar as a familiar reference for the desktop weekly view of the calendar.</p>
-              <div class="flex flex-col gap-10 md:flex-row">
-                <figure class="flex w-[540px] max-w-full flex-col gap-3">
-                  <p class="eyebrow">Reference</p>
-                  <img class="media w-full" style="aspect-ratio: 540 / 298" src="./assets/images/txct/google-calendar.png" alt="Google Calendar weekly view" />
-                  <figcaption class="caption">
-                    <span>Google Calendar weekly view</span>
-                    <span>The familiar reference I used for the weekly layout: events as blocks across a time grid.</span>
+              <div class="figure-row !gap-10 xl:!grid-cols-[540px_540px]">
+                <figure class="figure">
+                  <p class="figure__label">Reference</p>
+                  <img class="figure__media !rounded-none" src="./assets/images/txct/google-calendar.png" srcset="./assets/images/txct/google-calendar-800w.png 800w, ./assets/images/txct/google-calendar.png 1195w" sizes="(min-width: 768px) 540px, 100vw" width="1195" height="659" loading="lazy" data-zoom="./assets/images/txct/google-calendar.png" alt="Google Calendar weekly view with colored event blocks on an hourly time grid" />
+                  <figcaption>
+                    <span class="figure__title">Google Calendar weekly view</span>
+                    <span class="figure__desc">The familiar reference I used for the weekly layout: events as blocks across a time grid.</span>
                   </figcaption>
                 </figure>
-                <figure class="flex w-[540px] max-w-full flex-col gap-3">
-                  <p class="eyebrow">My design</p>
-                  <div class="crop aspect-[540/418] w-full">
-                    <img style="height: 171.05%; left: -0.05%; top: -71.05%; width: 126.35%" src="./assets/images/txct/weekly-cal-a.png" alt="" />
-                    <img style="height: 170.81%; left: 0; top: -70.81%; width: 125.71%" src="./assets/images/txct/weekly-cal-b.png" alt="My weekly Events calendar with event cards under each day" />
+                <figure class="figure">
+                  <p class="figure__label">My design</p>
+                  <div class="crop aspect-[540/418] w-full !rounded-none">
+                    <img style="height: 171.05%; left: -0.05%; top: -71.05%; width: 126.35%" src="./assets/images/txct/weekly-cal-a.png" width="1717" height="1800" loading="lazy" alt="" />
+                    <img style="height: 170.81%; left: 0; top: -70.81%; width: 125.71%" src="./assets/images/txct/weekly-cal-b.png" width="1717" height="1800" loading="lazy" alt="My weekly Events calendar with event cards listed under each day" />
                   </div>
-                  <figcaption class="caption">
-                    <span>My weekly Events calendar</span>
-                    <span>My version lists events as cards under each day instead of on a time grid.</span>
+                  <figcaption>
+                    <span class="figure__title">My weekly Events calendar</span>
+                    <span class="figure__desc">My version lists events as cards under each day instead of on a time grid.</span>
                   </figcaption>
                 </figure>
               </div>
@@ -413,13 +419,13 @@
                   I hadn’t built responsive design in Figma before, so I learned to use variables that scale type and
                   spacing between mobile and desktop.
                 </p>
-                <figure class="flex flex-col gap-4">
-                  <div class="crop aspect-[596/382] w-[596px] max-w-full">
-                    <img style="height: 127.11%; left: 0; top: 0; width: 100%" src="./assets/images/txct/responsive-variables.png" alt="Figma variables panel with desktop and mobile type and spacing values" />
+                <figure class="figure w-full max-w-[596px]">
+                  <div class="crop aspect-[596/382] w-full !rounded-none">
+                    <img style="height: 127.11%; left: 0; top: 0; width: 100%" src="./assets/images/txct/responsive-variables.png" width="1036" height="844" loading="lazy" data-zoom="./assets/images/txct/responsive-variables.png" alt="Figma variables panel listing desktop and mobile values for font size, line height, and paragraph spacing" />
                   </div>
-                  <figcaption class="caption">
-                    <span>Responsive type and spacing variables</span>
-                    <span>Variables that switch font size, line height, and paragraph spacing between desktop and mobile.</span>
+                  <figcaption>
+                    <span class="figure__title">Responsive type and spacing variables</span>
+                    <span class="figure__desc">Variables that switch font size, line height, and paragraph spacing between desktop and mobile.</span>
                   </figcaption>
                 </figure>
               </div>
@@ -430,40 +436,40 @@
                   Calendar would be more complicated than simply shrinking it to fit onto the smaller screen, the text
                   became unreadable. I was at a loss for how to go about designing it.
                 </p>
-                <div class="flex flex-col gap-10 md:flex-row md:items-start">
-                  <figure class="flex w-[356px] max-w-full flex-col gap-3">
-                    <p class="eyebrow">Before</p>
-                    <div class="crop aspect-[356/678] w-full">
-                      <img style="height: 114.16%; left: 0; top: -14.16%; width: 100%" src="./assets/images/txct/bad-example.png" alt="Desktop weekly calendar shrunk down to a phone screen" />
+                <div class="figure-row figure-row--3 !gap-10 xl:!grid-cols-[356px_356px_356px]">
+                  <figure class="figure figure--phone">
+                    <p class="figure__label">Before</p>
+                    <div class="crop aspect-[356/678] w-full !rounded-none">
+                      <img style="height: 114.16%; left: 0; top: -14.16%; width: 100%" src="./assets/images/txct/bad-example.png" width="402" height="874" loading="lazy" alt="The desktop weekly calendar shrunk onto a phone screen, with text too small to read" />
                     </div>
-                    <figcaption class="caption">
-                      <span>Desktop weekly view shrunk to mobile</span>
-                      <span>Scaling the weekly calendar down to fit a phone made the text unreadable.</span>
+                    <figcaption>
+                      <span class="figure__title">Desktop weekly view shrunk to mobile</span>
+                      <span class="figure__desc">Scaling the weekly calendar down to fit a phone made the text unreadable.</span>
                     </figcaption>
                   </figure>
-                  <figure class="flex w-[356px] max-w-full flex-col gap-3">
-                    <p class="eyebrow">Reference</p>
+                  <figure class="figure figure--phone">
+                    <p class="figure__label">Reference</p>
                     <div class="relative aspect-[356/1336] w-full">
-                      <div class="crop absolute inset-x-0 top-0 h-[54.12%]">
-                        <img style="height: 106.72%; left: 0; top: -6.72%; width: 100%" src="./assets/images/txct/mfah-mobile-1.png" alt="Museum of Fine Arts, Houston mobile event calendar filters" />
+                      <div class="crop absolute inset-x-0 top-0 h-[54.12%] !rounded-none">
+                        <img style="height: 106.72%; left: 0; top: -6.72%; width: 100%" src="./assets/images/txct/mfah-mobile-1.png" width="830" height="1800" loading="lazy" alt="Museum of Fine Arts, Houston mobile event calendar with date and filter controls" />
                       </div>
-                      <div class="crop absolute inset-x-0 top-[50.3%] h-[49.7%]">
-                        <img style="height: 116.21%; left: 0; top: -16.21%; width: 100%" src="./assets/images/txct/mfah-mobile-2.png" alt="Museum of Fine Arts, Houston mobile daily event list" />
+                      <div class="crop absolute inset-x-0 top-[50.3%] h-[49.7%] !rounded-none">
+                        <img style="height: 116.21%; left: 0; top: -16.21%; width: 100%" src="./assets/images/txct/mfah-mobile-2.png" width="830" height="1800" loading="lazy" alt="Museum of Fine Arts, Houston mobile daily event list with one expanded event card" />
                       </div>
                     </div>
-                    <figcaption class="caption">
-                      <span>Houston Fine Arts Museum mobile calendar</span>
-                      <span>Shows only a daily view, with filters up top and one expanded event card at a time.</span>
+                    <figcaption>
+                      <span class="figure__title">Houston Fine Arts Museum mobile calendar</span>
+                      <span class="figure__desc">Shows only a daily view, with filters up top and one expanded event card at a time.</span>
                     </figcaption>
                   </figure>
-                  <figure class="flex w-[356px] max-w-full flex-col gap-3">
-                    <p class="eyebrow">After</p>
-                    <div class="crop aspect-[356/1638] w-full">
-                      <img style="height: 125.03%; left: 0; top: -5.8%; width: 100%" src="./assets/images/txct/mobile-event-scroll.png" alt="Final mobile Events page with featured events and expanded event cards" />
+                  <figure class="figure figure--phone">
+                    <p class="figure__label">After</p>
+                    <div class="crop aspect-[356/1638] w-full !rounded-none">
+                      <img style="height: 125.03%; left: 0; top: -5.8%; width: 100%" src="./assets/images/txct/mobile-event-scroll.png" width="573" height="3300" loading="lazy" alt="Final mobile Events page: featured events, then search, Add Event, and Filter, then expanded event cards by day" />
                     </div>
-                    <figcaption class="caption">
-                      <span>Final mobile design</span>
-                      <span>Search, Filter, and Add Event up top, with expanded event cards instead of the weekly cards.</span>
+                    <figcaption>
+                      <span class="figure__title">Final mobile design</span>
+                      <span class="figure__desc">Search, Filter, and Add Event up top, with expanded event cards instead of the weekly cards.</span>
                     </figcaption>
                   </figure>
                 </div>
@@ -481,7 +487,7 @@
             </div>
 
             <!-- Balancing free access with paid visibility -->
-            <div class="flex flex-col gap-6">
+            <div class="case-subsection !gap-6">
               <h3 class="text-h3 font-semibold">Balancing free access with paid visibility</h3>
               <p class="prose-lg">
                 The calendar needed to support the Trust financially while serving the public. The Trust wanted
@@ -492,23 +498,23 @@
                 The Trust defined four tiers: Free Listing ($0), Calendar Image ($50), Featured at Top ($100), and
                 Premium Package ($150), which combined both upgrades.
               </p>
-              <ul class="grid gap-5 py-5 sm:grid-cols-2 lg:flex">
-                <li class="card tier-card lg:h-[200px] lg:w-[282px] lg:shrink-0">
+              <ul class="card-grid card-grid--4 py-5" role="list">
+                <li class="card card--16 flex flex-col gap-2.5 p-5 xl:min-h-[228px]">
                   <p class="text-h4 font-semibold">Free Listing</p>
                   <p class="text-h3 font-semibold text-fg-brand-lg">$0</p>
                   <p class="text-caption text-fg-secondary">Basic event listing at the bottom of the calendar (no image).</p>
                 </li>
-                <li class="card tier-card lg:flex-1">
+                <li class="card card--16 flex flex-col gap-2.5 p-5 xl:min-h-[228px]">
                   <p class="text-h4 font-semibold">Calendar Image</p>
                   <p class="text-h3 font-semibold text-fg-brand-lg">$50</p>
                   <p class="text-caption text-fg-secondary">Display your event with a custom image in the calendar view.</p>
                 </li>
-                <li class="card tier-card lg:flex-1">
+                <li class="card card--16 flex flex-col gap-2.5 p-5 xl:min-h-[228px]">
                   <p class="text-h4 font-semibold">Featured at Top</p>
                   <p class="text-h3 font-semibold text-fg-brand-lg">$100</p>
                   <p class="text-caption text-fg-secondary">Appear in the featured events section at the very top.</p>
                 </li>
-                <li class="card tier-card lg:flex-1">
+                <li class="card card--16 flex flex-col gap-2.5 p-5 xl:min-h-[228px]">
                   <p class="text-h4 font-semibold">Premium Package</p>
                   <p class="text-h3 font-semibold text-fg-brand-lg">$150</p>
                   <p class="text-caption text-fg-secondary">Maximum visibility: image in the calendar AND featured at the top.</p>
@@ -521,39 +527,35 @@
               </p>
               <div class="flex flex-col gap-7">
                 <h4 class="text-h4 font-semibold">Iterating the Calendar Event Card</h4>
-                <div class="flex flex-col gap-8">
-                  <div class="flex flex-wrap items-start gap-8">
-                    <figure class="flex w-[398px] max-w-full flex-col gap-3">
-                      <img class="media w-[280px]" style="aspect-ratio: 280 / 134" src="./assets/images/txct/cal-card-v1.png" alt="Calendar event card, version 1" />
-                      <figcaption class="caption max-w-[380px]">
-                        <span>V1</span>
-                        <span>Icon has no subtext explaining what it is; the only difference is that one is a different color</span>
-                      </figcaption>
-                    </figure>
-                    <figure class="flex max-w-full flex-col gap-3">
-                      <img class="media w-[370px]" style="aspect-ratio: 370 / 278" src="./assets/images/txct/cal-card-v2.png" alt="Calendar event card, version 2" />
-                      <figcaption class="caption max-w-[380px]">
-                        <span>V2</span>
-                        <span>Mid-fi with title, date, location, time, and a link icon. The summary is removed.</span>
-                      </figcaption>
-                    </figure>
-                  </div>
-                  <div class="flex flex-wrap items-start gap-8">
-                    <figure class="flex max-w-full flex-col gap-3">
-                      <img class="media w-[468px]" style="aspect-ratio: 468 / 359" src="./assets/images/txct/cal-card-v3.png" alt="Calendar event cards, version 3" />
-                      <figcaption class="caption max-w-[468px]">
-                        <span>V3</span>
-                        <span>Hi-fi, found that the banner at the top of the “free” calendar was too eye-catching</span>
-                      </figcaption>
-                    </figure>
-                    <figure class="flex w-[493px] max-w-full flex-col gap-3">
-                      <img class="media w-[468px]" style="aspect-ratio: 468 / 357" src="./assets/images/txct/cal-card-v4.png" alt="Calendar event cards, version 4" />
-                      <figcaption class="caption">
-                        <span>V4</span>
-                        <span>The weights are the same across both versions</span>
-                      </figcaption>
-                    </figure>
-                  </div>
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:flex xl:flex-wrap xl:items-start">
+                  <figure class="figure xl:w-[398px]">
+                    <p class="figure__label">V1</p>
+                    <img class="figure__media !w-auto max-w-full !rounded-none" src="./assets/images/txct/cal-card-v1.png" width="280" height="134" loading="lazy" alt="Calendar event card version 1: two small cards that differ only by the color of an unlabeled icon" />
+                    <figcaption>
+                      <span class="figure__desc">Icon has no subtext explaining what it is; the only difference is that one is a different color</span>
+                    </figcaption>
+                  </figure>
+                  <figure class="figure xl:w-[370px]">
+                    <p class="figure__label">V2</p>
+                    <img class="figure__media !rounded-none" src="./assets/images/txct/cal-card-v2.png" width="740" height="556" loading="lazy" alt="Calendar event card version 2: mid-fi cards with title, date, location, time, and a link icon" />
+                    <figcaption>
+                      <span class="figure__desc">Mid-fi with title, date, location, time, and a link icon. The summary is removed.</span>
+                    </figcaption>
+                  </figure>
+                  <figure class="figure xl:w-[468px]">
+                    <p class="figure__label">V3</p>
+                    <img class="figure__media !rounded-none" src="./assets/images/txct/cal-card-v3.png" width="936" height="718" loading="lazy" alt="Calendar event cards version 3: hi-fi paid and free cards, the free one topped with a bold banner" />
+                    <figcaption>
+                      <span class="figure__desc">Hi-fi, found that the banner at the top of the “free” calendar was too eye-catching</span>
+                    </figcaption>
+                  </figure>
+                  <figure class="figure xl:w-[493px]">
+                    <p class="figure__label">V4</p>
+                    <img class="figure__media max-w-[468px] !rounded-none" src="./assets/images/txct/cal-card-v4.png" width="936" height="714" loading="lazy" alt="Calendar event cards version 4: hi-fi paid and free cards with matching text weights" />
+                    <figcaption>
+                      <span class="figure__desc">The weights are the same across both versions</span>
+                    </figcaption>
+                  </figure>
                 </div>
               </div>
               <p class="prose-lg">
@@ -561,31 +563,31 @@
                 layout. During a weekly review, a stakeholder suggested moving them above it. I developed that
                 suggestion into a featured row, giving the calendar more room and promoted events a prominent position.
               </p>
-              <div class="flex flex-col gap-6 md:flex-row md:items-center">
-                <figure class="flex min-w-0 flex-1 flex-col gap-3">
-                  <p class="eyebrow">Before</p>
-                  <img class="media w-full" style="aspect-ratio: 540 / 559" src="./assets/images/txct/featured-column-before.png" alt="Events page with featured events in a column beside the calendar" />
-                  <figcaption class="caption">
-                    <span>Featured events in a column</span>
-                    <span>Featured events sat beside the calendar, squeezing an already dense layout.</span>
+              <div class="compare">
+                <figure class="figure w-full">
+                  <p class="figure__label">Before</p>
+                  <img class="figure__media !rounded-none" src="./assets/images/txct/featured-column-before-800w.png" srcset="./assets/images/txct/featured-column-before-800w.png 800w, ./assets/images/txct/featured-column-before.png 1740w" sizes="(min-width: 768px) 540px, 100vw" width="800" height="827" loading="lazy" data-zoom="./assets/images/txct/featured-column-before.png" alt="Events page with featured events stacked in a column beside the weekly calendar" />
+                  <figcaption>
+                    <span class="figure__title">Featured events in a column</span>
+                    <span class="figure__desc">Featured events sat beside the calendar, squeezing an already dense layout.</span>
                   </figcaption>
                 </figure>
-                <span class="self-center text-h3 font-semibold text-fg-brand-lg max-md:rotate-90" aria-hidden="true">→</span>
-                <figure class="flex min-w-0 flex-1 flex-col gap-3">
-                  <p class="eyebrow">After</p>
-                  <img class="media w-full" style="aspect-ratio: 538 / 557" src="./assets/images/txct/featured-row-after.png" alt="Events page with featured events in a row above the calendar" />
-                  <figcaption class="caption">
-                    <span>Featured events in a row</span>
-                    <span>Moving them above the calendar gives the calendar more room and keeps promoted events prominent.</span>
+                <img class="compare__arrow" src="./assets/icons/arrow-right.svg" alt="" width="22" height="22" />
+                <figure class="figure w-full">
+                  <p class="figure__label">After</p>
+                  <img class="figure__media !rounded-none" src="./assets/images/txct/featured-row-after-800w.png" srcset="./assets/images/txct/featured-row-after-800w.png 800w, ./assets/images/txct/featured-row-after.png 1740w" sizes="(min-width: 768px) 540px, 100vw" width="800" height="827" loading="lazy" data-zoom="./assets/images/txct/featured-row-after.png" alt="Events page with featured events in a row above the weekly calendar" />
+                  <figcaption>
+                    <span class="figure__title">Featured events in a row</span>
+                    <span class="figure__desc">Moving them above the calendar gives the calendar more room and keeps promoted events prominent.</span>
                   </figcaption>
                 </figure>
               </div>
-              <figure class="flex flex-col gap-3">
-                <p class="eyebrow">Final</p>
-                <img class="media w-full" style="aspect-ratio: 1164 / 1535" src="./assets/images/txct/final-desktop-events.gif" alt="Final desktop Events page scrolling from the featured row to the weekly calendar" />
-                <figcaption class="caption">
-                  <span>Final desktop Events page</span>
-                  <span>A featured row sits above the weekly calendar, with search, Filter, and Add Event controls.</span>
+              <figure class="figure">
+                <p class="figure__label">Final</p>
+                <img class="figure__media !rounded-none" src="./assets/images/txct/final-desktop-events.gif" width="2176" height="2870" loading="lazy" data-zoom="./assets/images/txct/final-desktop-events.gif" alt="Final desktop Events page scrolling from the featured events row down to the weekly calendar" />
+                <figcaption>
+                  <span class="figure__title">Final desktop Events page</span>
+                  <span class="figure__desc">A featured row sits above the weekly calendar, with search, Filter, and Add Event controls.</span>
                 </figcaption>
               </figure>
               <p class="prose-lg">
@@ -594,11 +596,11 @@
                 donations to the Trust, so it earns from the calendar while any provider can still submit an event for
                 free.
               </p>
-              <figure class="flex w-[705px] max-w-full flex-col gap-3">
-                <img class="media w-full" style="aspect-ratio: 705 / 1624" src="./assets/images/txct/add-event-form.png" alt="Add Event form with basic info, event type, social media, promotional options, event details, and point of contact" />
-                <figcaption class="caption">
-                  <span>Add Event form (final)</span>
-                  <span>Providers choose a listing tier, add event details and a point of contact, then submit for the Trust’s approval.</span>
+              <figure class="figure w-full max-w-[705px]">
+                <img class="figure__media !rounded-none" src="./assets/images/txct/add-event-form-800w.png" srcset="./assets/images/txct/add-event-form-800w.png 800w, ./assets/images/txct/add-event-form.png 1433w" sizes="(min-width: 768px) 705px, 100vw" width="800" height="1842" loading="lazy" data-zoom="./assets/images/txct/add-event-form.png" alt="Add Event form with sections for basic info, event type, social media, promotional options with the four listing tiers, event details, and point of contact, ending in a Submit for Approval button" />
+                <figcaption>
+                  <span class="figure__title">Add Event form (final)</span>
+                  <span class="figure__desc">Providers choose a listing tier, add event details and a point of contact, then submit for the Trust’s approval.</span>
                 </figcaption>
               </figure>
             </div>
@@ -612,7 +614,7 @@
             </p>
 
             <!-- Utilizing AI -->
-            <div class="flex flex-col gap-6">
+            <div class="case-subsection !gap-6">
               <h3 class="text-h3 font-semibold">Utilizing AI</h3>
               <p class="prose-lg">
                 Once I had a design system, I tried Figma Make to visualize a monthly view. I liked its layout and
@@ -620,74 +622,74 @@
                 events. Any day with more than four shows “+n more,” which opens a pop-up like Google Calendar’s.
               </p>
               <div class="flex flex-col gap-5">
-                <figure class="flex w-[725px] max-w-full flex-col gap-3">
-                  <p class="eyebrow">Figma Make output</p>
-                  <div class="crop aspect-[864/1012] w-full">
-                    <img style="height: 182.81%; left: 0; top: -82.81%; width: 100%" src="./assets/images/txct/figma-make-cal.png" alt="Figma Make monthly calendar with one event per day" />
+                <figure class="figure w-full max-w-[725px]">
+                  <p class="figure__label">Figma Make output</p>
+                  <div class="crop aspect-[864/1012] w-full !rounded-none">
+                    <img style="height: 182.81%; left: 0; top: -82.81%; width: 100%" src="./assets/images/txct/figma-make-cal.png" width="840" height="1800" loading="lazy" alt="Figma Make’s monthly calendar showing a single event on each day" />
                   </div>
-                  <figcaption class="caption">
-                    <span>Figma Make output</span>
-                    <span>Figma Make’s monthly view shows one event per day.</span>
+                  <figcaption>
+                    <span class="figure__title">Figma Make output</span>
+                    <span class="figure__desc">Figma Make’s monthly view shows one event per day.</span>
                   </figcaption>
                 </figure>
-                <figure class="flex flex-col gap-3">
-                  <p class="eyebrow">My design</p>
-                  <video class="media w-full" style="aspect-ratio: 1450 / 832" data-autoplay muted loop playsinline preload="none" poster="./assets/videos/monthly-calendar-poster.jpg" aria-label="My monthly calendar on a laptop, with up to four events per day and a +n more link">
-                <source src="./assets/videos/monthly-calendar.mp4" type="video/mp4" />
-              </video>
-                  <figcaption class="caption">
-                    <span>My monthly calendar</span>
-                    <span>Designed for busy days: after four events, a “+n more” link opens a pop-up like Google Calendar’s.</span>
+                <figure class="figure">
+                  <p class="figure__label">My design</p>
+                  <video class="video-frame !rounded-none" width="1450" height="832" data-autoplay muted loop playsinline preload="none" poster="./assets/videos/monthly-calendar-poster.jpg" aria-label="My monthly calendar on a laptop, with up to four events per day and a +n more link that opens a pop-up">
+                    <source src="./assets/videos/monthly-calendar.mp4" type="video/mp4" />
+                  </video>
+                  <figcaption>
+                    <span class="figure__title">My monthly calendar</span>
+                    <span class="figure__desc">Designed for busy days: after four events, a “+n more” link opens a pop-up like Google Calendar’s.</span>
                   </figcaption>
                 </figure>
               </div>
-              <aside class="flex flex-col gap-2 rounded-2xl border-2 border-line-subtle bg-subtle px-6 py-5">
-                <p class="eyebrow text-fg">Main takeaway</p>
+              <aside class="callout" aria-label="Main takeaway">
+                <p class="text-label text-fg-secondary">Main takeaway</p>
                 <p class="text-body text-fg-secondary">Used AI for visual reference, then designed for real data density.</p>
               </aside>
             </div>
           </section>
 
           <!-- Final Solution -->
-          <section id="final-solution" class="case-section flex flex-col gap-7" aria-labelledby="final-title">
+          <section id="final-solution" class="case-section" aria-labelledby="final-title">
             <h2 id="final-title" class="section-heading">Final Solution</h2>
-            <p class="chip self-start bg-subtle text-caption text-fg">Final design proposal, not the live site</p>
-            <figure class="flex flex-col gap-3">
-              <p class="eyebrow">Web prototype</p>
-              <video class="media w-full" style="aspect-ratio: 1590 / 880" data-autoplay muted loop playsinline preload="none" poster="./assets/videos/web-prototype-poster.jpg" aria-label="Web prototype walkthrough of the final Events page on a laptop">
+            <p class="pill self-start bg-subtle text-caption text-fg-secondary">Final design proposal, not the live site</p>
+            <figure class="figure">
+              <p class="figure__label !text-fg-secondary">Web prototype</p>
+              <video class="video-frame" width="1590" height="880" data-autoplay muted loop playsinline preload="none" poster="./assets/videos/web-prototype-poster.jpg" aria-label="Web prototype walkthrough of the final Events page on a laptop">
                 <source src="./assets/videos/web-prototype.mp4" type="video/mp4" />
               </video>
             </figure>
-            <figure class="flex flex-col gap-3">
-              <p class="eyebrow">Mobile prototype</p>
-              <video class="media w-full" style="aspect-ratio: 1590 / 880" data-autoplay muted loop playsinline preload="none" poster="./assets/videos/mobile-prototype-poster.jpg" aria-label="Mobile prototype walkthrough of the final Events page">
+            <figure class="figure">
+              <p class="figure__label !text-fg-secondary">Mobile prototype</p>
+              <video class="video-frame" width="1590" height="880" data-autoplay muted loop playsinline preload="none" poster="./assets/videos/mobile-prototype-poster.jpg" aria-label="Mobile prototype walkthrough of the final Events page on a phone">
                 <source src="./assets/videos/mobile-prototype.mp4" type="video/mp4" />
               </video>
             </figure>
           </section>
 
           <!-- Outcome & Limitations -->
-          <section id="outcome" class="case-section flex flex-col gap-7" aria-labelledby="outcome-title">
+          <section id="outcome" class="case-section" aria-labelledby="outcome-title">
             <h2 id="outcome-title" class="section-heading">Outcome &amp; Limitations</h2>
-            <div class="card outcome-card">
+            <div class="card card--16 outcome-card">
               <h3>What happened</h3>
-              <p>
+              <p class="prose-lg">
                 Stakeholders responded positively to the designs during review, and I handed them off to the
                 developers. However, the implemented Events page differed from the reviewed designs and did not
                 include all of the planned functionality. The screens shown in this case study represent my final
                 design proposal rather than the current website.
               </p>
             </div>
-            <div class="card outcome-card">
+            <div class="card card--16 outcome-card">
               <h3>What I don’t know</h3>
-              <p>
+              <p class="prose-lg">
                 I didn’t test the designs with users, so choices like the Google Calendar layout, the city default, and
                 the daily mobile view rest on references, stakeholder input, and peer feedback.
               </p>
             </div>
-            <div class="card outcome-card">
+            <div class="card card--16 outcome-card">
               <h3>What I’d do next</h3>
-              <p>
+              <p class="prose-lg">
                 I’d talk with people who regularly attend and seek out art events to test whether they can find a
                 relevant event to them through the calendar, and whether featured events really are what catches
                 their eye first. I’d also test the daily mobile view and design the fallback for visitors who decline
@@ -697,27 +699,27 @@
           </section>
 
           <!-- Key Takeaways -->
-          <section id="takeaways" class="case-section flex flex-col gap-7" aria-labelledby="takeaways-title">
+          <section id="takeaways" class="case-section" aria-labelledby="takeaways-title">
             <h2 id="takeaways-title" class="section-heading">Key Takeaways</h2>
-            <ol class="grid gap-6 md:grid-cols-2 md:gap-x-6 md:gap-y-7">
-              <li class="card takeaway-card">
-                <span>1</span>
+            <ol class="card-grid card-grid--2 !gap-6" role="list">
+              <li class="card card--16 takeaway-card">
+                <span class="takeaway-card__num" aria-hidden="true">1</span>
                 <h3>Quality over quantity</h3>
                 <p>
                   Raising the three-page concern felt risky, but the Trust was receptive, and one page done well beat
                   three done thinly.
                 </p>
               </li>
-              <li class="card takeaway-card">
-                <span>2</span>
+              <li class="card card--16 takeaway-card">
+                <span class="takeaway-card__num" aria-hidden="true">2</span>
                 <h3>Start from mobile</h3>
                 <p>
                   I built desktop first and shrank it down, which was the harder direction. Going from mobile to
                   desktop was easier on the submission form, and I’d start there next time.
                 </p>
               </li>
-              <li class="card takeaway-card">
-                <span>3</span>
+              <li class="card card--16 takeaway-card">
+                <span class="takeaway-card__num" aria-hidden="true">3</span>
                 <h3>Push for research</h3>
                 <p>
                   I thought interviews were worth doing and let the idea go when it met pushback. Next time I’d
@@ -725,8 +727,8 @@
                   identify whether they regularly attend and/or seek art events.
                 </p>
               </li>
-              <li class="card takeaway-card">
-                <span>4</span>
+              <li class="card card--16 takeaway-card">
+                <span class="takeaway-card__num" aria-hidden="true">4</span>
                 <h3>Stay involved after handoff</h3>
                 <p>
                   Although implementation changes came up in our weekly team meetings, I didn’t see the built page
@@ -740,10 +742,10 @@
           </section>
 
           <!-- Footer CTA -->
-          <section class="flex flex-col items-start gap-5 rounded-[32px] border-2 border-line bg-page p-8 shadow-card lg:min-h-[260px] lg:justify-between lg:gap-0" aria-labelledby="cta-title">
+          <section class="cta-card xl:min-h-[260px] xl:max-w-[1162px] xl:justify-between xl:gap-0" aria-labelledby="cta-title">
             <h2 id="cta-title" class="section-heading">Thanks for Reading!</h2>
             <p class="text-body">Curious about my other projects? Check them out below!</p>
-            <a class="btn btn--outline rounded-[24px]" href="./index.html#projects">Back to Projects</a>
+            <a class="btn btn--outline !rounded-[24px]" href="./index.html#projects">Back to Projects</a>
           </section>
         </article>
       </div>
