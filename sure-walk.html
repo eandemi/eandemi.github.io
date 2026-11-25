@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Case study: designing a group ride flow that makes late-night Sure Walk rides easier for UT Austin students."
+    />
+    <meta name="theme-color" content="#fef6ee" />
+    <title>Sure Walk Case Study — Isa Melendez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@1,700&family=Outfit:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="./dist/styles.css" />
+  </head>
+  <body class="min-h-screen">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="site-nav wrap" aria-label="Main">
+        <a class="site-nav__logo" href="./index.html">
+          <img src="./assets/icons/logo.svg" alt="Isa Melendez, home" width="255" height="35" />
+        </a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+          Menu
+        </button>
+        <ul class="site-nav__links" id="site-menu">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About Me</a></li>
+          <li>
+            <a href="./assets/docs/isabella-melendez-gonzalez-resume.pdf" target="_blank" rel="noopener">
+              Resume <img src="./assets/icons/arrow-square-out.svg" alt="" width="24" height="24" />
+              <span class="sr-only">(opens in a new tab)</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="wrap flex flex-col gap-7 pb-12 pt-6 xl:pb-20 xl:pt-14" aria-labelledby="case-title">
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4 xl:gap-7">
+            <a class="icon-btn icon-btn--lg" href="./index.html#projects">
+              <img src="./assets/icons/arrow-back.svg" alt="Back to projects" width="76" height="76" />
+            </a>
+            <h1 id="case-title" class="text-h2 font-medium">Making late-night rides easier for UT students</h1>
+          </div>
+          <p class="text-body text-fg-tertiary xl:px-[90px]">
+            Note: The project is ongoing. Screens shown are prototypes and proposals, and some changes are still under discussion.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-10 xl:gap-16">
+          <img
+            class="aspect-[1568/777] w-full rounded-[24px] object-cover xl:rounded-[40px]"
+            src="./assets/images/surewalk/hero-1600w.jpg"
+            srcset="./assets/images/surewalk/hero-800w.jpg 800w, ./assets/images/surewalk/hero-1600w.jpg 1600w"
+            sizes="(min-width: 1728px) 1568px, 100vw"
+            width="1600"
+            height="793"
+            fetchpriority="high"
+            alt="Two phones showing the Sure Walk Request a Ride map and the Your Group Ride screen, beside the Sure Walk logo, a primary contact card for Shirley Temple that says Sure Walk will contact you, and a reminder to turn off Do Not Disturb"
+          />
+
+          <dl class="meta-list">
+            <div class="xl:w-[197px]">
+              <dt class="text-h4 font-semibold !text-fg-brand-lg">ROLE</dt>
+              <dd>Product Designer, UX Researcher</dd>
+            </div>
+            <div class="xl:w-[209px]">
+              <dt class="text-h4 font-semibold !text-fg-brand-lg">TEAM</dt>
+              <dd>2 PMs, 4 designers, 4 engineers</dd>
+            </div>
+            <div class="xl:w-[212px]">
+              <dt class="text-h4 font-semibold !text-fg-brand-lg">CLIENT</dt>
+              <dd>UT Austin Parking &amp; Transportation Services: Sure Walk</dd>
+            </div>
+            <div class="xl:w-[152px]">
+              <dt class="text-h4 font-semibold !text-fg-brand-lg">TIMELINE</dt>
+              <dd>Spring 2025 – Present</dd>
+            </div>
+            <div class="xl:w-[169px]">
+              <dt class="text-h4 font-semibold !text-fg-brand-lg">TOOLS</dt>
+              <dd>Figma, FigJam, Notion, Linear</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Body: sidebar + case study content -->
+      <div class="wrap case-layout pb-[120px] pt-4 xl:!pl-[60px] xl:pt-16">
+        <aside class="case-sidebar" aria-label="Case study navigation">
+          <div class="case-sidebar__inner">
+            <nav class="toc" aria-labelledby="toc-title">
+              <h2 id="toc-title" class="text-label text-fg-secondary">On this page</h2>
+              <ol>
+                <li><a href="#problem">The Problem</a></li>
+                <li><a href="#research">User Research</a></li>
+                <li><a href="#design-process">My Design Process</a></li>
+                <li><a href="#testing">Testing: Round 1</a></li>
+                <li><a href="#solution">Proposed Solution</a></li>
+                <li><a href="#next-steps">Next Steps</a></li>
+                <li><a href="#takeaways">Key Takeaways</a></li>
+              </ol>
+            </nav>
+            <a class="skip-solution" href="#solution">
+              Skip to Solution
+              <img src="./assets/icons/arrow-skip.svg" alt="" width="50" height="50" />
+            </a>
+          </div>
+        </aside>
+
+        <article class="case-main">
+          <details class="case-toc-mobile">
+            <summary class="text-label">On this page</summary>
+            <ol>
+              <li><a href="#problem">The Problem</a></li>
+              <li><a href="#research">User Research</a></li>
+              <li><a href="#design-process">My Design Process</a></li>
+              <li><a href="#testing">Testing: Round 1</a></li>
+              <li><a href="#solution">Proposed Solution</a></li>
+              <li><a href="#next-steps">Next Steps</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+            </ol>
+          </details>
+
+          <!-- The Problem -->
+          <section id="problem" class="case-section" aria-labelledby="problem-title">
+            <h2 id="problem-title" class="section-heading">The Problem</h2>
+            <div class="grid grid-cols-1 gap-8 2xl:grid-cols-[minmax(0,1fr)_minmax(0,586px)] 2xl:gap-12">
+              <div class="prose-lg flex flex-col gap-[var(--lh-body-lg)] text-fg-secondary">
+                <p>Sure Walk is UT Austin’s <strong>free late-night ride service</strong>. Their core purpose is to get students safely home.</p>
+                <p>
+                  Currently Sure Walk operates on a <strong>Google Form</strong>, where students have to fill out each
+                  time they wish to use the service. If they want to ride with friends, everyone within the group is
+                  meant to also fill out the form. Staff then usually call one person, who passes updates to everyone
+                  else.
+                </p>
+              </div>
+              <div class="card flex flex-col gap-5 p-6 md:p-8">
+                <p class="text-label text-fg-secondary">Today</p>
+                <p class="text-h4 font-semibold">Each rider submits a separate form</p>
+                <div class="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+                  <ul class="flex flex-1 flex-col gap-2.5" role="list">
+                    <li class="rounded-xl bg-subtle px-4 py-3 text-body">Rider 1 : Submits Google Form</li>
+                    <li class="rounded-xl bg-subtle px-4 py-3 text-body">Rider 2: Submits Google Form</li>
+                    <li class="rounded-xl bg-subtle px-4 py-3 text-body">Rider 3: Submits Google Form</li>
+                  </ul>
+                  <img class="size-8 self-center max-sm:rotate-90" src="./assets/icons/arrow-right-muted.svg" alt="" width="32" height="32" />
+                  <p class="card card--16 p-4 text-body sm:w-[190px]">Staff call whoever submitted first and ask who they’re with</p>
+                </div>
+              </div>
+            </div>
+            <p class="prose-lg">
+              I’m designing a group ride flow that lets one student request a ride for their friends, and makes it
+              clear who staff will contact about the booking.
+            </p>
+          </section>
+
+          <!-- User Research -->
+          <section id="research" class="case-section" aria-labelledby="research-title">
+            <h2 id="research-title" class="section-heading">User Research</h2>
+            <p class="prose-lg">
+              To understand group rides, I drew on two sources: an interview with a frequent Sure Walk user and our
+              team’s conversations with Sure Walk staff.
+            </p>
+
+            <div class="case-subsection !gap-5">
+              <h3 class="text-h3 font-semibold">Jennie, a frequent Sure Walk user</h3>
+              <p class="prose-lg">
+                I interviewed Jennie, one of our three <strong>sponsor users</strong>. She was an active rider when we
+                spoke and has stayed involved as the design develops.
+              </p>
+              <div class="card flex flex-col gap-8 p-6 md:p-8 2xl:flex-row 2xl:items-center 2xl:gap-10">
+                <div class="flex shrink-0 flex-col items-center gap-3 xl:w-[220px]">
+                  <span class="flex size-[120px] items-center justify-center rounded-full bg-brand text-h3 font-semibold text-fg-inverse" aria-hidden="true">J</span>
+                  <p class="text-h3 font-semibold">Jennie</p>
+                  <p class="text-caption text-fg-tertiary">Sponsor user</p>
+                </div>
+                <span class="h-0.5 w-full bg-muted 2xl:h-auto 2xl:w-0.5 2xl:self-stretch" aria-hidden="true"></span>
+                <dl class="grid flex-1 grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+                  <div class="flex flex-col gap-2.5">
+                    <dt class="text-label text-fg-brand">How often she rides</dt>
+                    <dd class="quote-text">“3-4 times a week”</dd>
+                  </div>
+                  <div class="flex flex-col gap-2.5">
+                    <dt class="text-label text-fg-brand">When she rides</dt>
+                    <dd class="quote-text">“It’s often after work or an org event.”</dd>
+                  </div>
+                  <div class="flex flex-col gap-2.5">
+                    <dt class="text-label text-fg-brand">Why she rides</dt>
+                    <dd class="quote-text">“I didn’t feel comfortable walking alone at night, so I’d call Sure Walk”</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+
+            <div class="case-subsection !gap-5">
+              <h3 class="text-h3 font-semibold">Main Takeaway: Riding with friends takes coordination</h3>
+              <ul class="card-grid card-grid--3 !gap-6" role="list">
+                <li class="card flex flex-col gap-5 p-7">
+                  <h4 class="text-h4 font-semibold text-fg-brand-lg">Each rider submits their own request</h4>
+                  <figure class="quote">
+                    <blockquote class="quote-text">“It’s inconvenient because everyone has to fill out the form individually”</blockquote>
+                    <figcaption class="text-caption text-fg-tertiary">— Jennie, sponsor user</figcaption>
+                  </figure>
+                  <div class="mt-auto flex flex-col gap-1 text-fg-secondary">
+                    <p class="text-label">Design question</p>
+                    <p class="text-body">Can one person submit for the whole group?</p>
+                  </div>
+                </li>
+                <li class="card flex flex-col gap-5 p-7">
+                  <h4 class="text-h4 font-semibold text-fg-brand-lg">Friends coordinate to stay together</h4>
+                  <figure class="quote">
+                    <blockquote class="quote-text">“We try to submit at the same time so they don’t separate us.”</blockquote>
+                    <figcaption class="text-caption text-fg-tertiary">— Jennie, sponsor user</figcaption>
+                  </figure>
+                  <div class="mt-auto flex flex-col gap-1 text-fg-secondary">
+                    <p class="text-label">Design question</p>
+                    <p class="text-body">Can a group be booked as one ride?</p>
+                  </div>
+                </li>
+                <li class="card flex flex-col gap-5 p-7">
+                  <h4 class="text-h4 font-semibold text-fg-brand-lg">One person becomes the contact anyway</h4>
+                  <figure class="quote">
+                    <blockquote class="quote-text">“They usually end up calling whoever submitted first and ask, ‘Are you with other people? What are their names?’”</blockquote>
+                    <figcaption class="text-caption text-fg-tertiary">— Jennie, sponsor user</figcaption>
+                  </figure>
+                  <div class="mt-auto flex flex-col gap-1 text-fg-secondary">
+                    <p class="text-label">Design question</p>
+                    <p class="text-body">How do we make the contact person’s role clear before staff call?</p>
+                  </div>
+                </li>
+              </ul>
+              <p class="prose-lg">
+                Her biggest frustration overall was wait time. Accurate estimates are a broader project goal, outside my
+                group booking work.
+              </p>
+            </div>
+
+            <div class="case-subsection !gap-5">
+              <h3 class="text-h3 font-semibold">What Sure Walk told us</h3>
+              <p class="prose-lg">
+                We also talked with the people who run Sure Walk, starting with our clients, who lead the service at
+                Parking &amp; Transportation Services.
+              </p>
+              <div class="card flex flex-col gap-5 p-6 md:p-8">
+                <p class="text-label text-fg-secondary">From our clients</p>
+                <h4 class="text-h4 font-semibold">Every rider’s name has to be on record</h4>
+                <p class="text-body">
+                  The forms double as a record. Our clients need each rider’s full name so they can confirm who was in
+                  a ride and when. That is why friends can’t simply share one form today.
+                </p>
+              </div>
+              <p class="prose-lg">Our team also interviewed Sure Walk staff. They trade off between three roles:</p>
+              <ul class="card-grid card-grid--3 !gap-6" role="list">
+                <li class="flex flex-col gap-5 rounded-[24px] bg-subtle p-6 md:p-8">
+                  <p class="text-label text-fg-secondary">Role</p>
+                  <h4 class="text-h4 font-semibold">Dispatcher</h4>
+                  <p class="text-body">Decides which vehicle takes which ride.</p>
+                </li>
+                <li class="flex flex-col gap-5 rounded-[24px] bg-subtle p-6 md:p-8">
+                  <p class="text-label text-fg-secondary">Role</p>
+                  <h4 class="text-h4 font-semibold">Navigator</h4>
+                  <p class="text-body">Rides along, calls riders, and stays in touch with the dispatcher.</p>
+                </li>
+                <li class="flex flex-col gap-5 rounded-[24px] bg-subtle p-6 md:p-8">
+                  <p class="text-label text-fg-secondary">Role</p>
+                  <h4 class="text-h4 font-semibold">Driver</h4>
+                  <p class="text-body">Drives the vehicle.</p>
+                </li>
+              </ul>
+              <div class="card flex flex-col gap-5 p-7">
+                <h4 class="text-h4 font-semibold text-fg-brand-lg">Groups ignoring rules and only filling out one form</h4>
+                <figure class="quote">
+                  <blockquote class="quote-text">“[Some] people fill out the form for themselves but have a whole party with them.”</blockquote>
+                  <figcaption class="text-caption text-fg-tertiary">— Driver/navigator, staff survey</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="card-grid card-grid--2 !gap-6">
+              <div class="card flex flex-col gap-5 p-6 md:p-8">
+                <p class="text-label text-fg-secondary">What the research pointed to</p>
+                <h3 class="text-h4 font-semibold">Riders want one request. Sure Walk needs every rider’s name.</h3>
+                <p class="text-body">
+                  My challenge was to let one person book for the group and keep every name on the record, without
+                  adding steps that could keep someone from getting a ride.
+                </p>
+              </div>
+              <div class="card flex flex-col gap-5 p-6 md:p-8">
+                <p class="text-label text-fg-brand">Proposed</p>
+                <h3 class="text-h4 font-semibold">One person requests a ride for the group</h3>
+                <div class="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+                  <ul class="flex flex-1 flex-col gap-2.5" role="list">
+                    <li class="rounded-xl bg-tint-blue-strong px-4 py-3 text-body">Rider 1:  Submits ride request</li>
+                    <li class="rounded-xl border-[3px] border-tint-blue-strong px-4 py-3 text-body">+ Rider 2 added by Rider 1</li>
+                    <li class="rounded-xl border-[3px] border-tint-blue-strong px-4 py-3 text-body">+ Rider 3 added by Rider 1</li>
+                  </ul>
+                  <img class="size-8 self-center max-sm:rotate-90" src="./assets/icons/arrow-right-brand.svg" alt="" width="32" height="32" />
+                  <p class="card card--16 p-4 text-body sm:w-[190px]">Staff call Rider 1, the named primary contact</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- My Design Process -->
+          <section id="design-process" class="case-section !gap-[60px]" aria-labelledby="process-title">
+            <div class="flex flex-col gap-7">
+              <h2 id="process-title" class="section-heading">My Design Process</h2>
+
+              <div class="case-subsection !gap-6">
+                <h3 class="text-h3 font-semibold">Exploring ways to add riders</h3>
+                <p class="prose-lg">
+                  Before going into Figma, I sketched the group ride flow on paper to work out what a requester would
+                  need to tell us about each friend.
+                </p>
+                <div class="flex flex-col gap-8 2xl:flex-row 2xl:items-center 2xl:gap-10">
+                  <figure class="figure w-full 2xl:w-[58%] 2xl:max-w-[700px] 2xl:shrink-0">
+                    <p class="figure__label !mb-3.5">Paper sketch · Group Ride lo-fi</p>
+                    <img class="figure__media !rounded-none" src="./assets/images/surewalk/group-ride-lofi-1600w.jpg" srcset="./assets/images/surewalk/group-ride-lofi-800w.jpg 800w, ./assets/images/surewalk/group-ride-lofi-1600w.jpg 1600w" sizes="(min-width: 1280px) 700px, 100vw" width="1600" height="1195" loading="lazy" data-zoom="./assets/images/surewalk/group-ride-lofi-1600w.jpg" alt="Paper sketch titled Group Ride LoFi: a Group Rides intro with up to 3 friends, a Joe’s group ride screen with a UT Student or Guest choice for each friend and an EID or full name field, and a confirm screen, with handwritten notes" />
+                  </figure>
+                  <ol class="flex flex-1 flex-col gap-8" role="list">
+                    <li class="flex items-start gap-3.5">
+                      <span class="marker" aria-hidden="true">1</span>
+                      <p class="text-body">Set expectations first: a short intro to group rides, with quick rules and a limit of three friends, before pickup and drop-off.</p>
+                    </li>
+                    <li class="flex items-start gap-3.5">
+                      <span class="marker" aria-hidden="true">2</span>
+                      <p class="text-body">Two kinds of riders: UT students would enter an EID, and guests would enter a full name.</p>
+                    </li>
+                    <li class="flex items-start gap-3.5">
+                      <span class="marker" aria-hidden="true">3</span>
+                      <p class="text-body">Confirm the group at the end, the same way a regular booking is confirmed.</p>
+                    </li>
+                  </ol>
+                </div>
+                <div class="flex flex-col gap-2 rounded-[24px] bg-tint-sky px-6 py-6 md:px-7">
+                  <p class="text-label text-fg-brand">An open question I flagged</p>
+                  <p class="text-h4 font-semibold">
+                    Did every passenger need the app downloaded, and ideally an account? Is that more friction compared
+                    to the way it currently works?
+                  </p>
+                </div>
+                <figure class="figure items-center text-center">
+                  <p class="figure__label !mb-3.5">V1</p>
+                  <img class="figure__media max-w-[254px] !rounded-none" src="./assets/images/surewalk/v1-approval.png" width="786" height="2204" loading="lazy" alt="V1 screen, Pookie’s Group Ride: three friend cards, each set to UT Student or Guest with a name or EID field and a status of approved or pending approval, above a Continue button" />
+                  <figcaption class="max-w-[520px]">
+                    <span class="figure__desc">Every rider had to approve on their own phone before the group could book.</span>
+                  </figcaption>
+                </figure>
+                <p class="prose-lg">
+                  After I built V1, my design lead wasn’t sold on the direction, and I was stuck on other ways to
+                  approach it. She suggested Crazy 8’s, sketching eight ideas in eight minutes, to get more options out
+                  quickly.
+                </p>
+                <ol class="compare" role="list">
+                  <li class="card card--16 flex h-full w-full flex-col gap-2 px-6 py-5">
+                    <p class="text-label text-fg-brand">V1</p>
+                    <p class="text-caption text-fg-tertiary">My first Figma version. My lead pushed for other approaches.</p>
+                  </li>
+                  <li class="compare__arrow" aria-hidden="true"><img src="./assets/icons/arrow-right.svg" alt="" width="22" height="22" /></li>
+                  <li class="card card--16 flex h-full w-full flex-col gap-2 px-6 py-5">
+                    <p class="text-label text-fg-brand">Crazy 8’s</p>
+                    <p class="text-caption text-fg-tertiary">Eight quick sketches to explore other layouts.</p>
+                  </li>
+                </ol>
+                <figure class="figure">
+                  <div class="scroller" data-scroller>
+                    <div class="scroller__viewport" tabindex="0" role="region" aria-label="Crazy 8’s sketches, scroll sideways">
+                      <img class="h-[260px] w-auto md:h-[340px] xl:h-[443px]" src="./assets/images/surewalk/crazy-8-1600w.jpg" srcset="./assets/images/surewalk/crazy-8-1600w.jpg 1600w, ./assets/images/surewalk/crazy-8-3200w.jpg 3200w" sizes="(min-width: 1280px) 2676px, 1570px" width="3200" height="529" loading="lazy" data-zoom="./assets/images/surewalk/crazy-8-3200w.jpg" alt="Eight quick pencil sketches of the group ride screen, with red circles around the pieces carried forward: rider cards with a UT Student or Guest choice, an EID field, and an Add rider button" />
+                    </div>
+                    <div class="scroller__track" aria-hidden="true"><div class="scroller__thumb"></div></div>
+                  </div>
+                  <figcaption>
+                    <span class="figure__title">Crazy 8’s</span>
+                    <span class="figure__desc">Had one minute per sketch! I circled the components that ended up getting passed into the next iterations.</span>
+                  </figcaption>
+                </figure>
+                <p class="prose-lg">
+                  Sketching that fast helped me figure out how I wanted to space out the screen, with a card for each
+                  rider. My lead liked the direction and asked me to build my favorite option in Figma. That became V2,
+                  and the later versions grew from it.
+                </p>
+              </div>
+            </div>
+
+            <!-- Removing individual passenger approval -->
+            <div class="case-subsection !gap-6">
+              <div class="flex flex-col items-start gap-3">
+                <p class="pill !px-3.5 !py-1.5 bg-brand-strong text-label text-fg-inverse">Key decision</p>
+                <h3 class="text-h3 font-semibold">Removing individual passenger approval</h3>
+              </div>
+              <p class="prose-lg">
+                An early version asked every passenger to approve being added to the group in the app. I expected that
+                to help connect riders to their accounts. After talking with my sponsor user, there were a few practical
+                things I realized: someone with a dead phone couldn’t approve and the flow assumed every passenger had
+                the app.
+              </p>
+              <div class="flex flex-col gap-8 rounded-[32px] bg-subtle p-5 md:p-10">
+                <div class="flex flex-col gap-8 min-[1640px]:flex-row min-[1640px]:items-center">
+                  <figure class="figure">
+                    <p class="figure__label !mb-3.5">Before · Early iteration (V1)</p>
+                    <div class="grid grid-cols-2 gap-3 md:flex md:gap-5">
+                      <img class="figure__media !rounded-none md:w-[250px]" src="./assets/images/surewalk/v1-group-rides-intro.png" width="393" height="852" loading="lazy" data-zoom="./assets/images/surewalk/v1-group-rides-intro.png" alt="V1 Group Rides intro sheet: add friends to the same request, up to 4 friends can join, be ready to leave together, keep push notifications on, and a Continue button" />
+                      <img class="figure__media !rounded-none md:w-[250px]" src="./assets/images/surewalk/v1-approval-request.png" width="786" height="1704" loading="lazy" data-zoom="./assets/images/surewalk/v1-approval-request.png" alt="V1 Group Ride Request over a map: John Doe would like you to add you to their Sure Walk group ride, with red Deny and green Approve buttons" />
+                    </div>
+                    <figcaption class="min-[1640px]:max-w-[520px]">
+                      <span class="figure__desc">Every rider had to approve on their own phone before the group could book.</span>
+                    </figcaption>
+                  </figure>
+                  <div class="flex shrink-0 flex-col items-center gap-2.5 self-center min-[1640px]:w-[150px]">
+                    <img class="size-14" src="./assets/icons/step-removed.svg" alt="" width="56" height="56" />
+                    <p class="text-center text-body">Approval step removed</p>
+                    <img class="size-[22px] max-[1639.98px]:rotate-90" src="./assets/icons/arrow-right.svg" alt="" width="22" height="22" />
+                  </div>
+                  <figure class="figure">
+                    <p class="figure__label !mb-3.5">After · Later iteration (V5)</p>
+                    <img class="figure__media max-w-[250px] !rounded-none" src="./assets/images/surewalk/v5-group-ride.png" width="786" height="1704" loading="lazy" data-zoom="./assets/images/surewalk/v5-group-ride.png" alt="V5 Your Group Ride screen: Shirley Temple as primary contact, Riders 3 of 5, group members Isaiah Rodriguez and John Smith (Guest), an Add Riders button, and an orange Continue button" />
+                    <figcaption class="min-[1640px]:max-w-[372px]">
+                      <span class="figure__desc">The primary contact adds riders without approval.</span>
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="flex flex-col gap-6 rounded-[24px] bg-page p-6 md:p-7 2xl:flex-row 2xl:items-center 2xl:gap-8">
+                  <figure class="quote flex-1">
+                    <blockquote class="quote-text !text-[22px] !leading-[1.6] md:!text-[24px] md:!leading-[38px]">“One time, my friend’s phone died. They tried calling her... they didn’t call anyone else in our group.”</blockquote>
+                    <figcaption class="text-caption text-fg-tertiary">— Anonymous rider interview excerpt</figcaption>
+                  </figure>
+                  <p class="text-body text-fg-secondary 2xl:w-[420px] 2xl:shrink-0">
+                    This story is about the current service, not a prototype task. It showed how risky it is to depend on
+                    one reachable phone, so making every rider approve on their own phone didn’t make sense.
+                  </p>
+                </div>
+              </div>
+              <p class="prose-lg xl:max-w-[1000px]">
+                We removed the approval requirement so the requester can add passengers on their behalf. Making every
+                person complete another step would undermine the point of one person booking for the group.
+              </p>
+            </div>
+
+            <!-- Choosing what passenger information to collect -->
+            <div class="case-subsection !gap-6">
+              <h3 class="text-h3 font-semibold">Choosing what passenger information to collect</h3>
+              <p class="prose-lg">
+                I explored entering a UT EID to identify each student. That raised questions about account availability
+                and access to university records. The team’s operational requirement was passenger names, so the
+                proposed direction asks for names and makes extra phone numbers optional.
+              </p>
+              <div class="figure-row !gap-10 xl:!grid-cols-[minmax(0,540px)_minmax(0,1fr)]">
+                <figure class="figure">
+                  <p class="figure__label !mb-3.5">Before · V2</p>
+                  <div class="flex max-w-[393px] flex-col gap-5">
+                    <img class="figure__media !rounded-none" src="./assets/images/surewalk/v2-eid-field.png" width="393" height="110" loading="lazy" alt="V2 form field: UT EID, with a No UT EID? link and a Type UT EID here input" />
+                    <img class="figure__media !rounded-none" src="./assets/images/surewalk/v2-eid-guest.png" width="393" height="178" loading="lazy" alt="V2 form with a greyed-out UT EID field and a Guest Name field below it" />
+                  </div>
+                  <figcaption>
+                    <span class="figure__desc">UT EID lookup, which depends on account availability and record access.</span>
+                  </figcaption>
+                </figure>
+                <figure class="figure">
+                  <p class="figure__label !mb-3.5">After · V6</p>
+                  <div class="flex max-w-[390px] flex-col gap-8">
+                    <img class="figure__media !rounded-none" src="./assets/images/surewalk/v6-student-input.png" width="780" height="832" loading="lazy" alt="V6 student rider form: UT EID, First Name, Last Name, and an optional Phone Number for day-of-ride updates only" />
+                    <img class="figure__media !rounded-none" src="./assets/images/surewalk/v6-guest-input.png" width="780" height="682" loading="lazy" alt="V6 guest rider form: First Name, Last Name, and an optional Phone Number, with a UT EID? link" />
+                  </div>
+                  <figcaption>
+                    <span class="figure__desc">Names are required and phone numbers are optional.</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="flex flex-col gap-8 md:flex-row md:items-center xl:gap-12">
+                <figure class="figure w-full max-w-[250px] shrink-0">
+                  <p class="figure__label !mb-3.5">V5 · Confirmation</p>
+                  <img class="figure__media !rounded-none" src="./assets/images/surewalk/v5-confirm.png" width="786" height="2310" loading="lazy" data-zoom="./assets/images/surewalk/v5-confirm.png" alt="V5 Confirm Your Ride screen: pick-up and drop-off, the people in the group with Shirley Temple marked Sure Walk will contact you, guidelines such as board within 2 minutes of arrival and turn off Do Not Disturb, and a Continue button" />
+                  <figcaption>
+                    <span class="figure__desc">Last point to edit: riders can be changed here, before the request is submitted.</span>
+                  </figcaption>
+                </figure>
+                <div class="card card--16 flex flex-1 flex-col items-start gap-3 px-6 py-7 md:px-8">
+                  <p class="pill !px-3.5 !py-1.5 bg-tint-blue text-label text-fg-brand">Team decision</p>
+                  <h4 class="text-h4 font-semibold">Editing stops at confirmation</h4>
+                  <p class="text-body text-fg-secondary">
+                    To keep the first release feasible, the team decided riders can’t be edited after a booking is
+                    confirmed. Staff record the actual passenger count when the ride arrives, and we removed leadership
+                    transfer to avoid another contact-management flow. I still see value in editing after booking, so
+                    for now the requester reviews everyone before submitting. Groups that change after booking will need
+                    guidance that matches the service’s process.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Making the primary contact clear -->
+            <div class="case-subsection !gap-6">
+              <div class="flex flex-col items-start gap-3">
+                <p class="pill !px-3.5 !py-1.5 bg-tint-blue text-label text-fg-brand">Recent change</p>
+                <h3 class="text-h3 font-semibold">Making the primary contact clear</h3>
+              </div>
+              <p class="prose-lg">
+                Sure Walk coordinates pickups by phone, so a booking can fall apart if the person being called isn’t
+                expecting it or has Do Not Disturb on. Testing also showed that putting this in the onboarding
+                guidelines didn’t mean riders remembered it later.
+              </p>
+              <div class="compare !items-start xl:!grid-cols-[minmax(0,540px)_auto_minmax(0,540px)] xl:!gap-5">
+                <figure class="figure w-full">
+                  <p class="figure__label !mb-3.5">Before · V4</p>
+                  <img class="figure__media !rounded-none" src="./assets/images/surewalk/v4-contact-card.png" width="1059" height="240" loading="lazy" alt="V4 contact card for Shirley Temple, st3356, with a yellow crown icon on the right" />
+                  <div class="mt-3.5 flex items-start gap-3.5">
+                    <span class="marker" aria-hidden="true">1</span>
+                    <figcaption class="!mt-0"><span class="figure__desc">Crown icon differentiates the primary contact (previously “group leader” in this iteration)</span></figcaption>
+                  </div>
+                </figure>
+                <img class="compare__arrow md:self-start md:mt-[90px]" src="./assets/icons/arrow-right.svg" alt="" width="22" height="22" />
+                <figure class="figure w-full">
+                  <p class="figure__label !mb-3.5">After · V6</p>
+                  <img class="figure__media !rounded-none" src="./assets/images/surewalk/v6-contact-card.png" width="1080" height="326" loading="lazy" alt="V6 contact card for Shirley Temple, st3356, with a blue strip underneath that says Sure Walk will contact you" />
+                  <div class="mt-3.5 flex items-start gap-3.5">
+                    <span class="marker" aria-hidden="true">2</span>
+                    <figcaption class="!mt-0"><span class="figure__desc">Next to the person: a note under the primary contact says Sure Walk will contact them.</span></figcaption>
+                  </div>
+                </figure>
+              </div>
+              <p class="prose-lg">
+                I still need to test whether riders notice the message and understand that it implies they will be the
+                ones contacted by Sure Walk.
+              </p>
+            </div>
+
+            <!-- Refining hierarchy and consistency -->
+            <div class="case-subsection !gap-6">
+              <h3 class="text-h3 font-semibold">Refining hierarchy and consistency</h3>
+              <p class="prose-lg">
+                Alongside the booking logic, I refined how the flow presents riders and actions, using shared
+                components, color tokens, and type. These changes are about consistency and hierarchy. Their effect on
+                usability hasn’t been evaluated yet.
+              </p>
+              <div class="card overflow-hidden">
+                <div class="refine-row">
+                  <div class="refine-row__text">
+                    <h4 class="text-h4 font-semibold">Passenger list → rider cards in ride details</h4>
+                    <p class="text-body text-fg-secondary">
+                      Riders now appear as cards that match the group setup screen, with the same profile treatment as
+                      other screens. Also no ability to edit for feasibility.
+                    </p>
+                  </div>
+                  <div class="compare !items-start xl:!gap-5">
+                    <figure class="figure w-full xl:max-w-[336px]">
+                      <p class="figure__label !mb-2.5">Before · V1</p>
+                      <img class="figure__media !rounded-none" src="./assets/images/surewalk/v1-member-list.png" width="762" height="250" loading="lazy" alt="V1 Group Ride Members: names listed in one line, Shirley Temple, Isaiah Rodriguez, John Pork, with an Edit button" />
+                    </figure>
+                    <img class="compare__arrow md:mt-[60px]" src="./assets/icons/arrow-right.svg" alt="" width="22" height="22" />
+                    <figure class="figure w-full xl:max-w-[341px]">
+                      <p class="figure__label !mb-2.5">After · V6</p>
+                      <img class="figure__media !rounded-none" src="./assets/images/surewalk/v6-member-cards.png" width="754" height="729" loading="lazy" alt="V6 Group Ride Members as cards: Shirley Temple with Sure Walk will contact you first, Isaiah Rodriguez, and John Smith, Guest" />
+                    </figure>
+                  </div>
+                </div>
+                <div class="refine-row">
+                  <div class="refine-row__text">
+                    <h4 class="text-h4 font-semibold">Removing a rider</h4>
+                    <p class="text-body text-fg-secondary">I replaced the trash icon after feedback.</p>
+                  </div>
+                  <div class="compare xl:!gap-5">
+                    <figure class="figure w-full xl:max-w-[355px]">
+                      <p class="figure__label !mb-2.5">Before · V2</p>
+                      <img class="figure__media !rounded-none" src="./assets/images/surewalk/v2-remove-trash.png" width="710" height="160" loading="lazy" alt="V2 rider card for Isaiah Rodriguez with a trash can icon" />
+                    </figure>
+                    <img class="compare__arrow xl:mt-8" src="./assets/icons/arrow-right.svg" alt="" width="22" height="22" />
+                    <figure class="figure w-full xl:max-w-[353px]">
+                      <p class="figure__label !mb-2.5">After · V6</p>
+                      <img class="figure__media !rounded-none" src="./assets/images/surewalk/v6-remove-x.png" width="706" height="144" loading="lazy" alt="V6 rider card for Isaiah Rodriguez with a small circled X to remove" />
+                    </figure>
+                  </div>
+                </div>
+                <div class="refine-row">
+                  <div class="refine-row__text xl:!w-[340px]">
+                    <h4 class="text-h4 font-semibold">Clearer visual hierarchy</h4>
+                    <p class="text-body text-fg-secondary">
+                      Saving or canceling when adding a rider is not the main action. This helped differentiate the
+                      buttons from the primary “Continue” button below.
+                    </p>
+                  </div>
+                  <div class="compare xl:!gap-5">
+                    <figure class="figure w-full xl:max-w-[377px]">
+                      <p class="figure__label !mb-2.5">Before · V4</p>
+                      <img class="figure__media !rounded-none" src="./assets/images/surewalk/v4-cancel-add.png" width="754" height="192" loading="lazy" alt="V4 buttons: two large outlined pills, Cancel and Add" />
+                    </figure>
+                    <img class="compare__arrow xl:mt-8" src="./assets/icons/arrow-right.svg" alt="" width="22" height="22" />
+                    <figure class="figure w-full xl:max-w-[234px]">
+                      <p class="figure__label !mb-2.5">After · V6</p>
+                      <img class="figure__media max-w-[234px] !rounded-none" src="./assets/images/surewalk/v6-cancel-save.png" width="585" height="240" loading="lazy" alt="V6 buttons: a smaller red outlined Cancel and a filled blue Save" />
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Testing: Round 1 -->
+          <section id="testing" class="case-section" aria-labelledby="testing-title">
+            <h2 id="testing-title" class="section-heading">Testing: Round 1</h2>
+            <div class="flex flex-col items-start gap-4">
+              <p class="pill !px-3.5 !py-1.5 bg-tint-blue text-label text-fg-brand">Tested prototype · Round 1</p>
+              <p class="prose-lg">
+                In our first documented round, one participant went through onboarding, individual booking, and group
+                booking in an earlier prototype. The proposed solution below came after this round.
+              </p>
+            </div>
+            <div class="card-grid card-grid--2 !gap-6">
+              <div class="card flex flex-col items-center gap-5 p-6 md:p-7">
+                <h3 class="pill !px-3.5 !py-1.5 bg-tint-green text-label text-fg-green">What worked</h3>
+                <p class="text-center text-h4 font-semibold">She completed the group booking task and rated it 5 out of 5 for ease.</p>
+                <img class="w-full max-w-[282px]" src="./assets/images/surewalk/r1-group-setup.png" width="564" height="1084" loading="lazy" alt="Round 1 prototype on a phone: Your Group Ride with Shirley Temple as group leader with a crown, Riders 0 of 4, an Add Riders button, and a disabled Continue button" />
+              </div>
+              <div class="card flex flex-col items-center gap-7 p-6 md:p-7">
+                <h3 class="pill !px-3.5 !py-1.5 bg-tint-red text-label text-fg-error">Still needs work</h3>
+                <ol class="flex w-full flex-col gap-8" role="list">
+                  <li class="flex flex-col gap-2">
+                    <div class="flex items-center gap-4">
+                      <span class="marker" aria-hidden="true">1</span>
+                      <p class="text-body">She didn’t notice Add Riders until she was given the group task.</p>
+                    </div>
+                    <img class="w-full max-w-[393px]" src="./assets/images/surewalk/r1-add-riders.png" width="786" height="248" loading="lazy" alt="Book a ride sheet with a small Add Riders button on the right" />
+                  </li>
+                  <li class="flex flex-col gap-2">
+                    <div class="flex items-center gap-4">
+                      <span class="marker" aria-hidden="true">2</span>
+                      <p class="text-body">She was confused and asked what “Share Group Ride” did.</p>
+                    </div>
+                    <img class="w-full max-w-[404px]" src="./assets/images/surewalk/r1-share-ride.png" width="784" height="240" loading="lazy" alt="Share Group Ride field showing the code AJM345K with a copy icon" />
+                  </li>
+                  <li class="flex flex-col gap-5">
+                    <div class="flex items-center gap-4">
+                      <span class="marker" aria-hidden="true">3</span>
+                      <p class="text-body">She read the clock as trip length, not wait time.</p>
+                    </div>
+                    <img class="w-[110px]" src="./assets/images/surewalk/r1-wait-time.png" width="192" height="96" loading="lazy" alt="Dark pill with a clock icon and 2 min" />
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <p class="prose-lg">
+              Following a task and discovering a feature on your own need separate attention. Some prototype inputs
+              were automated, which also limits what one session can tell us.
+            </p>
+          </section>
+
+          <!-- Proposed Solution -->
+          <section id="solution" class="case-section" aria-labelledby="solution-title">
+            <h2 id="solution-title" class="section-heading">Proposed Solution</h2>
+            <p class="prose-lg">This is the current working group booking flow. This hasn’t been tested yet!</p>
+            <div class="flex flex-col gap-10 2xl:flex-row 2xl:items-center">
+              <div class="flex w-full shrink-0 justify-center rounded-[32px] bg-tint-sky p-6 md:p-12 2xl:w-auto 2xl:rounded-[40px]">
+                <video class="w-full max-w-[462px] rounded-[40px] md:rounded-[87px]" width="640" height="1314" data-autoplay muted loop playsinline preload="none" poster="./assets/videos/surewalk-group-ride-poster.jpg" aria-label="Screen recording of the proposed group ride flow on a phone: starting from Request a Ride, adding riders, setting pickup and destination, and confirming the ride">
+                  <source src="./assets/videos/surewalk-group-ride.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <ol class="flex flex-1 flex-col gap-6" role="list">
+                <li class="card card--16 flex items-start gap-5 px-6 py-5">
+                  <span class="text-h3 font-semibold text-fg-brand-lg" aria-hidden="true">1</span>
+                  <div class="flex flex-col gap-1">
+                    <h3 class="text-h4 font-semibold">Start a group ride</h3>
+                    <p class="text-body text-fg-secondary">The requester is listed as the Primary Contact, with a note that Sure Walk will contact them.</p>
+                  </div>
+                </li>
+                <li class="card card--16 flex items-start gap-5 px-6 py-5">
+                  <span class="text-h3 font-semibold text-fg-brand-lg" aria-hidden="true">2</span>
+                  <div class="flex flex-col gap-1">
+                    <h3 class="text-h4 font-semibold">Add riders</h3>
+                    <p class="text-body text-fg-secondary">The requester adds each rider on their behalf. No one else has to approve the booking.</p>
+                  </div>
+                </li>
+                <li class="card card--16 flex items-start gap-5 px-6 py-5">
+                  <span class="text-h3 font-semibold text-fg-brand-lg" aria-hidden="true">3</span>
+                  <div class="flex flex-col gap-1">
+                    <h3 class="text-h4 font-semibold">Set pickup and destination</h3>
+                    <p class="text-body text-fg-secondary">The group books one ride, like a regular booking.</p>
+                  </div>
+                </li>
+                <li class="card card--16 flex items-start gap-5 px-6 py-5">
+                  <span class="text-h3 font-semibold text-fg-brand-lg" aria-hidden="true">4</span>
+                  <div class="flex flex-col gap-1">
+                    <h3 class="text-h4 font-semibold">Review and confirm</h3>
+                    <p class="text-body text-fg-secondary">The requester checks pickup, drop-off, and riders, sees the primary-contact reminder, and makes final edits before submitting.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <!-- Next Steps -->
+          <section id="next-steps" class="case-section" aria-labelledby="next-title">
+            <h2 id="next-title" class="section-heading">Next Steps</h2>
+            <div class="card grid grid-cols-1 overflow-hidden md:grid-cols-2">
+              <div class="flex flex-col gap-2.5 px-6 py-7 md:px-8">
+                <h3 class="text-label text-fg-secondary">Tested in Round 1</h3>
+                <p class="text-body">The testing prototype, before the contact-role and passenger-field changes. The findings above apply only to this version.</p>
+              </div>
+              <div class="flex flex-col gap-2.5 bg-tint-sky px-6 py-7 md:px-8">
+                <h3 class="text-label text-fg-brand">Newer changes · Awaiting validation</h3>
+                <ul class="text-body" role="list">
+                  <li>• Primary-contact note and confirmation reminder</li>
+                  <li>• Proposed passenger fields: names, with optional phone numbers</li>
+                  <li>• Proposed interim contact copy</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card card--16 outcome-card">
+              <h3>Status</h3>
+              <p class="prose-lg">In development, with a beta planned before winter break. The beta will be our first look at how group booking works in practice.</p>
+            </div>
+            <div class="card card--16 outcome-card">
+              <h3>Not yet measured</h3>
+              <p class="prose-lg">We haven’t measured any change in booking time, missed calls, or failed pickups.</p>
+            </div>
+            <div class="card card--16 outcome-card">
+              <h3>What I’m doing next</h3>
+              <p class="prose-lg">
+                Run a second round of testing on the proposed flow, starting with whether riders understand the contact
+                role. Confirm how group requests handle shared pickup and destination. Settle the passenger fields and
+                fallback contact process with the team. After release, compare group request completion and booking
+                errors against a clear baseline.
+              </p>
+            </div>
+          </section>
+
+          <!-- Key Takeaways -->
+          <section id="takeaways" class="case-section" aria-labelledby="takeaways-title">
+            <h2 id="takeaways-title" class="section-heading">Key Takeaways</h2>
+            <ol class="card-grid card-grid--3 !gap-6" role="list">
+              <li class="card card--16 takeaway-card">
+                <span class="takeaway-card__num" aria-hidden="true">1.</span>
+                <h3>Keep talking to one real rider</h3>
+                <p class="text-fg-secondary">
+                  I didn’t expect to keep learning from the same person, but every conversation with Jennie gave me a
+                  clearer picture of someone who relies on Sure Walk. She rides in groups, which is what pointed me to
+                  group rides and kept me pushing when the idea first met resistance.
+                </p>
+              </li>
+              <li class="card card--16 takeaway-card">
+                <span class="takeaway-card__num" aria-hidden="true">2.</span>
+                <h3>Cutting is part of the work</h3>
+                <p class="text-fg-secondary">
+                  A lot didn’t make it, including passenger approval and leadership transfer. The pivots were
+                  frustrating, and after V1 I felt stuck. Crazy 8’s with my lead got me to a flow I could take ownership
+                  of.
+                </p>
+              </li>
+              <li class="card card--16 takeaway-card">
+                <span class="takeaway-card__num" aria-hidden="true">3.</span>
+                <h3>Other designers showed me my strengths</h3>
+                <p class="text-fg-secondary">
+                  I’d been the only designer on past projects. Working beside teammates who lean toward research or
+                  content design showed me how much each skill set catches, and that mine are UI and content hierarchy.
+                </p>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Footer CTA -->
+          <section class="cta-card xl:min-h-[260px] xl:max-w-[1162px] xl:justify-between xl:gap-0" aria-labelledby="cta-title">
+            <h2 id="cta-title" class="section-heading">Thanks for Reading!</h2>
+            <p class="text-body">Curious about my other projects? Check them out below!</p>
+            <a class="btn btn--outline !rounded-[24px]" href="./index.html#projects">Back to Projects</a>
+          </section>
+        </article>
+      </div>
+    </main>
+    <script src="./src/scripts/main.js" defer></script>
+  </body>
+</html>

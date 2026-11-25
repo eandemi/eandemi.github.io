@@ -1407,6 +1407,82 @@
     }
   }
 
+  /* Pull quote with a brand rule on the left (Figma "Quote"). */
+  .quote {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 24px;
+    border-left: 4px solid var(--color-graphic-blue);
+  }
+
+  .quote-text {
+    color: var(--color-text-primary);
+    font-family: "Inter", var(--font-family);
+    font-size: 22px;
+    line-height: 1.6;
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  @media (max-width: 479.98px) {
+    .quote-text {
+      font-size: 20px;
+    }
+  }
+
+  /* Numbered annotation marker: 24px text on brand blue passes AA-large. */
+  .marker {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    background: var(--color-surface-brand);
+    color: var(--color-text-inverse);
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  /* Sure Walk refinement rows: caption beside before/after crops on desktop. */
+  .refine-row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .refine-row + .refine-row {
+    border-top: 2px solid var(--color-border-default);
+  }
+
+  .refine-row__text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  @media (min-width: 768px) {
+    .refine-row {
+      padding: 32px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .refine-row {
+      flex-direction: row;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .refine-row__text {
+      flex: none;
+      width: 308px;
+    }
+  }
+
   .video-frame {
     display: block;
     width: 100%;
