@@ -1,3 +1,23 @@
+// Mobile nav: the menu button shows/hides the links under 768px.
+document.querySelectorAll(".site-nav").forEach((nav) => {
+  const toggle = nav.querySelector(".site-nav__toggle");
+  if (!toggle) return;
+  const setOpen = (open) => {
+    toggle.setAttribute("aria-expanded", String(open));
+    nav.toggleAttribute("data-open", open);
+  };
+  toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav.hasAttribute("data-open")) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (nav.hasAttribute("data-open") && !nav.contains(event.target)) setOpen(false);
+  });
+});
+
 // Play looping demo videos only while they're on screen. With reduced motion,
 // leave them on their poster frame and offer controls instead.
 const demoVideos = document.querySelectorAll("video[data-autoplay]");
@@ -90,17 +110,17 @@ document.querySelectorAll("[data-scroller]").forEach((scroller) => {
 });
 
 // Highlight the case study's "On this page" link for the section in view.
-const tocLinks = document.querySelectorAll(".toc a[href^='#']");
+const tocLinks = document.querySelectorAll(".toc a[href^='#'], .case-toc-mobile a[href^='#']");
 
 if (tocLinks.length && "IntersectionObserver" in window) {
-  const linkFor = new Map(
-    [...tocLinks].map((link) => [link.getAttribute("href").slice(1), link]),
-  );
+  const ids = [...new Set([...tocLinks].map((link) => link.getAttribute("href").slice(1)))];
   const visible = new Set();
 
   const setActive = (id) => {
-    tocLinks.forEach((link) => link.removeAttribute("aria-current"));
-    linkFor.get(id)?.setAttribute("aria-current", "true");
+    tocLinks.forEach((link) => {
+      if (link.getAttribute("href") === `#${id}`) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    });
   };
 
   const observer = new IntersectionObserver(
@@ -110,16 +130,58 @@ if (tocLinks.length && "IntersectionObserver" in window) {
         else visible.delete(entry.target.id);
       });
       // The first section (in page order) that is on screen wins.
-      const current = [...linkFor.keys()].find((id) => visible.has(id));
+      const current = ids.find((id) => visible.has(id));
       if (current) setActive(current);
     },
     { rootMargin: "0px 0px -60% 0px" },
   );
 
-  linkFor.forEach((_, id) => {
+  ids.forEach((id) => {
     const section = document.getElementById(id);
     if (section) observer.observe(section);
   });
 
-  setActive([...linkFor.keys()][0]);
+  setActive(ids[0]);
+}
+
+// Close the mobile "On this page" menu after picking a section.
+document.querySelectorAll(".case-toc-mobile").forEach((details) => {
+  details.addEventListener("click", (event) => {
+    if (event.target.closest("a")) details.open = false;
+  });
+});
+
+// Tap-to-enlarge: wide images (img[data-zoom]) open full size in a dialog
+// you can pan around. The image's alt text names the button.
+const zoomImages = document.querySelectorAll("img[data-zoom]");
+
+if (zoomImages.length && "HTMLDialogElement" in window) {
+  const dialog = document.createElement("dialog");
+  dialog.className = "zoom-dialog";
+  dialog.innerHTML =
+    '<div class="zoom-dialog__scroll"><img alt="" /></div>' +
+    '<button class="zoom-dialog__close" type="button">Close</button>';
+  document.body.append(dialog);
+  const big = dialog.querySelector("img");
+  dialog.querySelector(".zoom-dialog__close").addEventListener("click", () => dialog.close());
+  dialog.addEventListener("close", () => {
+    big.removeAttribute("src");
+    dialog.returnFocus?.focus();
+  });
+
+  zoomImages.forEach((img) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "zoom-btn";
+    button.setAttribute("aria-label", `Enlarge image: ${img.alt}`);
+    img.replaceWith(button);
+    button.append(img);
+
+    button.addEventListener("click", () => {
+      big.src = img.dataset.zoom || img.currentSrc || img.src;
+      big.alt = img.alt;
+      dialog.returnFocus = button;
+      dialog.showModal();
+    });
+  });
 }

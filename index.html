@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Isa Melendez is a product designer in Austin, TX, designing with empathy."
+      content="Isa Melendez is a product designer studying at UT Austin, designing with empathy."
     />
     <meta name="theme-color" content="#fef6ee" />
     <title>Isa Melendez — Product Designer</title>
@@ -17,10 +17,11 @@
     />
     <link rel="stylesheet" href="./dist/styles.css" />
   </head>
-  <body class="min-h-screen overflow-x-hidden">
+  <body class="min-h-screen">
+    <a class="skip-link" href="#main">Skip to content</a>
     <div class="relative mx-auto max-w-[1728px]">
-      <!-- Background flowers (behind all page content) -->
-      <div aria-hidden="true" class="pointer-events-none absolute inset-0 hidden lg:block">
+      <!-- Background flowers (behind all page content; desktop only) -->
+      <div aria-hidden="true" class="deco pointer-events-none absolute inset-0 hidden overflow-hidden lg:block">
         <img class="absolute w-[13.07%]" style="left: 32.29%; top: 1053px" src="./assets/icons/bg-flower-a.svg" alt="" />
         <img class="absolute w-[13.07%]" style="left: 34.43%; top: 1483px" src="./assets/icons/bg-flower-a.svg" alt="" />
         <img class="absolute w-[9.54%]" style="left: 61.28%; top: 845px" src="./assets/icons/bg-flower-b.svg" alt="" />
@@ -33,17 +34,21 @@
         <img class="absolute w-[13.01%]" style="left: 4.57%; top: 1331px" src="./assets/icons/bg-flower-c.svg" alt="" />
       </div>
 
-      <header class="relative z-10">
-        <nav class="site-nav" aria-label="Main navigation">
-          <a class="site-nav__logo" href="./index.html" aria-label="Isa Melendez, home">
-            <img src="./assets/icons/logo.svg" alt="" width="255" height="35" />
+      <header class="site-header">
+        <nav class="site-nav wrap" aria-label="Main">
+          <a class="site-nav__logo" href="./index.html">
+            <img src="./assets/icons/logo.svg" alt="Isa Melendez, home" width="255" height="35" />
           </a>
-          <ul class="site-nav__links">
+          <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+            Menu
+          </button>
+          <ul class="site-nav__links" id="site-menu">
             <li><a href="./index.html" aria-current="page">Home</a></li>
             <li><a href="./about.html">About Me</a></li>
             <li>
               <a href="./assets/docs/isabella-melendez-gonzalez-resume.pdf" target="_blank" rel="noopener">
-                Resume <img src="./assets/icons/arrow-square-out.svg" alt="" />
+                Resume <img src="./assets/icons/arrow-square-out.svg" alt="" width="24" height="24" />
                 <span class="sr-only">(opens in a new tab)</span>
               </a>
             </li>
@@ -51,17 +56,17 @@
         </nav>
       </header>
 
-      <main class="relative lg:min-h-[2084px]">
+      <main id="main" class="relative">
         <!-- Hero -->
         <section class="relative lg:aspect-[1729/663]" aria-labelledby="hero-title">
-          <div class="relative z-10 flex w-full flex-col gap-8 px-5 pt-8 lg:w-[min(714px,41.3vw)] lg:pl-[min(96px,5.55vw)] lg:pt-[min(117px,6.77vw)]">
-            <div class="flex flex-col gap-6">
+          <div class="wrap relative z-10 flex flex-col gap-8 pt-6 lg:absolute lg:inset-0 lg:max-w-none lg:pl-[min(96px,5.55vw)] lg:pt-[min(117px,6.77vw)]">
+            <div class="flex flex-col gap-4 lg:w-[min(593px,34.3vw)] lg:gap-6">
               <h1 id="hero-title" class="flex flex-col text-hero font-bold lg:text-[min(80px,4.63vw)] lg:leading-none">
                 <span>Designing with</span>
-                <span class="text-blue">empathy.</span>
+                <span class="text-fg-brand-lg">empathy.</span>
               </h1>
               <p class="text-h2 font-medium lg:text-[min(48px,2.78vw)] lg:leading-[1.21]">
-                <span class="text-green">Product Designer</span> in Austin, TX
+                <span class="text-fg-green-lg">Product Designer</span> studying at UT Austin!
               </p>
             </div>
             <div class="flex flex-wrap items-center gap-4">
@@ -71,7 +76,7 @@
           </div>
 
           <!-- Illustration: positions are percentages of the 1729×663 Figma frame -->
-          <div aria-hidden="true" class="relative mt-8 aspect-[1072/663] overflow-hidden lg:absolute lg:inset-0 lg:mt-0 lg:aspect-auto">
+          <div aria-hidden="true" class="relative mt-10 aspect-[1072/663] overflow-hidden lg:absolute lg:inset-0 lg:mt-0 lg:aspect-auto">
             <div class="absolute inset-y-0 right-0 w-[161.3%] lg:w-full">
               <img class="absolute w-[57.72%]" style="left: 0; top: 63.94%" src="./assets/icons/squiggle.svg" alt="" />
               <img class="absolute w-[9.37%]" style="left: 87.74%; top: 0" src="./assets/icons/flower-hero.svg" alt="" />
@@ -82,7 +87,14 @@
               <img class="absolute w-[12.78%]" style="left: 39%; top: 67.06%" src="./assets/icons/flower-small.svg" alt="" />
               <img class="absolute w-[5.99%]" style="left: 46.96%; top: 9.2%" src="./assets/icons/asterisk.svg" alt="" />
               <img class="absolute w-[31.64%]" style="left: 68.36%; top: 21.41%" src="./assets/icons/quarter-circle.svg" alt="" />
-              <img class="absolute w-[37.01%]" style="left: 61.25%; top: 10.56%" src="./assets/images/isa-head.png" alt="" />
+              <img
+                class="absolute w-[37.01%]"
+                style="left: 61.25%; top: 10.56%"
+                src="./assets/images/isa-head.png"
+                width="1280"
+                height="1160"
+                alt=""
+              />
             </div>
           </div>
         </section>
@@ -90,36 +102,61 @@
         <!-- Recent projects -->
         <section
           id="projects"
-          class="relative z-10 flex scroll-mt-8 flex-col gap-8 px-5 pb-20 pt-12 lg:gap-[60px] lg:px-[min(96px,5.55vw)] lg:pt-[45px]"
+          class="wrap relative z-10 flex flex-col gap-8 pb-24 pt-12 lg:max-w-none lg:gap-[60px] lg:px-[min(96px,5.55vw)] lg:pb-40 lg:pt-[45px]"
           aria-labelledby="projects-title"
         >
           <h2 id="projects-title" class="section-heading">My Recent Projects</h2>
 
-          <div class="grid gap-8 lg:gap-[60px]">
-            <a class="group flex w-[790px] max-w-full flex-col" href="./texas-cultural-trust.html">
-              <div class="aspect-[1590/880] overflow-hidden rounded-t-[32px]">
-                <video
-                  class="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  data-autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="none"
-                  poster="./assets/videos/project-txct-poster.jpg"
-                  aria-label="Texas Cultural Trust Events page shown on a laptop and phone"
-                >
-                  <source src="./assets/videos/project-txct.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="flex items-center justify-between gap-4 rounded-b-[32px] border border-stroke bg-off-white px-6 py-6 lg:min-h-[187px] lg:px-10 lg:py-7">
-                <div class="flex min-w-0 flex-1 flex-col gap-1">
-                  <h3 class="text-h3 font-semibold">Making art events easier to discover across Texas</h3>
-                  <p class="text-body-lg">Texas Cultural Trust</p>
+          <ul class="project-grid" role="list">
+            <li>
+              <a class="project-card group" href="./texas-cultural-trust.html">
+                <div class="project-card__media">
+                  <video
+                    data-autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="none"
+                    width="1590"
+                    height="880"
+                    poster="./assets/videos/project-txct-poster.jpg"
+                    aria-label="Texas Cultural Trust Events page shown on a laptop"
+                  >
+                    <source src="./assets/videos/project-txct.mp4" type="video/mp4" />
+                  </video>
                 </div>
-                <img class="size-14 shrink-0 -rotate-90 lg:-ml-10 lg:size-[76px]" src="./assets/icons/arrow-card.svg" alt="" />
-              </div>
-            </a>
-          </div>
+                <div class="project-card__body">
+                  <div class="min-w-0">
+                    <h3>Making art events easier to discover across Texas</h3>
+                    <p>Texas Cultural Trust</p>
+                  </div>
+                  <img class="project-card__arrow" src="./assets/icons/arrow-up-right.svg" alt="" width="76" height="76" />
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="project-card group" href="./sure-walk.html">
+                <div class="project-card__media">
+                  <img
+                    src="./assets/images/surewalk/thumbnail-1600w.jpg"
+                    srcset="./assets/images/surewalk/thumbnail-800w.jpg 800w, ./assets/images/surewalk/thumbnail-1600w.jpg 1600w"
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                    width="1600"
+                    height="864"
+                    loading="lazy"
+                    alt="Sure Walk app screens on two phones, with a card showing a passenger name and a reminder to turn off Do Not Disturb"
+                  />
+                </div>
+                <div class="project-card__body">
+                  <div class="min-w-0">
+                    <h3>Making late-night rides easier for UT students</h3>
+                    <p>UT Austin: Parking &amp; Transportation</p>
+                  </div>
+                  <img class="project-card__arrow" src="./assets/icons/arrow-up-right.svg" alt="" width="76" height="76" />
+                </div>
+              </a>
+            </li>
+          </ul>
         </section>
       </main>
     </div>

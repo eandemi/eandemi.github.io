@@ -3,85 +3,211 @@
 @source "../../index.html";
 @source "../../about.html";
 @source "../../texas-cultural-trust.html";
+@source "../../sure-walk.html";
 
-/* Design tokens from the Figma file (Isa's Portfolio). */
-@theme {
-  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  --font-quote: "Inter", ui-sans-serif, system-ui, sans-serif;
-
-  --color-off-white: #fef6ee;
-  --color-cream: #f8eada;
-  --color-ink: #241410;
-  --color-blue: #5c91d0;
-  --color-green: #579d42;
-  --color-stroke: #cac0b9;
-  --color-grey: #695753;
-  --color-dark-gray: #66554d;
-  --color-deep-gray: #372926;
-  --color-gray: #918176;
-
-  --shadow-card: 2px 4px 20px 0 rgb(72 41 34 / 0.14);
-  --shadow-card-lg: 4px 6px 20px 0 rgb(71 41 33 / 0.15);
-}
-
-/* Responsive type scale, mirroring the Figma "Responsive/*" text styles. */
+/* ---------------------------------------------------------------------------
+   Design tokens (Figma "Primitives" + "Color" collections, Nov 25 2026).
+   Primitives are raw values: components use the role tokens below them.
+   --------------------------------------------------------------------------- */
 :root {
-  --fs-hero: 48px;
-  --lh-hero: 52px;
-  --fs-h1: 40px;
-  --lh-h1: 48px;
-  --fs-h2: 32px;
-  --lh-h2: 40px;
-  --fs-h3: 26px;
-  --lh-h3: 34px;
-  --fs-h4: 22px;
-  --lh-h4: 30px;
-  --fs-body-lg: 20px;
-  --lh-body-lg: 32px;
-  --fs-body: 18px;
-  --lh-body: 28px;
-  --fs-caption: 14px;
-  --lh-caption: 20px;
+  /* Primitives: don't use these directly in components */
+  --color-neutral-0: #fef6ee; /* off-white */
+  --color-neutral-50: #f8eada; /* cream */
+  --color-neutral-200: #cac0b9;
+  --color-neutral-300: #d2c9c2;
+  --color-neutral-400: #918176;
+  --color-neutral-600: #756359;
+  --color-neutral-700: #66554d;
+  --color-neutral-900: #372926;
+  --color-neutral-950: #241410;
+  --color-blue-50: #e6e7e9;
+  --color-blue-100: #cbd6e5;
+  --color-blue-200: #98b7dc;
+  --color-blue-500: #5c91d0;
+  --color-blue-700: #36679e;
+  --color-sky-50: #ecebeb;
+  --color-green-50: #e5e9d4;
+  --color-green-300: #a6cd57;
+  --color-green-500: #579d42;
+  --color-green-700: #3f7330;
+  --color-red-50: #fadcd5;
+  --color-red-500: #e64646;
+  --color-red-700: #b52b2b;
+
+  /* Text */
+  --color-text-primary: var(--color-neutral-950); /* 16.6:1 on page */
+  --color-text-secondary: var(--color-neutral-700); /* utility labels, supporting text */
+  --color-text-tertiary: var(--color-neutral-600); /* caption descriptions */
+  --color-text-inverse: var(--color-neutral-0);
+  --color-text-brand: var(--color-blue-700); /* blue text at any size; image labels */
+  --color-text-brand-large: var(--color-blue-500); /* ONLY 24px+ on surface-page */
+  --color-text-green: var(--color-green-700);
+  --color-text-green-large: var(--color-green-500); /* ONLY 24px+ on surface-page */
+  --color-text-error: var(--color-red-700);
+
+  /* Surfaces */
+  --color-surface-page: var(--color-neutral-0);
+  --color-surface-subtle: var(--color-neutral-50);
+  --color-surface-muted: var(--color-neutral-300);
+  --color-surface-inverse: var(--color-neutral-950);
+  --color-surface-brand: var(--color-blue-500);
+  --color-surface-brand-strong: var(--color-blue-700); /* pills with small off-white text */
+  --color-surface-brand-soft: var(--color-blue-200);
+  --color-surface-green: var(--color-green-500);
+  --color-surface-lime: var(--color-green-300);
+  --color-surface-red: var(--color-red-500);
+  --color-surface-tint-blue: var(--color-blue-50);
+  --color-surface-tint-blue-strong: var(--color-blue-100);
+  --color-surface-tint-sky: var(--color-sky-50);
+  --color-surface-tint-green: var(--color-green-50);
+  --color-surface-tint-red: var(--color-red-50);
+
+  /* Borders */
+  --color-border-default: var(--color-neutral-200);
+  --color-border-subtle: var(--color-neutral-50);
+  --color-border-strong: var(--color-neutral-400);
+  --color-border-brand: var(--color-blue-500);
+  --color-border-error: var(--color-red-500);
+
+  /* Decorative graphics (contrast-exempt) */
+  --color-graphic-dark: var(--color-neutral-950);
+  --color-graphic-blue: var(--color-blue-500);
+  --color-graphic-sky: var(--color-blue-200);
+  --color-graphic-green: var(--color-green-500);
+  --color-graphic-lime: var(--color-green-300);
+  --color-graphic-red: var(--color-red-500);
+  --color-graphic-cream: var(--color-neutral-50);
+  --color-graphic-off-white: var(--color-neutral-0);
+
+  /* Brand gradient (paint style "Blue-Green/Primary") */
+  --gradient-primary: linear-gradient(90deg, #87b4ea 0%, #90d67b 100%);
+
+  /* Shadow: sidebar nav + footer CTA only */
+  --shadow-card: 1px 2px 10px rgba(71, 41, 33, 0.1);
+
+  /* Type: Outfit. Fluid between mobile (402px) and desktop (1728px) */
+  --font-family: "Outfit", system-ui, sans-serif;
+  --fs-hero: clamp(48px, 2.48vw + 38px, 80px);
+  --lh-hero: 1.1;
+  --fs-h1: clamp(36px, 2.11vw + 27.5px, 64px);
+  --lh-h1: 1.15;
+  --fs-h2: clamp(32px, 1.21vw + 27.2px, 48px);
+  --lh-h2: 1.22;
+  --fs-h3: clamp(24px, 0.9vw + 20.4px, 36px);
+  --lh-h3: 1.25;
+  --fs-h4: 28px;
+  --lh-h4: 36px;
+  --fs-body-lg: 28px;
+  --lh-body-lg: 42px;
+  --fs-body: 24px;
+  --lh-body: 36px;
+  --fs-caption-title: clamp(20px, 0.15vw + 19.4px, 22px);
+  --lh-caption-title: 1.36;
+  --fs-caption: 18px;
+  --lh-caption: 28px;
+  --fs-label: 18px;
+  --lh-label: 24px;
 }
 
-@media (min-width: 1024px) {
+/* Phones: Figma keeps body at 24px; scale it down a little (never under 18px). */
+@media (max-width: 479.98px) {
   :root {
-    --fs-hero: 80px;
-    --lh-hero: 80px;
-    --fs-h1: 64px;
-    --lh-h1: 72px;
-    --fs-h2: 48px;
-    --lh-h2: 58px;
-    --fs-h3: 36px;
-    --lh-h3: 44px;
-    --fs-h4: 28px;
-    --lh-h4: 36px;
-    --fs-body-lg: 28px;
-    --lh-body-lg: 42px;
-    --fs-body: 24px;
-    --lh-body: 36px;
-    --fs-caption: 16px;
-    --lh-caption: 24px;
+    --fs-h4: 24px;
+    --lh-h4: 32px;
+    --fs-body-lg: 22px;
+    --lh-body-lg: 34px;
+    --fs-body: 20px;
+    --lh-body: 30px;
   }
 }
 
+/* Tailwind theme: drop the default palette so only tokens can be used, then
+   expose the role tokens as short utility names (text-fg, bg-page, border-line…). */
+@theme {
+  --color-*: initial;
+  --font-sans: var(--font-family);
+  --shadow-*: initial;
+}
+
+@theme inline {
+  --color-fg: var(--color-text-primary);
+  --color-fg-secondary: var(--color-text-secondary);
+  --color-fg-tertiary: var(--color-text-tertiary);
+  --color-fg-inverse: var(--color-text-inverse);
+  --color-fg-brand: var(--color-text-brand);
+  --color-fg-brand-lg: var(--color-text-brand-large);
+  --color-fg-green: var(--color-text-green);
+  --color-fg-green-lg: var(--color-text-green-large);
+  --color-fg-error: var(--color-text-error);
+
+  --color-page: var(--color-surface-page);
+  --color-subtle: var(--color-surface-subtle);
+  --color-muted: var(--color-surface-muted);
+  --color-inverse: var(--color-surface-inverse);
+  --color-brand: var(--color-surface-brand);
+  --color-brand-strong: var(--color-surface-brand-strong);
+  --color-brand-soft: var(--color-surface-brand-soft);
+  --color-green: var(--color-surface-green);
+  --color-lime: var(--color-surface-lime);
+  --color-red: var(--color-surface-red);
+  --color-tint-blue: var(--color-surface-tint-blue);
+  --color-tint-blue-strong: var(--color-surface-tint-blue-strong);
+  --color-tint-sky: var(--color-surface-tint-sky);
+  --color-tint-green: var(--color-surface-tint-green);
+  --color-tint-red: var(--color-surface-tint-red);
+
+  --color-line: var(--color-border-default);
+  --color-line-subtle: var(--color-border-subtle);
+  --color-line-strong: var(--color-border-strong);
+  --color-line-brand: var(--color-border-brand);
+  --color-line-error: var(--color-border-error);
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+}
+
+/* Only the sidebar nav and the footer CTA card use this. */
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    background: var(--color-off-white);
-    color: var(--color-ink);
-    font-family: var(--font-sans);
+    background: var(--color-surface-page);
+    color: var(--color-text-primary);
+    font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
   }
 
-  img {
+  img,
+  video {
     max-width: 100%;
+    height: auto;
+  }
+
+  /* One visible focus style everywhere (3.2:1 against the page, AA for UI). */
+  :focus-visible {
+    outline: 3px solid var(--color-border-brand);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  [id] {
+    scroll-margin-top: 24px;
   }
 }
 
+/* Type styles (Figma "Responsive/*"). */
 @utility text-hero {
   font-size: var(--fs-hero);
   line-height: var(--lh-hero);
@@ -110,115 +236,272 @@
   font-size: var(--fs-body);
   line-height: var(--lh-body);
 }
+@utility text-caption-title {
+  font-size: var(--fs-caption-title);
+  line-height: var(--lh-caption-title);
+  font-weight: 500;
+}
 @utility text-caption {
   font-size: var(--fs-caption);
   line-height: var(--lh-caption);
 }
+/* Label: SemiBold 18/24, +4% tracking, uppercased by CSS (never typed in caps). */
+@utility text-label {
+  font-size: var(--fs-label);
+  line-height: var(--lh-label);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
 @layer components {
-  /* Navigation bar (Figma component "nav bar"). */
+  /* Page width: 24px gutters on mobile, 48px tablet, 80px desktop. */
+  .wrap {
+    width: 100%;
+    max-width: calc(1568px + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    --gutter: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .wrap {
+      --gutter: 48px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .wrap {
+      --gutter: 80px;
+    }
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: -100px;
+    z-index: 100;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: var(--color-surface-inverse);
+    color: var(--color-text-inverse);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+  }
+
+  .skip-link:focus {
+    top: 16px;
+  }
+
+  /* -------------------------------------------------------------------------
+     Navigation bar (Figma component "nav bar")
+     ------------------------------------------------------------------------- */
+  .site-header {
+    position: relative;
+    z-index: 20;
+  }
+
   .site-nav {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     gap: 24px;
-    max-width: 1728px;
-    margin-inline: auto;
-    padding: 32px 20px 24px;
+    padding-block: 20px;
+  }
+
+  .site-nav__logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 
   .site-nav__logo img {
     display: block;
-    width: 132px;
+    width: 160px;
     height: auto;
   }
 
-  .site-nav__links {
-    display: flex;
+  .site-nav__toggle {
+    display: inline-flex;
     align-items: center;
-    gap: 16px;
-    font-size: 17px;
-    line-height: 24px;
+    justify-content: center;
+    gap: 8px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px 14px;
+    border: 2px solid var(--color-border-default);
+    border-radius: 999px;
+    background: var(--color-surface-page);
+    color: var(--color-text-primary);
+    font-size: var(--fs-caption);
+    line-height: 1;
     font-weight: 600;
-    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .site-nav__toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .site-nav__links {
+    display: none;
+  }
+
+  .site-nav[data-open] .site-nav__links {
+    position: absolute;
+    inset-inline: 24px;
+    top: calc(100% - 8px);
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    border: 2px solid var(--color-border-default);
+    border-radius: 24px;
+    background: var(--color-surface-page);
+    box-shadow: var(--shadow-card);
   }
 
   .site-nav__links a {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 4px;
-    border-radius: 20px;
-    color: var(--color-ink);
+    gap: 6px;
+    min-height: 44px;
+    padding: 8px 16px;
+    border-radius: 16px;
+    color: var(--color-text-primary);
+    font-size: var(--fs-h4);
+    line-height: var(--lh-h4);
+    font-weight: 600;
     transition: color 150ms ease;
   }
 
   .site-nav__links a:hover,
   .site-nav__links a[aria-current="page"] {
-    color: var(--color-blue);
+    color: var(--color-text-brand);
   }
 
   .site-nav__links img {
-    width: 0.86em;
-    height: 0.86em;
+    width: 24px;
+    height: 24px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .site-nav {
-      padding: 80px 80px 36px;
+      padding-block: 48px 28px;
+    }
+
+    .site-nav__toggle {
+      display: none;
+    }
+
+    .site-nav .site-nav__links,
+    .site-nav[data-open] .site-nav__links {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      padding: 0;
+      border: 0;
+      background: none;
+      box-shadow: none;
+    }
+
+    .site-nav__links a {
+      padding: 4px 8px;
+      gap: 4px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .site-nav {
+      padding-block: 80px 36px;
     }
 
     .site-nav__logo img {
       width: 255px;
     }
 
-    .site-nav__links {
-      gap: 50px;
-      font-size: var(--fs-h4);
-      line-height: var(--lh-h4);
+    .site-nav .site-nav__links {
+      gap: 34px;
     }
   }
 
-  /* Pill buttons (Figma component "Buttons (desktop)"). */
+  /* -------------------------------------------------------------------------
+     Buttons (Figma "Buttons (desktop)" / "Buttons (mobile)")
+     Solid buttons keep text at 24px+ so off-white on brand blue stays AA-large.
+     ------------------------------------------------------------------------- */
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    border: 2px solid var(--color-blue);
+    gap: 12px;
+    min-height: 44px;
+    border: 2px solid var(--color-border-brand);
     border-radius: 28px;
-    padding: 12px 18px;
+    padding: 10px 18px;
     font-size: var(--fs-h4);
     line-height: var(--lh-h4);
     font-weight: 600;
     white-space: nowrap;
     transition:
       background-color 150ms ease,
+      border-color 150ms ease,
       color 150ms ease;
   }
 
   .btn--solid {
-    background: var(--color-blue);
-    color: var(--color-off-white);
+    background: var(--color-surface-brand);
+    color: var(--color-text-inverse);
   }
 
   .btn--solid:hover {
-    background: #4a7fbf;
-    border-color: #4a7fbf;
+    background: var(--color-surface-brand-strong);
+    border-color: var(--color-surface-brand-strong);
   }
 
   .btn--outline {
-    background: var(--color-off-white);
-    color: var(--color-blue);
+    background: var(--color-surface-page);
+    color: var(--color-text-brand-large);
   }
 
   .btn--outline:hover {
-    background: var(--color-blue);
-    color: var(--color-off-white);
+    border-color: var(--color-surface-brand-strong);
+    color: var(--color-text-brand);
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     .btn {
       padding: 16px 20px;
+    }
+  }
+
+  /* Round icon button with the new arrow (back / next / scroll). */
+  .icon-btn {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    transition: transform 150ms ease;
+  }
+
+  .icon-btn img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .icon-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (min-width: 1280px) {
+    .icon-btn--lg {
+      width: 76px;
+      height: 76px;
     }
   }
 
@@ -241,31 +524,212 @@
     background: url("../assets/icons/clover.svg") center / contain no-repeat;
   }
 
+  /* -------------------------------------------------------------------------
+     Home: project cards
+     ------------------------------------------------------------------------- */
+  .project-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  @media (min-width: 1024px) {
+    .project-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 40px 84px;
+    }
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 32px;
+  }
+
+  .project-card__media {
+    aspect-ratio: 1590 / 880;
+    overflow: hidden;
+    border-radius: 32px 32px 0 0;
+    background: var(--color-surface-subtle);
+  }
+
+  .project-card__media > * {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+  }
+
+  .project-card:hover .project-card__media > * {
+    transform: scale(1.02);
+  }
+
+  .project-card__body {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border: 1px solid var(--color-border-default);
+    border-top: 0;
+    border-radius: 0 0 32px 32px;
+    background: var(--color-surface-page);
+    padding: 20px 24px;
+  }
+
+  .project-card__body h3 {
+    font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
+    font-weight: 600;
+  }
+
+  .project-card__body p {
+    margin-top: 4px;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-body-lg);
+  }
+
+  .project-card__arrow {
+    flex: none;
+    width: 56px;
+    height: 56px;
+  }
+
+  @media (min-width: 1280px) {
+    .project-card__body {
+      min-height: 187px;
+      padding: 28px 40px;
+    }
+
+    .project-card__arrow {
+      width: 76px;
+      height: 76px;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     About: "Currently" card + "Off the clock" masonry gallery
+     ------------------------------------------------------------------------- */
+  .about-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  @media (min-width: 1024px) {
+    .about-intro {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+      gap: 64px;
+    }
+  }
+
+  .currently-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-self: start;
+    padding: 24px 28px;
+    border: 1px solid var(--color-border-default);
+    border-radius: 16px;
+    background: var(--color-surface-page);
+  }
+
+  .currently-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .currently-card li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  /* 4 columns (staggered) ≥1280, 2 balanced columns below (phones included). */
+  .gallery {
+    columns: 2;
+    column-gap: 12px;
+  }
+
+  .gallery__col {
+    display: contents;
+  }
+
+  .gallery .photo-card {
+    margin-bottom: 12px;
+    break-inside: avoid;
+  }
+
+  @media (min-width: 768px) {
+    .gallery {
+      column-gap: 40px;
+      max-width: 788px;
+      margin-inline: auto;
+    }
+
+    .gallery .photo-card {
+      margin-bottom: 40px;
+      break-inside: avoid;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .gallery {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 40px;
+      columns: auto;
+      max-width: none;
+    }
+
+    .gallery__col {
+      display: flex;
+      flex: 0 1 376px;
+      flex-direction: column;
+      gap: 100px;
+      min-width: 0;
+    }
+
+    .gallery__col:nth-child(even) {
+      padding-top: 132px;
+    }
+
+    .gallery .photo-card {
+      margin-bottom: 0;
+    }
+  }
+
   /* Polaroid-style photo card (Figma component "photo"). */
   .photo-card {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    border: 2px solid var(--color-cream);
+    width: 100%;
+    max-width: 376px;
+    border: 2px solid var(--color-border-subtle);
     border-radius: 16px;
-    background: var(--color-off-white);
-    padding: 27px 30px 60px;
-    filter: drop-shadow(2px 4px 10px rgb(72 41 34 / 0.14));
+    background: var(--color-surface-page);
+    padding: 27px 30px 48px;
+    box-shadow: var(--shadow-card);
   }
 
   .photo-card img {
     display: block;
     width: 100%;
-    max-width: 314px;
     aspect-ratio: 314 / 311;
     object-fit: cover;
+    border-radius: 12px;
   }
 
   .photo-card figcaption {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    max-width: 312px;
   }
 
   .photo-card h3 {
@@ -275,46 +739,256 @@
   }
 
   .photo-card p {
-    color: var(--color-grey);
+    color: var(--color-text-secondary);
     font-size: var(--fs-body);
     line-height: var(--lh-body);
   }
 
-  /* Bordered off-white card used across the case study. */
-  .card {
-    border: 2px solid var(--color-stroke);
-    border-radius: 16px;
-    background: var(--color-off-white);
+  /* Phones: two cards per row, so tighten padding and type (never under 18px). */
+  @media (max-width: 767.98px) {
+    .photo-card {
+      gap: 10px;
+      padding: 10px 10px 16px;
+      border-radius: 12px;
+    }
+
+    .photo-card img {
+      border-radius: 8px;
+    }
+
+    .photo-card figcaption {
+      gap: 4px;
+      padding-inline: 2px;
+    }
+
+    .photo-card h3 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    .photo-card p {
+      font-size: 18px;
+      line-height: 26px;
+    }
   }
 
-  /* Image caption: label + small description. */
-  .caption {
+  /* -------------------------------------------------------------------------
+     Case study layout: sticky sidebar ≥1280, collapsible menu below.
+     ------------------------------------------------------------------------- */
+  .case-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  @media (min-width: 1280px) {
+    .case-layout {
+      grid-template-columns: minmax(260px, 348px) minmax(0, 1196px);
+      justify-content: space-between;
+      gap: 64px;
+    }
+  }
+
+  .case-sidebar {
+    display: none;
+  }
+
+  @media (min-width: 1280px) {
+    .case-sidebar {
+      display: block;
+    }
+
+    .case-sidebar__inner {
+      position: sticky;
+      top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .case-toc-mobile {
+      display: none;
+    }
+  }
+
+  .toc {
+    padding: 32px 24px;
+    border: 2px solid var(--color-border-default);
+    border-radius: 24px;
+    background: var(--color-surface-page);
+    box-shadow: var(--shadow-card);
+  }
+
+  .toc ol {
     display: flex;
     flex-direction: column;
+    margin-top: 12px;
   }
 
-  .caption > :first-child {
-    color: var(--color-dark-gray);
+  .toc a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding-block: 10px;
+    color: var(--color-text-primary);
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-body-lg);
+    transition: color 150ms ease;
+  }
+
+  .toc a::before {
+    content: "";
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-border-default);
+  }
+
+  .toc a:hover {
+    color: var(--color-text-brand);
+  }
+
+  /* Active item: brand blue at 28px (large text), per the Figma sidebar. */
+  .toc a[aria-current="true"] {
+    color: var(--color-text-brand-large);
+  }
+
+  .toc a[aria-current="true"]::before {
+    background: var(--color-graphic-blue);
+  }
+
+  /* "Skip to Solution" pill under the sidebar nav. */
+  .skip-solution {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 16px 24px 16px 40px;
+    border-radius: 40px;
+    background: var(--color-surface-brand);
+    color: var(--color-text-inverse);
+    font-size: var(--fs-h4);
+    line-height: var(--lh-h4);
+    font-weight: 600;
+    box-shadow: var(--shadow-card);
+    transition: background-color 150ms ease;
+  }
+
+  .skip-solution:hover {
+    background: var(--color-surface-brand-strong);
+  }
+
+  .skip-solution img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .back-to-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 82px;
+    padding: 16px 24px 16px 40px;
+    border: 2px solid var(--color-border-default);
+    border-radius: 40px;
+    background: var(--color-surface-page);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    font-weight: 600;
+  }
+
+  .back-to-top img {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Collapsible "On this page" menu used below 1280px. */
+  .case-toc-mobile {
+    border: 2px solid var(--color-border-default);
+    border-radius: 24px;
+    background: var(--color-surface-page);
+  }
+
+  .case-toc-mobile summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 56px;
+    padding: 12px 20px;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .case-toc-mobile summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .case-toc-mobile summary::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-3px) rotate(45deg);
+    transition: transform 150ms ease;
+  }
+
+  .case-toc-mobile[open] summary::after {
+    transform: translateY(3px) rotate(-135deg);
+  }
+
+  .case-toc-mobile ol {
+    padding: 0 20px 12px;
+  }
+
+  .case-toc-mobile a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-text-primary);
     font-size: var(--fs-body);
     line-height: var(--lh-body);
   }
 
-  .caption > :last-child {
-    color: var(--color-gray);
-    font-size: var(--fs-caption);
-    line-height: var(--lh-caption);
+  /* Case study sections and rhythm. */
+  .case-main {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    min-width: 0;
   }
 
-  .eyebrow {
-    font-size: var(--fs-caption);
-    line-height: var(--lh-caption);
-    text-transform: uppercase;
+  @media (min-width: 1280px) {
+    .case-main {
+      gap: 100px;
+    }
   }
 
-  .chip {
-    display: inline-flex;
-    border-radius: 999px;
-    padding: 8px 16px;
+  .case-section {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    min-width: 0;
+  }
+
+  .case-subsection {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .prose {
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+  }
+
+  .prose > * + * {
+    margin-top: 1em;
   }
 
   .prose-lg {
@@ -322,131 +996,189 @@
     line-height: var(--lh-body-lg);
   }
 
+  .prose strong,
   .prose-lg strong {
     font-weight: 700;
   }
 
-  /* Horizontal image strip with the design's cream scrollbar (Figma "Scrollbar":
-     Track + Thumb). The native bar is hidden; main.js drives the custom one. */
-  .scroller__viewport {
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
+  .prose ul,
+  .prose-lg ul {
+    padding-left: 1.2em;
+    list-style: disc;
   }
 
-  .scroller__viewport::-webkit-scrollbar {
-    display: none;
+  .prose ol,
+  .prose-lg ol {
+    padding-left: 1.4em;
+    list-style: decimal;
   }
 
-  .scroller__viewport:focus-visible {
-    outline: 2px solid var(--color-blue);
-    outline-offset: 4px;
+  /* Case study hero meta row (ROLE / TEAM / …). */
+  .meta-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 32px;
   }
 
-  .scroller__track {
-    position: relative;
-    height: 10px;
-    margin-top: 12px;
-    border-radius: 999px;
-    background: var(--color-cream);
-    cursor: pointer;
-    touch-action: none;
+  @media (min-width: 768px) {
+    .meta-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 
-  .scroller__thumb {
-    position: absolute;
-    inset-block: 0;
-    left: 0;
-    width: 240px;
-    border-radius: 999px;
-    background: var(--color-stroke);
-    cursor: grab;
-    transition: background-color 150ms ease;
+  @media (min-width: 1280px) {
+    .meta-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
   }
 
-  .scroller__track:hover .scroller__thumb,
-  .scroller--dragging .scroller__thumb {
-    background: var(--color-gray);
+  .meta-list dt {
+    color: var(--color-text-brand);
   }
 
-  .scroller--dragging,
-  .scroller--dragging .scroller__thumb {
-    cursor: grabbing;
-    user-select: none;
+  .meta-list dd {
+    margin-top: 8px;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
   }
 
-  /* Nothing to scroll: hide the bar. */
-  .scroller--static .scroller__track {
-    visibility: hidden;
-  }
-
-  /* Cropped image: the frame clips an absolutely positioned image. */
-  .crop {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .crop > img {
-    position: absolute;
-    max-width: none;
-  }
-
-  /* Round arrow button; the SVG includes its drop shadow, so it overflows the box. */
-  .arrow-btn {
-    position: relative;
-    display: inline-block;
-    flex: none;
-  }
-
-  .arrow-btn__inner {
-    position: absolute;
-    inset: 0;
-    display: block;
-  }
-
-  .arrow-btn__inner img {
-    position: absolute;
-    top: -21.05%;
-    left: -23.68%;
-    width: 152.63%;
-    height: 152.63%;
-    max-width: none;
-  }
-
-  .skip-btn {
-    width: 347px;
-    border-radius: 40px;
-    padding: 16px 40px;
-    filter: drop-shadow(0 0.6px 0.3px rgb(0 0 0 / 0.23)) drop-shadow(0 2.29px 1.14px rgb(0 0 0 / 0.2))
-      drop-shadow(0 10px 5px rgb(0 0 0 / 0.08));
-  }
-
-  /* Image with a fixed design ratio that shrinks with its column. */
-  .media {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  .case-section {
-    scroll-margin-top: 32px;
-  }
-
-  .tier-card {
+  /* -------------------------------------------------------------------------
+     Image caption pattern: label → image → caption title → description
+     ------------------------------------------------------------------------- */
+  .figure {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    box-shadow: var(--shadow-card);
+    min-width: 0;
   }
 
+  .figure__label {
+    margin-bottom: 12px;
+    color: var(--color-text-brand);
+    font-size: var(--fs-label);
+    line-height: var(--lh-label);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .figure__media {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .figure--phone {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .figure figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 14px;
+  }
+
+  .figure__title {
+    color: var(--color-text-primary);
+    font-size: var(--fs-caption-title);
+    line-height: var(--lh-caption-title);
+    font-weight: 500;
+  }
+
+  .figure__desc {
+    color: var(--color-text-tertiary);
+    font-size: var(--fs-caption);
+    line-height: var(--lh-caption);
+  }
+
+  /* Before/after and other side-by-side figure rows. */
+  .figure-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .figure-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .figure-row--3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 1023.98px) and (min-width: 768px) {
+    .figure-row--3 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Cards: no shadows in case studies. 2px default border, 24px radius.
+     ------------------------------------------------------------------------- */
+  .card {
+    border: 2px solid var(--color-border-default);
+    border-radius: 24px;
+    background: var(--color-surface-page);
+  }
+
+  .card--16 {
+    border-radius: 16px;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .card-grid--2,
+    .card-grid--3,
+    .card-grid--4 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .card-grid--3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card-grid--4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .callout {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 24px;
+    border-radius: 16px;
+    background: var(--color-surface-subtle);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 8px 16px;
+  }
+
+  /* Outcome rows: title beside text on wide screens. */
   .outcome-card {
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 24px;
-    box-shadow: var(--shadow-card-lg);
   }
 
   .outcome-card h3 {
@@ -456,10 +1188,9 @@
     font-weight: 600;
   }
 
-  .outcome-card p {
+  .outcome-card > :not(h3) {
     flex: 1;
-    font-size: var(--fs-body-lg);
-    line-height: var(--lh-body-lg);
+    min-width: 0;
   }
 
   @media (min-width: 768px) {
@@ -479,11 +1210,10 @@
     flex-direction: column;
     gap: 12px;
     padding: 28px;
-    box-shadow: var(--shadow-card-lg);
   }
 
-  .takeaway-card > span {
-    color: var(--color-blue);
+  .takeaway-card__num {
+    color: var(--color-text-brand-large);
     font-size: var(--fs-h3);
     line-height: var(--lh-h3);
     font-weight: 600;
@@ -500,34 +1230,283 @@
     line-height: var(--lh-body);
   }
 
-  /* "On this page" sidebar. */
-  .toc a {
+  /* "Thanks for Reading!" footer card: one of two places with a shadow. */
+  .cta-card {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-block: 10px;
-    color: rgb(36 20 16 / 0.85);
-    font-size: var(--fs-body-lg);
-    line-height: var(--lh-body-lg);
-    transition: color 150ms ease;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 32px;
+    border: 2px solid var(--color-border-default);
+    border-radius: 32px;
+    background: var(--color-surface-page);
+    box-shadow: var(--shadow-card);
   }
 
-  .toc a::before {
-    content: "";
+  /* -------------------------------------------------------------------------
+     Horizontal image strip: scroll-snap + visible custom scrollbar.
+     ------------------------------------------------------------------------- */
+  .scroller__viewport {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .scroller__viewport > * {
     flex: none;
-    width: 6px;
-    height: 6px;
+    scroll-snap-align: start;
+  }
+
+  .scroller__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroller__hint {
+    margin-top: 8px;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-caption);
+    line-height: var(--lh-caption);
+  }
+
+  .scroller__track {
+    position: relative;
+    height: 10px;
+    margin-top: 12px;
     border-radius: 999px;
-    background: var(--color-stroke);
+    background: var(--color-surface-subtle);
+    cursor: pointer;
+    touch-action: none;
   }
 
-  .toc a:hover,
-  .toc a[aria-current="true"] {
-    color: var(--color-blue);
+  .scroller__thumb {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 240px;
+    border-radius: 999px;
+    background: var(--color-border-default);
+    cursor: grab;
+    transition: background-color 150ms ease;
   }
 
-  .toc a[aria-current="true"]::before {
-    background: var(--color-blue);
+  .scroller__track:hover .scroller__thumb,
+  .scroller--dragging .scroller__thumb {
+    background: var(--color-border-strong);
+  }
+
+  .scroller--dragging,
+  .scroller--dragging .scroller__thumb {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  .scroller--static .scroller__track,
+  .scroller--static .scroller__hint {
+    display: none;
+  }
+
+  /* -------------------------------------------------------------------------
+     Tap-to-enlarge for wide images (main.js wraps img[data-zoom]).
+     ------------------------------------------------------------------------- */
+  .zoom-btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+    border-radius: 16px;
+  }
+
+  .zoom-dialog {
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--color-surface-inverse);
+    color: var(--color-text-inverse);
+  }
+
+  .zoom-dialog::backdrop {
+    background: var(--color-surface-inverse);
+  }
+
+  .zoom-dialog__scroll {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  .zoom-dialog__scroll img {
+    display: block;
+    width: auto;
+    max-width: none;
+    height: auto;
+    max-height: none;
+    min-width: 100%;
+  }
+
+  .zoom-dialog__close {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 8px 16px;
+    border: 2px solid var(--color-text-inverse);
+    border-radius: 999px;
+    background: var(--color-surface-inverse);
+    color: var(--color-text-inverse);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* Cropped image: the frame clips an absolutely positioned image (Figma crops). */
+  .crop {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .crop > img {
+    position: absolute;
+    max-width: none;
+    height: auto;
+  }
+
+  /* Before → after with an arrow between; stacks with a down arrow on phones. */
+  .compare {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    gap: 16px;
+  }
+
+  .compare__arrow {
+    justify-self: center;
+    width: 22px;
+    height: 22px;
+    transform: rotate(90deg);
+  }
+
+  @media (min-width: 768px) {
+    .compare {
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 24px;
+    }
+
+    .compare__arrow {
+      transform: none;
+    }
+  }
+
+  /* Pull quote with a brand rule on the left (Figma "Quote"). */
+  .quote {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 24px;
+    border-left: 4px solid var(--color-graphic-blue);
+  }
+
+  .quote-text {
+    color: var(--color-text-primary);
+    font-family: "Inter", var(--font-family);
+    font-size: 22px;
+    line-height: 1.6;
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  @media (max-width: 479.98px) {
+    .quote-text {
+      font-size: 20px;
+    }
+  }
+
+  /* Numbered annotation marker: 24px text on brand blue passes AA-large. */
+  .marker {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    background: var(--color-surface-brand);
+    color: var(--color-text-inverse);
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  /* Sure Walk refinement rows: caption beside before/after crops on desktop. */
+  .refine-row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .refine-row + .refine-row {
+    border-top: 2px solid var(--color-border-default);
+  }
+
+  .refine-row__text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  @media (min-width: 768px) {
+    .refine-row {
+      padding: 32px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .refine-row {
+      flex-direction: row;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .refine-row__text {
+      flex: none;
+      width: 308px;
+    }
+  }
+
+  .video-frame {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  /* Decorations hide on small screens so they never overlap content. */
+  .deco {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  @media (max-width: 1023.98px) {
+    .deco--hide-sm {
+      display: none;
+    }
   }
 }
 
@@ -552,5 +1531,11 @@
 
   .spin-flower {
     animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }
