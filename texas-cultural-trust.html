@@ -197,7 +197,7 @@
             <p class="prose-lg">As you may notice, there is more than just the Events Calendar fleshed out here.</p>
             <div class="case-subsection !gap-5">
               <h3 class="text-h3 font-semibold">Initial Scope</h3>
-              <div class="compare !items-stretch md:!items-center">
+              <div class="compare !items-stretch md:!items-center 2xl:!grid-cols-[minmax(0,1fr)_auto_minmax(0,454px)]">
                 <div class="card card--16 flex w-full flex-col items-center gap-3.5 p-6">
                   <p class="text-body">Originally asked to complete:</p>
                   <ul class="flex flex-wrap justify-center gap-2.5" role="list">
@@ -207,7 +207,7 @@
                   </ul>
                 </div>
                 <img class="compare__arrow" src="./assets/icons/arrow-right.svg" alt="" width="22" height="22" />
-                <div class="flex w-full flex-col items-center justify-center gap-3.5 rounded-2xl bg-tint-blue p-6 md:min-h-[154px] xl:w-[454px]">
+                <div class="flex w-full flex-col items-center justify-center gap-3.5 rounded-2xl bg-tint-blue p-6 md:min-h-[154px]">
                   <p class="text-body">Committed to:</p>
                   <span class="pill bg-page text-body text-fg-brand">Events</span>
                 </div>
@@ -388,7 +388,7 @@
             <div class="case-subsection !gap-6">
               <h3 class="text-h3 font-semibold">Adapting the calendar to different screens</h3>
               <p class="prose-lg">I used Google Calendar as a familiar reference for the desktop weekly view of the calendar.</p>
-              <div class="figure-row !gap-10 xl:!grid-cols-[540px_540px]">
+              <div class="figure-row !gap-10 xl:!grid-cols-[repeat(2,minmax(0,540px))]">
                 <figure class="figure">
                   <p class="figure__label">Reference</p>
                   <img class="figure__media !rounded-none" src="./assets/images/txct/google-calendar.png" srcset="./assets/images/txct/google-calendar-800w.png 800w, ./assets/images/txct/google-calendar.png 1195w" sizes="(min-width: 768px) 540px, 100vw" width="1195" height="659" loading="lazy" data-zoom="./assets/images/txct/google-calendar.png" alt="Google Calendar weekly view with colored event blocks on an hourly time grid" />
@@ -436,7 +436,7 @@
                   Calendar would be more complicated than simply shrinking it to fit onto the smaller screen, the text
                   became unreadable. I was at a loss for how to go about designing it.
                 </p>
-                <div class="figure-row figure-row--3 !gap-10 xl:!grid-cols-[356px_356px_356px]">
+                <div class="figure-row figure-row--3 !gap-10 xl:!grid-cols-[repeat(3,minmax(0,356px))]">
                   <figure class="figure figure--phone">
                     <p class="figure__label">Before</p>
                     <div class="crop aspect-[356/678] w-full !rounded-none">
