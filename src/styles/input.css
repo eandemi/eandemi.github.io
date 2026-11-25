@@ -648,22 +648,23 @@
     gap: 2px;
   }
 
-  /* 4 columns (staggered) ≥1280, 2 balanced columns on tablet/laptop, 1 on phones. */
+  /* 4 columns (staggered) ≥1280, 2 balanced columns below (phones included). */
   .gallery {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+    columns: 2;
+    column-gap: 12px;
   }
 
   .gallery__col {
     display: contents;
   }
 
+  .gallery .photo-card {
+    margin-bottom: 12px;
+    break-inside: avoid;
+  }
+
   @media (min-width: 768px) {
     .gallery {
-      display: block;
-      columns: 2;
       column-gap: 40px;
       max-width: 788px;
       margin-inline: auto;
@@ -741,6 +742,34 @@
     color: var(--color-text-secondary);
     font-size: var(--fs-body);
     line-height: var(--lh-body);
+  }
+
+  /* Phones: two cards per row, so tighten padding and type (never under 18px). */
+  @media (max-width: 767.98px) {
+    .photo-card {
+      gap: 10px;
+      padding: 10px 10px 16px;
+      border-radius: 12px;
+    }
+
+    .photo-card img {
+      border-radius: 8px;
+    }
+
+    .photo-card figcaption {
+      gap: 4px;
+      padding-inline: 2px;
+    }
+
+    .photo-card h3 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    .photo-card p {
+      font-size: 18px;
+      line-height: 26px;
+    }
   }
 
   /* -------------------------------------------------------------------------
@@ -1292,28 +1321,6 @@
     background: none;
     cursor: zoom-in;
     border-radius: 16px;
-  }
-
-  .zoom-btn__hint {
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: var(--color-surface-inverse);
-    color: var(--color-text-inverse);
-    font-size: var(--fs-caption);
-    line-height: var(--lh-caption);
-    font-weight: 600;
-  }
-
-  @media (min-width: 1024px) {
-    .zoom-btn__hint {
-      display: none;
-    }
   }
 
   .zoom-dialog {

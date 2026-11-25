@@ -176,11 +176,6 @@ if (zoomImages.length && "HTMLDialogElement" in window) {
     button.setAttribute("aria-label", `Enlarge image: ${img.alt}`);
     img.replaceWith(button);
     button.append(img);
-    const hint = document.createElement("span");
-    hint.className = "zoom-btn__hint";
-    hint.setAttribute("aria-hidden", "true");
-    hint.textContent = "Tap to enlarge";
-    button.append(hint);
 
     button.addEventListener("click", () => {
       big.src = img.dataset.zoom || img.currentSrc || img.src;
