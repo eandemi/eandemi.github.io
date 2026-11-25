@@ -4,65 +4,170 @@
 @source "../../about.html";
 @source "../../texas-cultural-trust.html";
 
-/* Design tokens from the Figma file (Isa's Portfolio). */
-@theme {
-  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  --font-quote: "Inter", ui-sans-serif, system-ui, sans-serif;
-
-  --color-off-white: #fef6ee;
-  --color-cream: #f8eada;
-  --color-ink: #241410;
-  --color-blue: #5c91d0;
-  --color-green: #579d42;
-  --color-stroke: #cac0b9;
-  --color-grey: #695753;
-  --color-dark-gray: #66554d;
-  --color-deep-gray: #372926;
-  --color-gray: #918176;
-
-  --shadow-card: 2px 4px 20px 0 rgb(72 41 34 / 0.14);
-  --shadow-card-lg: 4px 6px 20px 0 rgb(71 41 33 / 0.15);
-}
-
-/* Responsive type scale, mirroring the Figma "Responsive/*" text styles. */
+/* ---------------------------------------------------------------------------
+   Design tokens (Figma "Primitives" + "Color" collections, Nov 25 2026).
+   Primitives are raw values: components use the role tokens below them.
+   --------------------------------------------------------------------------- */
 :root {
-  --fs-hero: 48px;
-  --lh-hero: 52px;
-  --fs-h1: 40px;
-  --lh-h1: 48px;
-  --fs-h2: 32px;
-  --lh-h2: 40px;
-  --fs-h3: 26px;
-  --lh-h3: 34px;
-  --fs-h4: 22px;
-  --lh-h4: 30px;
-  --fs-body-lg: 20px;
-  --lh-body-lg: 32px;
-  --fs-body: 18px;
-  --lh-body: 28px;
-  --fs-caption: 14px;
-  --lh-caption: 20px;
+  /* Primitives: don't use these directly in components */
+  --color-neutral-0: #fef6ee; /* off-white */
+  --color-neutral-50: #f8eada; /* cream */
+  --color-neutral-200: #cac0b9;
+  --color-neutral-300: #d2c9c2;
+  --color-neutral-400: #918176;
+  --color-neutral-600: #756359;
+  --color-neutral-700: #66554d;
+  --color-neutral-900: #372926;
+  --color-neutral-950: #241410;
+  --color-blue-50: #e6e7e9;
+  --color-blue-100: #cbd6e5;
+  --color-blue-200: #98b7dc;
+  --color-blue-500: #5c91d0;
+  --color-blue-700: #36679e;
+  --color-sky-50: #ecebeb;
+  --color-green-50: #e5e9d4;
+  --color-green-300: #a6cd57;
+  --color-green-500: #579d42;
+  --color-green-700: #3f7330;
+  --color-red-50: #fadcd5;
+  --color-red-500: #e64646;
+  --color-red-700: #b52b2b;
+
+  /* Text */
+  --color-text-primary: var(--color-neutral-950); /* 16.6:1 on page */
+  --color-text-secondary: var(--color-neutral-700); /* utility labels, supporting text */
+  --color-text-tertiary: var(--color-neutral-600); /* caption descriptions */
+  --color-text-inverse: var(--color-neutral-0);
+  --color-text-brand: var(--color-blue-700); /* blue text at any size; image labels */
+  --color-text-brand-large: var(--color-blue-500); /* ONLY 24px+ on surface-page */
+  --color-text-green: var(--color-green-700);
+  --color-text-green-large: var(--color-green-500); /* ONLY 24px+ on surface-page */
+  --color-text-error: var(--color-red-700);
+
+  /* Surfaces */
+  --color-surface-page: var(--color-neutral-0);
+  --color-surface-subtle: var(--color-neutral-50);
+  --color-surface-muted: var(--color-neutral-300);
+  --color-surface-inverse: var(--color-neutral-950);
+  --color-surface-brand: var(--color-blue-500);
+  --color-surface-brand-strong: var(--color-blue-700); /* pills with small off-white text */
+  --color-surface-brand-soft: var(--color-blue-200);
+  --color-surface-green: var(--color-green-500);
+  --color-surface-lime: var(--color-green-300);
+  --color-surface-red: var(--color-red-500);
+  --color-surface-tint-blue: var(--color-blue-50);
+  --color-surface-tint-blue-strong: var(--color-blue-100);
+  --color-surface-tint-sky: var(--color-sky-50);
+  --color-surface-tint-green: var(--color-green-50);
+  --color-surface-tint-red: var(--color-red-50);
+
+  /* Borders */
+  --color-border-default: var(--color-neutral-200);
+  --color-border-subtle: var(--color-neutral-50);
+  --color-border-strong: var(--color-neutral-400);
+  --color-border-brand: var(--color-blue-500);
+  --color-border-error: var(--color-red-500);
+
+  /* Decorative graphics (contrast-exempt) */
+  --color-graphic-dark: var(--color-neutral-950);
+  --color-graphic-blue: var(--color-blue-500);
+  --color-graphic-sky: var(--color-blue-200);
+  --color-graphic-green: var(--color-green-500);
+  --color-graphic-lime: var(--color-green-300);
+  --color-graphic-red: var(--color-red-500);
+  --color-graphic-cream: var(--color-neutral-50);
+  --color-graphic-off-white: var(--color-neutral-0);
+
+  /* Brand gradient (paint style "Blue-Green/Primary") */
+  --gradient-primary: linear-gradient(90deg, #87b4ea 0%, #90d67b 100%);
+
+  /* Shadow: sidebar nav + footer CTA only */
+  --shadow-card: 1px 2px 10px rgba(71, 41, 33, 0.1);
+
+  /* Type: Outfit. Fluid between mobile (402px) and desktop (1728px) */
+  --font-family: "Outfit", system-ui, sans-serif;
+  --fs-hero: clamp(48px, 2.48vw + 38px, 80px);
+  --lh-hero: 1.1;
+  --fs-h1: clamp(36px, 2.11vw + 27.5px, 64px);
+  --lh-h1: 1.15;
+  --fs-h2: clamp(32px, 1.21vw + 27.2px, 48px);
+  --lh-h2: 1.22;
+  --fs-h3: clamp(24px, 0.9vw + 20.4px, 36px);
+  --lh-h3: 1.25;
+  --fs-h4: 28px;
+  --lh-h4: 36px;
+  --fs-body-lg: 28px;
+  --lh-body-lg: 42px;
+  --fs-body: 24px;
+  --lh-body: 36px;
+  --fs-caption-title: clamp(20px, 0.15vw + 19.4px, 22px);
+  --lh-caption-title: 1.36;
+  --fs-caption: 18px;
+  --lh-caption: 28px;
+  --fs-label: 18px;
+  --lh-label: 24px;
 }
 
-@media (min-width: 1024px) {
+/* Phones: Figma keeps body at 24px; scale it down a little (never under 18px). */
+@media (max-width: 479.98px) {
   :root {
-    --fs-hero: 80px;
-    --lh-hero: 80px;
-    --fs-h1: 64px;
-    --lh-h1: 72px;
-    --fs-h2: 48px;
-    --lh-h2: 58px;
-    --fs-h3: 36px;
-    --lh-h3: 44px;
-    --fs-h4: 28px;
-    --lh-h4: 36px;
-    --fs-body-lg: 28px;
-    --lh-body-lg: 42px;
-    --fs-body: 24px;
-    --lh-body: 36px;
-    --fs-caption: 16px;
-    --lh-caption: 24px;
+    --fs-h4: 24px;
+    --lh-h4: 32px;
+    --fs-body-lg: 22px;
+    --lh-body-lg: 34px;
+    --fs-body: 20px;
+    --lh-body: 30px;
   }
+}
+
+/* Tailwind theme: drop the default palette so only tokens can be used, then
+   expose the role tokens as short utility names (text-fg, bg-page, border-line…). */
+@theme {
+  --color-*: initial;
+  --font-sans: var(--font-family);
+  --shadow-*: initial;
+}
+
+@theme inline {
+  --color-fg: var(--color-text-primary);
+  --color-fg-secondary: var(--color-text-secondary);
+  --color-fg-tertiary: var(--color-text-tertiary);
+  --color-fg-inverse: var(--color-text-inverse);
+  --color-fg-brand: var(--color-text-brand);
+  --color-fg-brand-lg: var(--color-text-brand-large);
+  --color-fg-green: var(--color-text-green);
+  --color-fg-green-lg: var(--color-text-green-large);
+  --color-fg-error: var(--color-text-error);
+
+  --color-page: var(--color-surface-page);
+  --color-subtle: var(--color-surface-subtle);
+  --color-muted: var(--color-surface-muted);
+  --color-inverse: var(--color-surface-inverse);
+  --color-brand: var(--color-surface-brand);
+  --color-brand-strong: var(--color-surface-brand-strong);
+  --color-brand-soft: var(--color-surface-brand-soft);
+  --color-green: var(--color-surface-green);
+  --color-lime: var(--color-surface-lime);
+  --color-red: var(--color-surface-red);
+  --color-tint-blue: var(--color-surface-tint-blue);
+  --color-tint-blue-strong: var(--color-surface-tint-blue-strong);
+  --color-tint-sky: var(--color-surface-tint-sky);
+  --color-tint-green: var(--color-surface-tint-green);
+  --color-tint-red: var(--color-surface-tint-red);
+
+  --color-line: var(--color-border-default);
+  --color-line-subtle: var(--color-border-subtle);
+  --color-line-strong: var(--color-border-strong);
+  --color-line-brand: var(--color-border-brand);
+  --color-line-error: var(--color-border-error);
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+}
+
+/* Only the sidebar nav and the footer CTA card use this. */
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
 }
 
 @layer base {
@@ -71,9 +176,9 @@
   }
 
   body {
-    background: var(--color-off-white);
-    color: var(--color-ink);
-    font-family: var(--font-sans);
+    background: var(--color-surface-page);
+    color: var(--color-text-primary);
+    font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -148,13 +253,13 @@
     align-items: center;
     gap: 4px;
     border-radius: 20px;
-    color: var(--color-ink);
+    color: var(--color-text-primary);
     transition: color 150ms ease;
   }
 
   .site-nav__links a:hover,
   .site-nav__links a[aria-current="page"] {
-    color: var(--color-blue);
+    color: var(--color-text-brand);
   }
 
   .site-nav__links img {
@@ -184,7 +289,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    border: 2px solid var(--color-blue);
+    border: 2px solid var(--color-border-brand);
     border-radius: 28px;
     padding: 12px 18px;
     font-size: var(--fs-h4);
@@ -197,23 +302,23 @@
   }
 
   .btn--solid {
-    background: var(--color-blue);
-    color: var(--color-off-white);
+    background: var(--color-surface-brand);
+    color: var(--color-text-inverse);
   }
 
   .btn--solid:hover {
-    background: #4a7fbf;
-    border-color: #4a7fbf;
+    background: var(--color-surface-brand-strong);
+    border-color: var(--color-surface-brand-strong);
   }
 
   .btn--outline {
-    background: var(--color-off-white);
-    color: var(--color-blue);
+    background: var(--color-surface-page);
+    color: var(--color-text-brand);
   }
 
   .btn--outline:hover {
-    background: var(--color-blue);
-    color: var(--color-off-white);
+    background: var(--color-surface-brand);
+    color: var(--color-text-inverse);
   }
 
   @media (min-width: 1024px) {
@@ -246,11 +351,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    border: 2px solid var(--color-cream);
+    border: 2px solid var(--color-border-subtle);
     border-radius: 16px;
-    background: var(--color-off-white);
+    background: var(--color-surface-page);
     padding: 27px 30px 60px;
-    filter: drop-shadow(2px 4px 10px rgb(72 41 34 / 0.14));
   }
 
   .photo-card img {
@@ -275,16 +379,16 @@
   }
 
   .photo-card p {
-    color: var(--color-grey);
+    color: var(--color-text-secondary);
     font-size: var(--fs-body);
     line-height: var(--lh-body);
   }
 
   /* Bordered off-white card used across the case study. */
   .card {
-    border: 2px solid var(--color-stroke);
+    border: 2px solid var(--color-border-default);
     border-radius: 16px;
-    background: var(--color-off-white);
+    background: var(--color-surface-page);
   }
 
   /* Image caption: label + small description. */
@@ -294,13 +398,13 @@
   }
 
   .caption > :first-child {
-    color: var(--color-dark-gray);
+    color: var(--color-text-secondary);
     font-size: var(--fs-body);
     line-height: var(--lh-body);
   }
 
   .caption > :last-child {
-    color: var(--color-gray);
+    color: var(--color-text-tertiary);
     font-size: var(--fs-caption);
     line-height: var(--lh-caption);
   }
@@ -339,7 +443,7 @@
   }
 
   .scroller__viewport:focus-visible {
-    outline: 2px solid var(--color-blue);
+    outline: 2px solid var(--color-border-brand);
     outline-offset: 4px;
   }
 
@@ -348,7 +452,7 @@
     height: 10px;
     margin-top: 12px;
     border-radius: 999px;
-    background: var(--color-cream);
+    background: var(--color-surface-subtle);
     cursor: pointer;
     touch-action: none;
   }
@@ -359,14 +463,14 @@
     left: 0;
     width: 240px;
     border-radius: 999px;
-    background: var(--color-stroke);
+    background: var(--color-border-default);
     cursor: grab;
     transition: background-color 150ms ease;
   }
 
   .scroller__track:hover .scroller__thumb,
   .scroller--dragging .scroller__thumb {
-    background: var(--color-gray);
+    background: var(--color-border-strong);
   }
 
   .scroller--dragging,
@@ -438,7 +542,7 @@
     flex-direction: column;
     gap: 10px;
     padding: 20px;
-    box-shadow: var(--shadow-card);
+    box-shadow: none;
   }
 
   .outcome-card {
@@ -446,7 +550,7 @@
     flex-direction: column;
     gap: 12px;
     padding: 24px;
-    box-shadow: var(--shadow-card-lg);
+    box-shadow: none;
   }
 
   .outcome-card h3 {
@@ -479,11 +583,11 @@
     flex-direction: column;
     gap: 12px;
     padding: 28px;
-    box-shadow: var(--shadow-card-lg);
+    box-shadow: none;
   }
 
   .takeaway-card > span {
-    color: var(--color-blue);
+    color: var(--color-text-brand);
     font-size: var(--fs-h3);
     line-height: var(--lh-h3);
     font-weight: 600;
@@ -506,7 +610,7 @@
     align-items: center;
     gap: 10px;
     padding-block: 10px;
-    color: rgb(36 20 16 / 0.85);
+    color: var(--color-text-secondary);
     font-size: var(--fs-body-lg);
     line-height: var(--lh-body-lg);
     transition: color 150ms ease;
@@ -518,16 +622,16 @@
     width: 6px;
     height: 6px;
     border-radius: 999px;
-    background: var(--color-stroke);
+    background: var(--color-border-default);
   }
 
   .toc a:hover,
   .toc a[aria-current="true"] {
-    color: var(--color-blue);
+    color: var(--color-text-brand);
   }
 
   .toc a[aria-current="true"]::before {
-    background: var(--color-blue);
+    background: var(--color-surface-brand);
   }
 }
 
