@@ -84,6 +84,12 @@
 
   /* Shadow: sidebar nav + footer CTA only */
   --shadow-card: 1px 2px 10px rgba(71, 41, 33, 0.1);
+  /* Hover lift for the About photo cards only */
+  --shadow-card-hover: 2px 10px 24px rgba(71, 41, 33, 0.16);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Type: Outfit. Fluid between mobile (402px) and desktop (1728px) */
   --font-family: "Outfit", system-ui, sans-serif;
@@ -485,17 +491,12 @@
     width: 56px;
     height: 56px;
     border-radius: 999px;
-    transition: transform 150ms ease;
   }
 
   .icon-btn img {
     display: block;
     width: 100%;
     height: 100%;
-  }
-
-  .icon-btn:hover {
-    transform: translateY(-2px);
   }
 
   @media (min-width: 1280px) {
@@ -1438,6 +1439,87 @@
     }
   }
 
+  /* Sponsor-user card: identity | divider | three facts in a row on desktop. */
+  .persona-card {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px;
+  }
+
+  .persona-card__id {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .persona-card__divider {
+    align-self: stretch;
+    height: 2px;
+    background: var(--color-surface-muted);
+  }
+
+  .persona-card__facts {
+    display: grid;
+    flex: 1;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    .persona-card {
+      padding: 32px;
+    }
+
+    .persona-card__facts {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .persona-card {
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .persona-card__id {
+      width: 160px;
+    }
+
+    .persona-card__divider {
+      width: 2px;
+      height: auto;
+    }
+
+    /* The content column is narrow until ~1536px; keep the quotes fitting. */
+    .persona-card .quote-text {
+      font-size: 20px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .persona-card {
+      gap: 40px;
+    }
+
+    .persona-card__id {
+      width: 220px;
+    }
+
+    .persona-card__facts {
+      gap: 32px;
+    }
+
+    .persona-card .quote-text {
+      font-size: 22px;
+    }
+  }
+
   /* Numbered annotation marker: 24px text on brand blue passes AA-large. */
   .marker {
     display: inline-flex;
@@ -1507,6 +1589,112 @@
     .deco--hide-sm {
       display: none;
     }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Micro-interactions. Only on devices that can hover, and only when the
+   visitor hasn't asked for reduced motion. No new shadows on case-study cards.
+   --------------------------------------------------------------------------- */
+.photo-card,
+.project-card,
+.project-card__arrow,
+.btn,
+.icon-btn,
+.skip-solution img,
+.takeaway-card,
+.card-grid > li.card,
+.toc a::before,
+.wiggle {
+  transition:
+    transform 280ms var(--ease-out),
+    box-shadow 280ms var(--ease-out),
+    border-color 200ms ease,
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  /* About: polaroids tilt and lift, alternating direction down each column. */
+  .photo-card:nth-child(odd):hover {
+    transform: translateY(-6px) rotate(-1.75deg);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .photo-card:nth-child(even):hover {
+    transform: translateY(-6px) rotate(1.75deg);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Home: project cards lift; the arrow nudges toward its direction. */
+  .project-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .project-card:hover .project-card__arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* Buttons lift on hover and press in on click. */
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Back arrow slides left; the skip arrow nudges up-right. */
+  .icon-btn:hover {
+    transform: translateX(-4px);
+  }
+
+  .skip-solution:hover img {
+    transform: translate(2px, -2px);
+  }
+
+  /* Case-study cards: a small lift and a stronger border, no shadow. */
+  .takeaway-card:hover,
+  .card-grid > li.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-border-strong);
+  }
+
+  /* Sidebar dots grow on hover. */
+  .toc a:hover::before {
+    transform: scale(1.6);
+  }
+
+  /* Home hero: the little graphics wiggle when pointed at. */
+  .wiggle:hover {
+    transform: rotate(-12deg) scale(1.06);
+    transition-timing-function: var(--ease-spring);
+  }
+}
+
+/* Nav links: an underline that grows in from the left (tablet and up). */
+@media (min-width: 768px) {
+  .site-nav__links a {
+    position: relative;
+  }
+
+  .site-nav__links a::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 2px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 250ms var(--ease-out);
+  }
+
+  .site-nav__links a:hover::after,
+  .site-nav__links a:focus-visible::after {
+    transform: scaleX(1);
   }
 }
 
