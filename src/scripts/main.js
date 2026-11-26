@@ -32,7 +32,9 @@ if (demoVideos.length) {
     const videoObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach(({ target, isIntersecting }) => {
-          if (isIntersecting) target.play().catch(() => {});
+          // If the browser blocks autoplay (e.g. Low Power Mode), show controls
+          // so the video can still be started by hand.
+          if (isIntersecting) target.play().catch(() => { target.controls = true; });
           else target.pause();
         });
       },
